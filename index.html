@@ -6,7 +6,7 @@
     <title>Promptbibliotek for assurandører</title>
     <meta
       name="description"
-      content="140 klar-til-brug prompts til ChatGPT, Claude, Copilot og NotebookLM – skræddersyet til danske assurandører. Søg, filtrér og kopiér."
+      content="Klar-til-brug prompts til ChatGPT, Claude, Copilot og NotebookLM – skræddersyet til danske assurandører. Søg, filtrér og kopiér."
     />
     <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='50' font-size='52'>💬</text></svg>" />
     <link rel="stylesheet" href="styles.css" />
@@ -19,24 +19,18 @@
           <div>
             <h1>Promptbibliotek for assurandører</h1>
             <p class="brand-tag">
-              140 klar-til-brug prompts til ChatGPT, Claude, Copilot &amp; NotebookLM
+              Klar-til-brug prompts til ChatGPT, Claude, Copilot &amp; NotebookLM
             </p>
           </div>
         </div>
-        <a
-          class="repo-link"
-          href="https://github.com/boetter/assuprompt"
-          target="_blank"
-          rel="noopener"
-          aria-label="Åbn repository på GitHub"
-        >
-          <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-            <path
-              d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"
-            />
+        <button class="help-btn" type="button" data-open-help>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
           </svg>
-          GitHub
-        </a>
+          <span>Sådan bruger du prompts</span>
+        </button>
       </div>
     </header>
 
@@ -44,7 +38,8 @@
       <section class="hero">
         <p class="hero-copy">
           Alle prompts følger <strong>RKM-rammen</strong>: Rolle, Kontekst, Metode.
-          Vælg en prompt, kopiér den, udfyld de kursive felter med dine egne oplysninger, og tryk enter.
+          Kopiér en prompt eller åbn den direkte i ChatGPT – og udskift felterne
+          i <code>[firkantede parenteser]</code> med dine egne oplysninger, før du sender.
         </p>
         <p class="hero-note">
           <span class="dot"></span>
@@ -52,7 +47,7 @@
         </p>
       </section>
 
-      <section class="controls" aria-label="Søg og filtrér">
+      <section class="controls" aria-label="Søg">
         <div class="search">
           <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2" />
@@ -61,11 +56,10 @@
           <input
             id="search"
             type="search"
-            placeholder="Søg efter fx 'prisstigning', 'landmand', 'tilbud'…"
+            placeholder="Søg efter fx 'prisstigning', 'landmand' eller 'tilbud'…"
             autocomplete="off"
             aria-label="Søg i prompts"
           />
-          <kbd class="search-hint" aria-hidden="true">/</kbd>
         </div>
         <div class="meta">
           <span id="count" class="count"></span>
@@ -73,7 +67,16 @@
         </div>
       </section>
 
-      <nav id="filters" class="filters" aria-label="Kategorier"></nav>
+      <div class="filter-groups">
+        <div class="filter-group">
+          <span class="filter-label" id="cat-label">Kategori</span>
+          <nav id="filters" class="filters" aria-labelledby="cat-label"></nav>
+        </div>
+        <div class="filter-group" id="industry-group" hidden>
+          <span class="filter-label" id="ind-label">Branche</span>
+          <nav id="industries" class="filters" aria-labelledby="ind-label"></nav>
+        </div>
+      </div>
 
       <section id="grid" class="grid" aria-live="polite"></section>
 
@@ -88,13 +91,59 @@
         <p>
           Bygget som tillæg til AI-workshop for Assurandørkredsen · Comwell Middelfart · 21. april 2026
         </p>
-        <p class="footer-meta">
-          Kildefil: <a href="Prompt-bibliotek.txt">Prompt-bibliotek.txt</a>
-        </p>
       </div>
     </footer>
 
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <div id="help" class="modal" role="dialog" aria-modal="true" aria-labelledby="help-title" hidden>
+      <div class="modal-backdrop" data-close-help></div>
+      <div class="modal-card" role="document">
+        <button class="modal-close" type="button" data-close-help aria-label="Luk">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+        <h2 id="help-title">Sådan bruger du prompts</h2>
+        <p class="modal-lead">
+          En prompt er en besked til en AI-assistent som ChatGPT, Claude eller Copilot.
+          Biblioteket her indeholder prompts, der er skåret til forsikringsbranchen,
+          så svarene bliver relevante for dit arbejde.
+        </p>
+
+        <ol class="steps">
+          <li>
+            <strong>Find en prompt</strong> – brug søgefeltet eller filtrér på kategori og branche.
+          </li>
+          <li>
+            <strong>Kopiér eller åbn i ChatGPT</strong> – hvert kort har en knap til begge dele.
+          </li>
+          <li>
+            <strong>Udfyld felterne i firkantede parenteser</strong> – fx:
+            <div class="example">
+              <div class="example-before">KONTEKST: Jeg skal rådgive en virksomhed inden for <code>[BRANCHE]</code> med <code>[antal ansatte]</code> medarbejdere.</div>
+              <div class="example-arrow" aria-hidden="true">↓</div>
+              <div class="example-after">KONTEKST: Jeg skal rådgive en virksomhed inden for <code>restauration</code> med <code>14</code> medarbejdere.</div>
+            </div>
+          </li>
+          <li>
+            <strong>Anonymisér altid kundedata</strong> – brug &quot;Kunde A&quot;, dummy-navne
+            eller fjern følsomme detaljer, før du sender prompten i offentlige værktøjer.
+          </li>
+          <li>
+            <strong>Læs AI-svaret kritisk</strong> – tjek fakta, tone og lovgivning
+            før du bruger teksten i kundekommunikation eller interne sager.
+          </li>
+        </ol>
+
+        <p class="modal-footnote">
+          Alle prompts følger <strong>RKM-rammen</strong>: <em>Rolle</em> (hvem skal AI'en være),
+          <em>Kontekst</em> (hvad er situationen), <em>Metode</em> (hvad skal den levere).
+          Du må gerne justere dem, så de passer til din stil.
+        </p>
+      </div>
+    </div>
 
     <script src="prompts.js"></script>
     <script src="app.js" defer></script>
