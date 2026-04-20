@@ -2,7 +2,7 @@
  * prompts.js – generated from Prompt-bibliotek.txt.
  * Do not edit by hand. Run `node scripts/build-data.mjs` to regenerate.
  *
- * Prompts: 140 · Categories: 14
+ * Prompts: 115 · Categories: 13 · Industries: 10
  */
 window.PROMPTS_DATA = {
   "categories": [
@@ -39,10 +39,6 @@ window.PROMPTS_DATA = {
       "name": "Salg og kundeindvendinger"
     },
     {
-      "id": "9",
-      "name": "Brancher: landbrug, byggeri, detail, restauration"
-    },
-    {
       "id": "10",
       "name": "Produktforståelse og forklaringer"
     },
@@ -60,7 +56,49 @@ window.PROMPTS_DATA = {
     },
     {
       "id": "14",
-      "name": "Personlig udvikling og refleksion"
+      "name": "Refleksion og svære situationer"
+    }
+  ],
+  "industries": [
+    {
+      "id": "byggeri",
+      "name": "Byggeri"
+    },
+    {
+      "id": "detail",
+      "name": "Detailhandel"
+    },
+    {
+      "id": "ecommerce",
+      "name": "E-commerce"
+    },
+    {
+      "id": "haandvaerk",
+      "name": "Håndværk"
+    },
+    {
+      "id": "it",
+      "name": "IT og rådgivning"
+    },
+    {
+      "id": "landbrug",
+      "name": "Landbrug"
+    },
+    {
+      "id": "produktion",
+      "name": "Produktion"
+    },
+    {
+      "id": "restauration",
+      "name": "Restauration"
+    },
+    {
+      "id": "sundhed",
+      "name": "Sundhed"
+    },
+    {
+      "id": "transport",
+      "name": "Transport og logistik"
     }
   ],
   "prompts": [
@@ -68,981 +106,1036 @@ window.PROMPTS_DATA = {
       "id": "1.1",
       "categoryId": "1",
       "categoryName": "Kunderesearch og mødeforberedelse",
+      "industryId": null,
+      "industryName": null,
       "title": "Erhvervskunde-briefing før mødet",
-      "body": "ROLLE: Du er min erfarne research-assistent med mange års erfaring i\nerhvervsforsikring.\n\nKONTEKST: Jeg skal i næste uge besøge virksomheden [NAVN, CVR xxxxxxxx].\nMit mål er at forstå deres forretning og identificere forsikringsbehov.\n\nMETODE: Lav en briefing på maks 1 A4-side:\n1. Kerneforretning og seneste regnskabstal (omsætning, resultat, ansatte)\n2. Ejerstruktur og nøglepersoner\n3. Tre største risikoeksponeringer ud fra branche og størrelse\n4. Nyheder fra seneste 6 måneder der påvirker forsikringsbehov\n5. Tre åbnende spørgsmål til mødet\nKildehenvisninger under hvert punkt. Vær skeptisk - sig \"jeg ved det ikke\"\nfrem for at gætte."
+      "body": "ROLLE: Du er min research-assistent med mange års erfaring i dansk\nerhvervsforsikring.\n\nKONTEKST: Jeg er erhvervsassurandør og skal i næste uge holde et\nforberedende møde med virksomheden [NAVN, CVR xxxxxxxx]. Mit mål er at\nforstå deres forretning og identificere forsikringsbehov.\n\nMETODE: Lav en briefing på maks 1 A4-side:\n1. Kerneforretning og seneste regnskabstal (omsætning, resultat, ansatte)\n2. Ejerstruktur og nøglepersoner\n3. Tre største forsikringsmæssige risikoeksponeringer ud fra branche og størrelse\n4. Nyheder fra seneste 6 måneder der påvirker forsikringsbehov\n5. Tre åbnende spørgsmål til mødet\nKildehenvisninger under hvert punkt. Vær skeptisk - sig \"jeg ved det ikke\"\nfrem for at gætte."
     },
     {
       "id": "1.2",
       "categoryId": "1",
       "categoryName": "Kunderesearch og mødeforberedelse",
-      "title": "Brancheresearch",
-      "body": "ROLLE: Du er brancheanalytiker med speciale i dansk erhvervsliv.\n\nKONTEKST: Jeg skal rådgive en virksomhed inden for [BRANCHE] og har brug\nfor et opdateret overblik.\n\nMETODE: Giv mig:\n- Markedsstørrelse og vækstrate i Danmark\n- De 5 største aktører\n- Vigtigste trends og disruptions 2025-2026\n- Regulatoriske ændringer der påvirker forsikringsbehov\n- Typiske risikoeksponeringer i branchen\nAngiv danske kilder."
+      "industryId": null,
+      "industryName": null,
+      "title": "Brancheresearch med forsikringsvinkel",
+      "body": "ROLLE: Du er brancheanalytiker med særligt fokus på forsikringsrisici\ni danske brancher.\n\nKONTEKST: Jeg er erhvervsassurandør og skal rådgive en virksomhed inden\nfor [BRANCHE] om deres forsikringsprogram.\n\nMETODE: Giv mig:\n- Markedsstørrelse og vækstrate i Danmark\n- De 5 største aktører og deres typiske risikoprofil\n- Vigtigste trends og disruptions 2025-2026 der påvirker forsikringsbehov\n- Regulatoriske ændringer (fx nye krav til erhvervsansvar, cyber, miljø)\n- Typiske skadesscenarier og risikoeksponeringer i branchen\nAngiv danske kilder."
     },
     {
       "id": "1.3",
       "categoryId": "1",
       "categoryName": "Kunderesearch og mødeforberedelse",
-      "title": "Privatkunde-forberedelse",
-      "body": "ROLLE: Du er min erfarne kollega med speciale i privatkunderådgivning.\n\nKONTEKST: Jeg skal møde en familie jeg kender disse oplysninger om:\n- Par, midt 40'erne, to børn (13 og 10)\n- Hus købt 2020 til 4,2 mio, belåning 65%\n- En selvstændig, en funktionær\n- Arvet sommerhus sidste år\n- Ingen nuværende rådgivning fra mig\n\nMETODE: Giv mig:\n1. De 5 vigtigste spørgsmål at åbne mødet med\n2. De 3 største blinde vinkler jeg bør være opmærksom på\n3. To-tre produkter de måske mangler, og hvorfor\n4. En mødedagsorden på 60 min\nTone: kollegial, ikke salgsagtig."
+      "industryId": null,
+      "industryName": null,
+      "title": "Privatkundeforberedelse fra stamdata",
+      "body": "ROLLE: Du er min erfarne kollega-assurandør med 20 års erfaring i\nprivatkunde-rådgivning (indbo, hus, bil, liv, ulykke, pension).\n\nKONTEKST: Jeg er assurandør og skal møde en familie jeg kender disse\noplysninger om:\n- Par, midt 40'erne, to børn (13 og 10)\n- Hus købt 2020 til 4,2 mio, belåning 65%\n- En selvstændig, en funktionær\n- Arvet sommerhus sidste år\n- Ingen nuværende rådgivning fra mig\n\nMETODE:\n1. De 5 vigtigste spørgsmål at åbne mødet med\n2. De 3 største forsikringsmæssige blinde vinkler jeg bør adressere\n3. To-tre forsikringsprodukter de sandsynligvis mangler, og hvorfor\n4. En mødedagsorden på 60 min til en samlet forsikringsgennemgang\nTone: kollegial, ikke salgsagtig."
     },
     {
       "id": "1.4",
       "categoryId": "1",
       "categoryName": "Kunderesearch og mødeforberedelse",
-      "title": "Branchesammenligning - tre virksomheder",
-      "body": "ROLLE: Du er min analytiker-kollega.\n\nKONTEKST: Jeg rådgiver tre virksomheder inden for [BRANCHE]:\nVirksomhed A [navn], B [navn], C [navn].\n\nMETODE: Sammenlign dem på:\n- Størrelse og markedsposition\n- Forretningsmodel\n- Sandsynlige risikoprofiler\n- Typisk forsikringsdækning i branchen\nGiv det som en tabel. Slut med 3 observationer om hvor de adskiller sig."
+      "industryId": null,
+      "industryName": null,
+      "title": "Sammenlign forsikringsprogrammet i tre virksomheder",
+      "body": "ROLLE: Du er min analytiker-kollega med speciale i erhvervsforsikring.\n\nKONTEKST: Jeg er erhvervsassurandør og rådgiver tre virksomheder inden\nfor [BRANCHE]: A [navn], B [navn], C [navn].\n\nMETODE: Sammenlign dem på:\n- Størrelse og markedsposition\n- Forretningsmodel og risikoprofil\n- Sandsynlig forsikringsdækning i branchen\n- Hvor de adskiller sig fra hinanden rent forsikringsmæssigt\nGiv det som en tabel. Slut med 3 observationer jeg kan bruge til at\ntilpasse min rådgivning."
     },
     {
       "id": "1.5",
       "categoryId": "1",
       "categoryName": "Kunderesearch og mødeforberedelse",
-      "title": "Prospektering - nye erhvervskunder i mit område",
-      "body": "ROLLE: Du er min prospekterings-assistent.\n\nKONTEKST: Jeg er erhvervsassurandør og arbejder i området [by/region].\nJeg specialiserer mig i [branche/størrelse] og søger nye kunder.\n\nMETODE: Foreslå 10 virksomheder i området der matcher min profil.\nFor hver: navn, kort beskrivelse, hvorfor den er et godt match, og én\nmåde at starte en samtale op.\nBrug offentlige kilder. Angiv dem."
+      "industryId": null,
+      "industryName": null,
+      "title": "Prospektering af nye erhvervskunder",
+      "body": "ROLLE: Du er min prospekterings-assistent med forsikringsblik.\n\nKONTEKST: Jeg er erhvervsassurandør i området [by/region] og\nspecialiserer mig i [branche/virksomhedsstørrelse]. Jeg søger\nvirksomheder hvor der er sandsynlighed for at deres forsikringsprogram\nkunne optimeres.\n\nMETODE: Foreslå 10 virksomheder i området der matcher min profil.\nFor hver:\n- Navn og kort beskrivelse\n- Hvorfor den er et godt match (størrelse, branche-specifik risiko)\n- Én hypotese om hvad der potentielt er underdækket\n- Én måde at starte en samtale op\nBrug offentlige kilder. Angiv dem."
     },
     {
       "id": "1.6",
       "categoryId": "1",
       "categoryName": "Kunderesearch og mødeforberedelse",
+      "industryId": "landbrug",
+      "industryName": "Landbrug",
       "title": "Landmandsforberedelse",
-      "body": "ROLLE: Du er min erfarne kollega med 20 års erfaring i landbrugsforsikring.\n\nKONTEKST: Jeg skal om en time besøge en landmand der driver\n[type brug: malkekvæg/svin/planteavl] med [antal dyr/hektar]. Han\novervejer [konkret ændring].\n\nMETODE: Giv mig de 5 vigtigste spørgsmål. Rækkefølge:\n1. Dyre/afgrøde-forsikring\n2. Driftstab\n3. Maskin/teknologi\n4. Brand bygninger\n5. Ansvar\nFormat: Tabel med Område / Spørgsmål / Hvad jeg skal lytte efter.\nMaks 15 ord pr. felt. Jordnær tone, ingen forsikringsjargon."
+      "body": "ROLLE: Du er min erfarne kollega med 20 års erfaring i landbrugs-\nforsikring.\n\nKONTEKST: Jeg er erhvervsassurandør og skal om en time besøge en\nlandmand der driver [type brug: malkekvæg/svin/planteavl] med\n[antal dyr/hektar]. Han overvejer [konkret ændring].\n\nMETODE: Giv mig de 5 vigtigste spørgsmål. Rækkefølge:\n1. Dyre/afgrøde-forsikring\n2. Driftstab\n3. Maskin/teknologi\n4. Brand bygninger\n5. Ansvar\nFormat: Tabel med Område / Spørgsmål / Hvad jeg skal lytte efter.\nMaks 15 ord pr. felt. Jordnær tone, ingen forsikringsjargon over for\nlandmanden."
     },
     {
       "id": "1.7",
       "categoryId": "1",
       "categoryName": "Kunderesearch og mødeforberedelse",
-      "title": "Forbered genforhandling",
-      "body": "ROLLE: Du er min erfarne kollega.\n\nKONTEKST: Jeg skal holde en genforhandling med en eksisterende\nerhvervskunde [kort beskrivelse]. De har trykket på prisen og overvejer\nat skifte.\n\nMETODE: Forbered mig:\n1. Tre argumenter for at blive hos os (ud over pris)\n2. Tre typiske pris-modargumenter og hvordan jeg håndterer dem\n3. En fallback-position hvis prisen ikke kan matches\n4. Afslutningssætning hvis de alligevel vælger at gå"
+      "industryId": null,
+      "industryName": null,
+      "title": "Forbered genforhandling af forsikringsprogram",
+      "body": "ROLLE: Du er min erfarne forsikringsrådgiver-kollega med erfaring i\nsvære genforhandlinger.\n\nKONTEKST: Jeg er assurandør og skal holde en genforhandling med en\neksisterende erhvervskunde [kort beskrivelse]. De har trykket på prisen\nog overvejer at skifte selskab.\n\nMETODE: Forbered mig:\n1. Tre argumenter for at blive hos os ud over pris (fx service,\nskadesbehandling, lokal kontakt)\n2. Tre typiske pris-modargumenter fra konkurrenter og hvordan jeg\nhåndterer dem\n3. En fallback-position hvis prisen ikke kan matches\n4. Afslutningssætning hvis de alligevel vælger at gå"
     },
     {
       "id": "1.8",
       "categoryId": "1",
       "categoryName": "Kunderesearch og mødeforberedelse",
-      "title": "Research ny branche jeg ikke kender",
-      "body": "ROLLE: Du er min læremester.\n\nKONTEKST: Jeg har mulighed for at arbejde med en ny type kunde -\n[beskriv branche]. Jeg har aldrig arbejdet med dem før og skal op i\ntempo hurtigt.\n\nMETODE: Lav en \"førstehjælpsguide\":\n- Branchens særlige karakteristika\n- Typiske forsikringsbehov\n- 10 nøgletermer jeg skal kende\n- Tre typiske faldgruber for nybegyndere\n- Fem gode spørgsmål til det første møde"
+      "industryId": null,
+      "industryName": null,
+      "title": "Kom ind i ny branche jeg ikke forsikringsmæssigt kender",
+      "body": "ROLLE: Du er min erfarne kollega i forsikringsbranchen.\n\nKONTEKST: Jeg er assurandør og har mulighed for at arbejde med en ny\ntype kunde - [beskriv branche]. Jeg har aldrig forsikret denne branche\nfør og skal op i tempo hurtigt.\n\nMETODE: Lav en førstehjælpsguide:\n- Branchens særlige risici\n- Typiske forsikringsbehov og obligatoriske dækninger\n- 10 nøgletermer fra branchen jeg skal kende\n- Tre typiske faldgruber ved at forsikre denne branche\n- Fem gode spørgsmål til det første kundemøde"
     },
     {
       "id": "1.9",
       "categoryId": "1",
       "categoryName": "Kunderesearch og mødeforberedelse",
-      "title": "Vurdér kundens nuværende forsikringer",
-      "body": "ROLLE: Du er min analytiker-kollega.\n\nKONTEKST: Jeg har fået indsigt i en potentiel kundes nuværende\nforsikringsdækninger. Oversigten: [indsæt]\n\nMETODE: Vurdér:\n1. Er der huller i dækningen?\n2. Er der overlap/dobbeltdækning?\n3. Er selvrisikoerne fornuftige ift. kundens situation?\n4. Hvilke tre anbefalinger ville du give kunden?\nVær direkte og konkret. Undgå generiske råd."
+      "industryId": null,
+      "industryName": null,
+      "title": "Vurdering af kundens nuværende forsikringsprogram",
+      "body": "ROLLE: Du er min analytiker-kollega med speciale i forsikringsprogrammer.\n\nKONTEKST: Jeg er assurandør og har fået indsigt i en potentiel kundes\nnuværende forsikringsdækninger fra et andet selskab. Oversigten: [indsæt]\n\nMETODE: Vurdér:\n1. Er der huller i dækningen?\n2. Er der overlap/dobbeltdækning?\n3. Er selvrisikoerne fornuftige ift. kundens situation?\n4. Hvilke tre anbefalinger ville du give kunden?\nVær direkte og konkret. Undgå generiske råd."
     },
     {
       "id": "1.10",
       "categoryId": "1",
       "categoryName": "Kunderesearch og mødeforberedelse",
-      "title": "Kunderelationens historik",
-      "body": "ROLLE: Du er min kundeservice-assistent.\n\nKONTEKST: Jeg skal ringe til [kunde] i dag. Tidligere noter: [indsæt]\n\nMETODE:\n1. Opsummér relationen i 3-5 bullet points\n2. Identificér den mest presserende ting vi aftalte ved sidste kontakt\n3. Foreslå en åbning til samtalen\n4. Nævn 2 ting jeg bør undgå at komme ind på nu"
+      "industryId": null,
+      "industryName": null,
+      "title": "Læs kundens årsrapport med forsikringsbriller på",
+      "body": "ROLLE: Du er min økonomiske analytiker med fokus på forsikringsrelevante\nrisici.\n\nKONTEKST: Jeg er erhvervsassurandør og uploader en kundes årsrapport.\nJeg skal forstå deres økonomi som baggrund for forsikringsrådgivning.\n\nMETODE:\n1. Opsummér økonomien i 5 bullet points (i dagligdagssprog)\n2. Identificér 3 forhold i regnskabet der signalerer nye eller ændrede\nforsikringsbehov (fx ny datterselskab, større lager, flere ansatte,\neksport til nye markeder)\n3. Foreslå 3 konkrete rådgivningsemner jeg kan bringe op\n4. Formulér en åbningssætning der viser jeg har læst rapporten"
     },
     {
       "id": "1.11",
       "categoryId": "1",
       "categoryName": "Kunderesearch og mødeforberedelse",
-      "title": "Analyse af erhvervskundes årsrapport",
-      "body": "ROLLE: Du er min økonomiske analytiker.\n\nKONTEKST: Jeg uploader kundens årsrapport. Jeg er erhvervsassurandør og\nskal forstå deres økonomi som baggrund for forsikringsrådgivning.\n\nMETODE:\n1. Opsummér økonomien i 5 bullet points\n2. Identificér 3 tegn på nye risikoeksponeringer\n3. Foreslå 3 konkrete rådgivningsemner\n4. Formulér en åbningssætning der viser jeg har læst rapporten\nAlt i dagligdagssprog."
+      "industryId": null,
+      "industryName": null,
+      "title": "Generationsskifte - forsikringsvinkel",
+      "body": "ROLLE: Du er min forsikringsrådgiver-kollega med speciale i\ngenerationsskifter i dansk erhvervsliv.\n\nKONTEKST: Jeg er erhvervsassurandør og har en kunde der står over for\net generationsskifte: [kort beskrivelse af virksomhed og skiftet].\n\nMETODE: Giv mig:\n1. De 5 vigtigste forsikringsmæssige overvejelser ved skiftet\n(fx nøglepersonforsikring, ejerskifte i policer, nye risikoprofiler)\n2. Tre forsikringsprodukter der typisk bliver aktuelle\n3. Tre typiske faldgruber ved generationsskifter set fra\nforsikringsvinkel\n4. En naturlig åbning til samtalen med kunden"
     },
     {
       "id": "1.12",
       "categoryId": "1",
       "categoryName": "Kunderesearch og mødeforberedelse",
-      "title": "Generationsskifte-forberedelse",
-      "body": "ROLLE: Du er min rådgiver-kollega med speciale i generationsskifter.\n\nKONTEKST: Jeg har en kunde der står over for et generationsskifte:\n[kort beskrivelse]\n\nMETODE: Giv mig:\n1. De 5 vigtigste forsikringsmæssige overvejelser\n2. Tre produkter der typisk bliver aktuelle\n3. Tre typiske faldgruber\n4. En naturlig åbning til samtalen"
+      "industryId": null,
+      "industryName": null,
+      "title": "Årsmøde med eksisterende kunde",
+      "body": "ROLLE: Du er min forberedelses-assistent til årlige\nforsikringsgennemgangsmøder.\n\nKONTEKST: Jeg er assurandør og skal holde det årlige gennemgangsmøde\nmed en familiekunde. Sidste møde var for 11 måneder siden. Noter fra\nsidst: [indsæt]\n\nMETODE:\n1. Tjekliste over ting at følge op på fra sidste møde\n2. Liste over \"what's new\" i forsikringsbranchen der kan være relevant\n(nye produkter, ændrede vilkår, prisudvikling)\n3. Tre trin til et godt mødeforløb\n4. En venlig indledende mail der bekræfter mødet"
     },
     {
       "id": "1.13",
       "categoryId": "1",
       "categoryName": "Kunderesearch og mødeforberedelse",
-      "title": "Årsmøde-forberedelse",
-      "body": "ROLLE: Du er min forberedelses-assistent.\n\nKONTEKST: Jeg skal holde det årlige gennemgangsmøde med en familie-\nkunde. Sidste møde var for 11 måneder siden. Noter fra sidst: [indsæt]\n\nMETODE: Lav:\n1. Tjekliste over ting at tage op (ud fra sidste møde)\n2. Liste over \"what's new\" i branchen der kan være relevant\n3. Tre trin til et godt mødeforløb\n4. En venlig indledende mail der bekræfter mødet"
-    },
-    {
-      "id": "1.14",
-      "categoryId": "1",
-      "categoryName": "Kunderesearch og mødeforberedelse",
-      "title": "Hurtig research om nyt produkt",
-      "body": "ROLLE: Du er min research-assistent.\n\nKONTEKST: Mit selskab har netop lanceret [produkt]. Jeg skal kunne\npræsentere det for kunder i morgen.\n\nMETODE: Giv mig:\n1. Produktets kernefordel i én sætning\n2. Tre typiske kundetyper det passer til\n3. Fem konkrete spørgsmål jeg kan stille for at afdække behov\n4. En 2-minutters elevatortale jeg kan sige til en kunde"
+      "industryId": null,
+      "industryName": null,
+      "title": "Hurtig research om nyt forsikringsprodukt",
+      "body": "ROLLE: Du er min forsikringsprodukt-specialist.\n\nKONTEKST: Jeg er assurandør og mit selskab har netop lanceret\n[produkt]. Jeg skal kunne præsentere det for kunder i morgen.\n\nMETODE:\n1. Produktets kernefordel i én sætning\n2. Tre typiske kundetyper det passer til\n3. Fem konkrete spørgsmål jeg kan stille for at afdække behov\n4. En 2-minutters elevatortale jeg kan sige til en kunde"
     },
     {
       "id": "2.1",
       "categoryId": "2",
       "categoryName": "Mødenoter og referater",
+      "industryId": null,
+      "industryName": null,
       "title": "Stikord → mødereferat",
-      "body": "ROLLE: Du er min assistent som hjælper med at strukturere mødenoter.\n\nKONTEKST: Mine stikord fra et møde med [kunde]: [indsæt]\n\nMETODE: Lav et mødereferat med afsnittene:\n- Kundens nuværende situation\n- Identificerede behov\n- Aftalt næste skridt\n- Frist\nFulde sætninger. Professionel tone. Dansk."
+      "body": "ROLLE: Du er min forsikrings-assistent der hjælper med at strukturere\nmødenoter fra kundemøder.\n\nKONTEKST: Jeg er assurandør. Mine stikord fra et møde med [kunde]:\n[indsæt stikord]\n\nMETODE: Lav et mødereferat med afsnittene:\n- Kundens nuværende situation (familiemæssigt/forretningsmæssigt +\nnuværende forsikringer)\n- Identificerede forsikringsbehov\n- Aftalt næste skridt\n- Frist\nFulde sætninger. Professionel tone. Dansk."
     },
     {
       "id": "2.2",
       "categoryId": "2",
       "categoryName": "Mødenoter og referater",
+      "industryId": null,
+      "industryName": null,
       "title": "Stikord → referat + opfølgningsmail",
-      "body": "ROLLE: Du er min assistent.\n\nKONTEKST: Mine stikord fra mødet: [indsæt]\n\nMETODE: Lav to leverancer:\n\nLEVERANCE 1 - Mødereferat til sagsmappen:\n- Nuværende situation\n- Identificerede behov\n- Aftalt næste skridt\n- Frist\n\nLEVERANCE 2 - Opfølgningsmail til kunden:\n- Maks 150 ord\n- Takker for mødet\n- Bekræfter aftalerne\n- Varm men professionel tone"
+      "body": "ROLLE: Du er min forsikrings-assistent.\n\nKONTEKST: Jeg er assurandør og har lige haft et kundemøde. Mine stikord:\n[indsæt]\n\nMETODE: Lav to leverancer:\n\nLEVERANCE 1 - Mødereferat til sagsmappen:\n- Nuværende situation\n- Identificerede forsikringsbehov\n- Aftalt næste skridt\n- Frist\n\nLEVERANCE 2 - Opfølgningsmail til kunden:\n- Maks 150 ord\n- Takker for mødet\n- Bekræfter aftalerne\n- Varm men professionel tone"
     },
     {
       "id": "2.3",
       "categoryId": "2",
       "categoryName": "Mødenoter og referater",
-      "title": "Telefonsamtale → notat",
-      "body": "ROLLE: Du er min assistent.\n\nKONTEKST: Jeg har netop haft en telefonsamtale. Stikord: [indsæt]\n\nMETODE: Lav:\n1. Et internt notat på maks 100 ord\n2. Liste over action points med deadlines\n3. Én opfølgende mail på maks 80 ord"
+      "industryId": null,
+      "industryName": null,
+      "title": "Telefonsamtale → notat og opfølgning",
+      "body": "ROLLE: Du er min forsikrings-assistent.\n\nKONTEKST: Jeg er assurandør og har netop haft en telefonsamtale med en\nkunde. Stikord: [indsæt]\n\nMETODE:\n1. Et internt notat til kundens sagsmappe på maks 100 ord\n2. Liste over action points med deadlines\n3. Én opfølgende mail til kunden på maks 80 ord"
     },
     {
       "id": "2.4",
       "categoryId": "2",
       "categoryName": "Mødenoter og referater",
-      "title": "Transkription → struktureret referat",
-      "body": "ROLLE: Du er min referent.\n\nKONTEKST: Jeg uploader en transskription af et 45-minutters kundemøde.\nKunde: [kort profil].\n\nMETODE: Struktureret referat:\n1. Nøglepointer fra kunden\n2. Mine tilsagn og leverancer\n3. Kundens bekymringer/indvendinger\n4. Konkrete aftaler med deadlines\n5. Spørgsmål der stadig hænger i luften\nBrug citater hvor relevant. Angiv hvem sagde hvad."
+      "industryId": null,
+      "industryName": null,
+      "title": "Transkription af kundemøde → struktureret referat",
+      "body": "ROLLE: Du er min referent med forsikringsforståelse.\n\nKONTEKST: Jeg er assurandør. Jeg uploader en transskription af et\n45-minutters kundemøde. Kunde: [kort profil].\n\nMETODE: Struktureret referat:\n1. Nøglepointer fra kunden om deres situation og bekymringer\n2. Mine tilsagn og leverancer (hvad jeg skal levere, hvornår)\n3. Kundens indvendinger mod forslag eller produkter\n4. Konkrete aftaler med deadlines\n5. Spørgsmål der stadig hænger i luften\nBrug citater hvor relevant. Angiv hvem sagde hvad."
     },
     {
       "id": "2.5",
       "categoryId": "2",
       "categoryName": "Mødenoter og referater",
+      "industryId": null,
+      "industryName": null,
       "title": "Ugerapport fra flere kundemøder",
-      "body": "ROLLE: Du er min administrative assistent.\n\nKONTEKST: 8 kundemøder denne uge. Noter fra hvert: [indsæt]\n\nMETODE: Uge-rapport til min chef:\n- Antal møder og type\n- Tre vigtigste resultater\n- Tre udfordringer\n- Forventede salg/nye forretninger\n- Ting jeg har brug for hjælp til\nMaks 300 ord. Professionel tone."
+      "body": "ROLLE: Du er min administrative assistent med kendskab til\nassurandørarbejde.\n\nKONTEKST: Jeg er assurandør og har haft 8 kundemøder denne uge. Noter\nfra hvert: [indsæt]\n\nMETODE: Uge-rapport til min chef:\n- Antal møder og type (privat/erhverv)\n- Tre vigtigste resultater (nye tilbud, lukkede deals, genforhandlinger)\n- Tre udfordringer jeg har mødt\n- Forventede nye forretninger og præmieindtægt\n- Ting jeg har brug for hjælp til\nMaks 300 ord. Professionel tone."
     },
     {
       "id": "2.6",
       "categoryId": "2",
       "categoryName": "Mødenoter og referater",
-      "title": "Dagsorden fra få stikord",
-      "body": "ROLLE: Du er min mødeplanlægger.\n\nKONTEKST: Jeg skal holde et møde med [hvem] om [tema]. Stikord: [indsæt]\n\nMETODE: Lav:\n1. Mødeformål i én sætning\n2. Dagsorden med tidspunkter (60 min)\n3. Tre nøglespørgsmål jeg skal stille\n4. Forslag til afrunding"
+      "industryId": null,
+      "industryName": null,
+      "title": "Mødeindkaldelse til kunde",
+      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Jeg er assurandør og skal indkalde [kunde] til et møde.\nFormål: [beskrivelse - gennemgang af forsikringsprogram, tilbud på nyt\nprodukt, skadessag, genforhandling]. Forslag til tid: [tid].\nSted: [sted].\n\nMETODE: Mail der:\n- Er kort og konkret (maks 120 ord)\n- Tydeligt formål\n- Klart sted og tid\n- Angiver hvad kunden skal forberede (fx medbringe nuværende policer,\nskadeshistorik, årsrapport)\n- Venlig men professionel tone"
     },
     {
       "id": "2.7",
       "categoryId": "2",
       "categoryName": "Mødenoter og referater",
-      "title": "Mødeindkaldelse til kunde",
-      "body": "ROLLE: Du er min assistent.\n\nKONTEKST: Mødeindkaldelse til [kunde]. Formål: [beskrivelse].\nForslag til tid: [tid]. Sted: [sted].\n\nMETODE: Mail der:\n- Er kort og konkret (maks 120 ord)\n- Tydeligt formål\n- Klart sted og tid\n- Angiver hvad kunden skal forberede (hvis noget)\n- Venlig men professionel tone"
-    },
-    {
-      "id": "2.8",
-      "categoryId": "2",
-      "categoryName": "Mødenoter og referater",
-      "title": "Action points → kalenderblokke",
-      "body": "ROLLE: Du er min planlægningsassistent.\n\nKONTEKST: Alle action points fra ugens møder: [indsæt]\n\nMETODE: Lav:\n1. Liste sorteret efter deadline\n2. Forslag til kalenderblok med tidsestimater\n3. Hvad kan delegeres (hvis noget)\n4. De 3 mest risikofyldte deadlines"
-    },
-    {
-      "id": "2.9",
-      "categoryId": "2",
-      "categoryName": "Mødenoter og referater",
-      "title": "Kundemødeforberedelse ud fra tidligere noter",
-      "body": "ROLLE: Du er min kollega.\n\nKONTEKST: Jeg skal ringe til [kunde] i morgen. Alle tidligere notater:\n[indsæt]\n\nMETODE:\n1. Opsummér relationens historik i 5 bullet points\n2. Identificér det vigtigste uafsluttede punkt\n3. Foreslå 3 åbningsspørgsmål\n4. Advar mig om ting jeg bør undgå"
-    },
-    {
-      "id": "2.10",
-      "categoryId": "2",
-      "categoryName": "Mødenoter og referater",
-      "title": "Team-møde referat",
-      "body": "ROLLE: Du er min referent.\n\nKONTEKST: Team-møde med [antal] kolleger om [tema]. Stikord: [indsæt]\n\nMETODE:\n1. Kort referat med beslutninger (ikke diskussionen)\n2. Action items med ejerskab og deadline\n3. Dato for næste møde (hvis nævnt)\nFormat: professionel, kopierbar til teamkanal."
+      "industryId": null,
+      "industryName": null,
+      "title": "Kundemødeforberedelse ud fra relationens historik",
+      "body": "ROLLE: Du er min forsikringskollega.\n\nKONTEKST: Jeg er assurandør og skal ringe til [kunde] i morgen. Alle\nmine tidligere notater om dem: [indsæt]\n\nMETODE:\n1. Opsummér relationens forsikringsmæssige historik i 5 bullet points\n2. Identificér det vigtigste uafsluttede punkt\n3. Foreslå 3 åbningsspørgsmål\n4. Advar mig om ting jeg bør undgå baseret på historikken"
     },
     {
       "id": "3.1",
       "categoryId": "3",
       "categoryName": "Kundekommunikation - privatkunder",
+      "industryId": null,
+      "industryName": null,
       "title": "Introduktionsmail til ny privatkunde",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Ny privatkunde henvist fra [kilde]. Oplyste behov: [indsæt].\nJeg vil præsentere mig og foreslå et indledende møde.\n\nMETODE: Mail på maks 150 ord:\n- Starter varmt uden at være familiær\n- Kort præsenterer mig (1-2 sætninger)\n- Viser jeg har forstået deres situation\n- Foreslår konkret næste skridt\n- Slutter let og uforpligtende"
+      "body": "ROLLE: Du er min kommunikationsassistent med erfaring i\nforsikringsrådgivning til privatkunder.\n\nKONTEKST: Jeg er assurandør og har fået henvist en ny privatkunde fra\n[kilde]. De har oplyst disse forsikringsbehov: [indsæt]. Jeg vil\npræsentere mig og foreslå et indledende møde.\n\nMETODE: Mail på maks 150 ord:\n- Starter varmt uden at være familiær\n- Kort præsentation af mig og mit speciale\n- Viser jeg har forstået deres situation\n- Foreslår konkret næste skridt\n- Slutter let og uforpligtende"
     },
     {
       "id": "3.2",
       "categoryId": "3",
       "categoryName": "Kundekommunikation - privatkunder",
+      "industryId": null,
+      "industryName": null,
       "title": "Årlig opfølgning",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Årlig opfølgning til kunde jeg ikke har talt med i 12 mdr.\nKunde: [kort profil]. Aftalte dækninger: [indsæt]\n\nMETODE: Mail på maks 180 ord:\n- Åbner naturligt (ikke salgsagtigt)\n- Foreslår en kort gennemgang\n- Nævner 1-2 ting der kan være ændret i deres liv\n- Inviterer til 15 min telefonsamtale\nTone: hyggelig, ikke presset."
+      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Jeg er assurandør og skal sende en årlig opfølgningsmail til\nen kunde jeg ikke har talt med i 12 mdr. Kunde: [kort profil].\nNuværende forsikringer hos os: [indsæt]\n\nMETODE: Mail på maks 180 ord:\n- Åbner naturligt (ikke salgsagtigt)\n- Foreslår en kort gennemgang af deres forsikringsprogram\n- Nævner 1-2 ting der typisk ændrer sig i folks liv på et år (som de\nselv kan spejle sig i)\n- Inviterer til 15 min telefonsamtale\nTone: hyggelig, ikke presset."
     },
     {
       "id": "3.3",
       "categoryId": "3",
       "categoryName": "Kundekommunikation - privatkunder",
+      "industryId": null,
+      "industryName": null,
       "title": "Velkomstmail efter tegnet police",
-      "body": "ROLLE: Du er min assistent.\n\nKONTEKST: Kunde [navn] har netop tegnet [produkt].\n\nMETODE: Mail på maks 120 ord:\n- Tak for tilliden\n- Bekræft dækningen\n- Fortæl hvad de nu kan forvente\n- Angiv kontaktmulighed ved spørgsmål\nVarm, professionel, ikke salgsagtig (de har allerede købt)."
+      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Jeg er assurandør. Kunde [navn] har netop tegnet [produkt]\nhos os.\n\nMETODE: Mail på maks 120 ord:\n- Tak for tilliden\n- Bekræft dækningen træder i kraft [dato]\n- Fortæl kort hvad de nu kan forvente (policedokument, årlig gennemgang)\n- Angiv kontaktmulighed ved spørgsmål\nVarm, professionel, ikke salgsagtig (de har allerede købt)."
     },
     {
       "id": "3.4",
       "categoryId": "3",
       "categoryName": "Kundekommunikation - privatkunder",
-      "title": "Fødselsdagshilsen",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Kunde [navn] fylder 50 år. Vi har haft dem i [antal] år.\n\nMETODE: Kort hilsen (maks 60 ord):\n- Genuint fødselsdagsønske\n- Anerkend at vi har været med i en stor del af deres liv\n- Intet salgsbudskab\nTone: varm, menneskelig, ikke corporate."
+      "industryId": null,
+      "industryName": null,
+      "title": "Prisstigning til langtidskunde",
+      "body": "ROLLE: Du er min erfarne forsikringskollega med god fornemmelse for\nsvær kundekommunikation.\n\nKONTEKST: Jeg er assurandør. Kunde [navn] har været hos os i [år].\nDeres præmie på [produkt] stiger fra [beløb] til [beløb].\nÅrsag: [konkret - skadeshistorik, branchepriser, regulatorisk].\n\nMETODE: Mail der:\n- Er ærlig om stigningen fra start\n- Anerkender deres loyalitet\n- Forklarer HVORFOR uden forsikringsjargon\n- Tilbyder et møde om mulig optimering af dækning eller selvrisiko\n- Maks 180 ord, varm men professionel"
     },
     {
       "id": "3.5",
       "categoryId": "3",
       "categoryName": "Kundekommunikation - privatkunder",
-      "title": "Prisstigning til langtidskunde",
-      "body": "ROLLE: Du er min erfarne kollega med god fornemmelse for svær\nkundekommunikation.\n\nKONTEKST: Kunde [navn] har været hos os i [år]. Præmie stiger fra\n[beløb] til [beløb]. Årsag: [konkret].\n\nMETODE: Mail der:\n- Er ærlig om stigningen fra start\n- Anerkender loyaliteten\n- Forklarer HVORFOR uden jargon\n- Tilbyder et møde om optimering\n- Maks 180 ord, varm men professionel"
+      "industryId": null,
+      "industryName": null,
+      "title": "Afslag på skadesanmeldelse",
+      "body": "ROLLE: Du er min erfarne kollega med god fornemmelse for\nskadeskommunikation.\n\nKONTEKST: Jeg er assurandør. Kunde [navn] har anmeldt skade\n[beskrivelse]. Skaden er ikke dækket fordi [konkret grund fra police].\n\nMETODE: Mail der:\n- Er ærlig om afgørelsen fra start\n- Forklarer HVILKEN klausul eller policebetingelse der er i spil, i\nsprog kunden forstår\n- Anerkender skuffelsen\n- Foreslår alternative skridt (klagemuligheder, udvidet dækning\nfremover)\n- Maks 180 ord, varm men klar"
     },
     {
       "id": "3.6",
       "categoryId": "3",
       "categoryName": "Kundekommunikation - privatkunder",
-      "title": "Afslag på skadesanmeldelse",
-      "body": "ROLLE: Du er min erfarne kollega.\n\nKONTEKST: Kunde [navn] har anmeldt skade [beskrivelse]. Ikke dækket\nfordi [konkret grund].\n\nMETODE: Mail der:\n- Er ærlig om afgørelsen fra start\n- Forklarer GRUNDEN i sprog kunden forstår\n- Anerkender skuffelsen\n- Foreslår alternative skridt (klagemuligheder, supplerende dækning\ntil fremtiden)\n- Maks 180 ord, varm men klar"
+      "industryId": null,
+      "industryName": null,
+      "title": "Svarbrev på opsigelse",
+      "body": "ROLLE: Du er min erfarne forsikringskollega.\n\nKONTEKST: Jeg er assurandør. Kunde [navn] har opsagt deres forsikring.\nGrund angivet: [indsæt]. Har været kunde i [år].\n\nMETODE: Svarbrev der:\n- Respekterer beslutningen uden at presse\n- Bekræfter opsigelsesdatoen og hvad der sker med nuværende police\n- Tilbyder afslutningssamtale (ikke genforhandling - kun oprydning)\n- Efterlader døren åben for fremtiden\n- Maks 150 ord"
     },
     {
       "id": "3.7",
       "categoryId": "3",
       "categoryName": "Kundekommunikation - privatkunder",
-      "title": "Svarbrev på opsigelse",
-      "body": "ROLLE: Du er min erfarne kollega.\n\nKONTEKST: Kunde [navn] har opsagt. Grund: [indsæt]. Har været kunde i\n[år].\n\nMETODE: Svarbrev der:\n- Respekterer beslutningen uden at presse\n- Bekræfter opsigelsesdatoen\n- Tilbyder afslutningssamtale (ingen genforhandling - kun oprydning)\n- Efterlader døren åben for fremtiden\n- Maks 150 ord"
+      "industryId": null,
+      "industryName": null,
+      "title": "Genkomst-mail til tidligere kunde",
+      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Jeg er assurandør. Tidligere kunde [navn] sagde deres\nforsikringer op for [år] år siden og gik til [konkurrent]. Jeg har hørt\nde måske er utilfredse nu.\n\nMETODE: Mail på maks 140 ord:\n- Åbner naturligt uden at være grådig\n- Anerkender deres valg dengang\n- Viser interesse i hvordan det er gået\n- Inviterer til uforpligtende snak om deres nuværende dækning\nIngen \"vi er billigere!\"-slogans."
     },
     {
       "id": "3.8",
       "categoryId": "3",
       "categoryName": "Kundekommunikation - privatkunder",
-      "title": "Genkomst-mail til tidligere kunde",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Tidligere kunde [navn] sagde op for [år] år siden. Jeg har\nhørt at de måske er utilfredse nu.\n\nMETODE: Mail på maks 140 ord:\n- Åbner naturligt uden at være grådig\n- Anerkender deres valg dengang\n- Viser interesse i hvordan det er gået\n- Inviterer til uforpligtende snak\nIngen \"vi er billigere!\"-slogans."
+      "industryId": null,
+      "industryName": null,
+      "title": "Police-forklaring i hverdagsdansk",
+      "body": "ROLLE: Du er min kommunikationsassistent med forsikringsforståelse.\n\nKONTEKST: Jeg er assurandør. En kunde forstår ikke deres police på\n[type]. Relevant policetekst: [indsæt]\n\nMETODE: Omskriv til hverdagssprog:\n1. Hvad dækker policen (bullet points)\n2. Hvad dækker den IKKE\n3. Hvad kunden selv skal gøre (anmeldelser, selvrisiko, frister)\n4. Konkret eksempel på hvornår det ville være relevant\nIngen forsikringsjargon."
     },
     {
       "id": "3.9",
       "categoryId": "3",
       "categoryName": "Kundekommunikation - privatkunder",
-      "title": "Police-forklaring i hverdagsdansk",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Kunde forstår ikke deres police på [type]. Relevant tekst:\n[indsæt]\n\nMETODE: Omskriv til hverdagssprog:\n1. Hvad dækker policen (bullet points)\n2. Hvad dækker den IKKE\n3. Hvad kunden selv skal gøre (anmeldelser, selvrisiko)\n4. Konkret eksempel på hvornår det ville være relevant\nIngen jargon."
+      "industryId": null,
+      "industryName": null,
+      "title": "Flyttemeddelelse → tilbud om gennemgang",
+      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Jeg er assurandør. Kunde [navn] har meldt de flytter fra\n[gammel adresse] til [ny adresse] d. [dato].\n\nMETODE: Mail der:\n- Bekræfter flytningen er noteret i alle relevante policer\n- Fortæller hvad der automatisk opdateres (husforsikring, adresse)\n- Foreslår en samtale om hvad flytningen kan betyde for andre\ndækninger (indbo-værdi ved ombygning, ny forsikringsgrad ved flytning\ntil anden zone, ny arbejdsvej ved pendling)\n- Maks 150 ord"
     },
     {
       "id": "3.10",
       "categoryId": "3",
       "categoryName": "Kundekommunikation - privatkunder",
-      "title": "Sympatibrev ved dødsfald",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Langtidskunde er afgået ved døden. Familien har meldt det.\nJeg skriver til efterladte ægtefælle.\n\nMETODE: Kondolence på maks 80 ord:\n- Ærlig uden fraser\n- Ingen produktinformation eller næste skridt\n- Henvis til at vi tager det praktiske\n- Afrund varmt\nOmhyggelig tone. Ingen salgssnak overhovedet."
+      "industryId": null,
+      "industryName": null,
+      "title": "Proaktiv kontakt ved ny baby",
+      "body": "ROLLE: Du er min kommunikationsassistent med forsikringsforståelse.\n\nKONTEKST: Jeg er assurandør. Kunde [navn] har netop fået barn. Der er\nnye forsikringsmæssige behov (livsforsikring, børneforsikring, evt.\nopdatering af indbo).\n\nMETODE: Mail:\n- Varmt tillykke først\n- Ingen hast med det professionelle\n- Kort henvisning til at vi gerne tager en samtale om forsikringsbehov\nnår tiden er til det (2-3 uger frem)\n- Maks 100 ord\nMenneskelig først, professionel sidst."
     },
     {
       "id": "3.11",
       "categoryId": "3",
       "categoryName": "Kundekommunikation - privatkunder",
-      "title": "Informationsmail om produktændring",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Vi ændrer [produkt] fra [dato]. Konkret: [liste]\n\nMETODE: Mail til berørte kunder:\n- Start med hvad der er ændret (vigtigste først)\n- Forklar HVORFOR\n- Angiv hvad de selv skal foretage sig (hvis noget)\n- Angiv ikrafttrædelse\n- Maks 200 ord, ikke salgsagtig"
+      "industryId": null,
+      "industryName": null,
+      "title": "Svar på vred klage-mail",
+      "body": "ROLLE: Du er min erfarne forsikringskollega med fornemmelse for\nkonflikthåndtering.\n\nKONTEKST: Jeg er assurandør. Kunde [navn] har sendt denne klage:\n[indsæt]\n\nMETODE: Svar der:\n- Anerkender frustrationen uden at være medgørlig\n- Undgår automatisk forsvar eller undskyldning\n- Stiller opfølgende spørgsmål hvis noget er uklart\n- Tilbyder konkret næste skridt (møde, genbehandling af sag,\nhenvisning til ankenævn)\n- Maks 200 ord, professionel rolig tone"
     },
     {
       "id": "3.12",
       "categoryId": "3",
       "categoryName": "Kundekommunikation - privatkunder",
-      "title": "Flyttemeddelelse → tilbud om gennemgang",
-      "body": "ROLLE: Du er min assistent.\n\nKONTEKST: Kunde [navn] flytter fra [gammel] til [ny] d. [dato].\n\nMETODE: Mail der:\n- Bekræfter flytningen er noteret\n- Fortæller hvad der automatisk opdateres\n- Foreslår en samtale om ændrede behov (indbo-værdi, forsikringsgrad,\narbejdsvej ved pendling)\n- Maks 150 ord"
-    },
-    {
-      "id": "3.13",
-      "categoryId": "3",
-      "categoryName": "Kundekommunikation - privatkunder",
-      "title": "Proaktiv kontakt ved ny baby",
-      "body": "ROLLE: Du er min assistent.\n\nKONTEKST: Kunde [navn] har netop fået barn. Tillykke + nye\nforsikringsbehov.\n\nMETODE: Mail:\n- Varmt tillykke først\n- Ingen hast med det professionelle\n- Kort henvisning til at vi gerne tager en samtale når tiden er til det\n(2-3 uger frem)\n- Maks 100 ord\nMenneskelig først, professionel sidst."
-    },
-    {
-      "id": "3.14",
-      "categoryId": "3",
-      "categoryName": "Kundekommunikation - privatkunder",
-      "title": "Svar på vred klage-mail",
-      "body": "ROLLE: Du er min erfarne kollega med fornemmelse for konflikthåndtering.\n\nKONTEKST: Kundens klage: [indsæt]\n\nMETODE: Svar der:\n- Anerkender frustrationen uden at være medgørlig\n- Undgår automatisk forsvar eller undskyldning\n- Stiller opfølgende spørgsmål hvis noget er uklart\n- Tilbyder konkret næste skridt\n- Maks 200 ord, professionel rolig tone"
-    },
-    {
-      "id": "3.15",
-      "categoryId": "3",
-      "categoryName": "Kundekommunikation - privatkunder",
-      "title": "Tre versioner til segmentering",
-      "body": "ROLLE: Du er min kommunikationsstrategist.\n\nKONTEKST: Samme kernebudskab til tre segmenter:\n1. Unge par uden børn (25-35)\n2. Familier (35-55)\n3. Seniorer (60+)\nKernebudskab: [indsæt]\n\nMETODE: Tre versioner:\n- Samme kernebudskab\n- Tilpasset sprogtone og eksempler\n- Maks 150 ord pr. version\n- Vis eksplicit hvad du har ændret"
+      "industryId": null,
+      "industryName": null,
+      "title": "Tre versioner af samme forsikringsbudskab til segmenter",
+      "body": "ROLLE: Du er min kommunikationsstrategist med forsikringserfaring.\n\nKONTEKST: Jeg er assurandør og skal sende samme kernebudskab til tre\nforskellige privatkunde-segmenter:\n1. Unge par uden børn (25-35)\n2. Familier med børn (35-55)\n3. Seniorer (60+)\nKernebudskab: [indsæt - fx prisjustering, nyt produkt, policeændring]\n\nMETODE: Tre versioner af samme mail:\n- Samme kernebudskab i hver\n- Tilpasset sprogtone og forsikringseksempler til hvert segment\n- Maks 150 ord pr. version\n- Vis eksplicit hvad du har ændret mellem versionerne"
     },
     {
       "id": "4.1",
       "categoryId": "4",
       "categoryName": "Kundekommunikation - erhvervskunder",
+      "industryId": null,
+      "industryName": null,
       "title": "Introduktionsmail til ny erhvervskunde",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Ny erhvervskunde [virksomhed] via [kilde]. Branche: [branche].\n[antal] ansatte.\n\nMETODE: Mail på maks 180 ord:\n- Åbner med konkret observation om deres forretning (ikke generisk)\n- Kort præsentation af mig og speciale\n- Foreslår 20 min telefonsamtale om forsikringsmæssige risici i branchen\n- Slutter uforpligtende\nIngen standard-fraser. Konkret og tilskåret."
+      "body": "ROLLE: Du er min kommunikationsassistent med erfaring i\nerhvervsforsikring.\n\nKONTEKST: Jeg er erhvervsassurandør og har fået adgang til\n[virksomhedsnavn] via [kilde]. De er i branchen [branche] med [antal]\nansatte. Jeg vil tage initiativ.\n\nMETODE: Mail på maks 180 ord:\n- Åbner med en konkret observation om deres forretning eller branche\n(ikke generisk)\n- Kort præsentation af mig og mit forsikringsspeciale\n- Foreslår 20 min telefonsamtale om forsikringsmæssige risici i deres\nbranche\n- Slutter uforpligtende\nIngen standard-fraser. Konkret og tilskåret."
     },
     {
       "id": "4.2",
       "categoryId": "4",
       "categoryName": "Kundekommunikation - erhvervskunder",
+      "industryId": null,
+      "industryName": null,
       "title": "Prisstigning til erhvervskunde",
-      "body": "ROLLE: Du er min erfarne kollega.\n\nKONTEKST: Kunden driver [type virksomhed], [antal] ansatte. Kunde i [år].\nPræmie stiger [beløb]→[beløb] (+[procent]). Årsag: [konkret -\nskadesudvikling, branche, regulatorisk?].\n\nMETODE: Mail der:\n- Er ærlig om stigningen uden undskyldninger\n- Forklarer årsagen på virksomhedsniveau\n- Foreslår risiko-gennemgangsmøde\n- Antyder mulige optimeringer (men lover intet)\n- Maks 220 ord, kollega-niveau professionel"
+      "body": "ROLLE: Du er min erfarne forsikringskollega.\n\nKONTEKST: Jeg er erhvervsassurandør. Kunden driver [type virksomhed],\n[antal] ansatte, har været kunde i [år]. Præmie stiger\n[beløb]→[beløb] (+[procent]). Årsag: [skadesudvikling / branche /\nregulatorisk].\n\nMETODE: Mail der:\n- Er ærlig om stigningen uden undskyldninger\n- Forklarer årsagen på virksomhedsniveau\n- Foreslår risiko-gennemgangsmøde\n- Antyder mulige optimeringer (selvrisiko, dækning, sikring) uden at\nlove noget\n- Maks 220 ord, kollega-niveau professionel tone"
     },
     {
       "id": "4.3",
       "categoryId": "4",
       "categoryName": "Kundekommunikation - erhvervskunder",
-      "title": "Tilbudsmail til erhvervskunde",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Tilbud til [virksomhed]. Dækning: [oversigt]. Præmie: [beløb].\n\nMETODE: Ledsagende mail:\n- Kort intro der viser jeg har forstået deres situation\n- Oversigt over dækningerne (dagligdagssprog)\n- Prisen ærligt og enkelt\n- Hvad kunden skal gøre nu\n- Maks 200 ord, kontaktoplysninger sidst"
+      "industryId": null,
+      "industryName": null,
+      "title": "Ledsagemail til erhvervstilbud",
+      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Jeg er erhvervsassurandør og har lavet et tilbud til\n[virksomhed]. Tilbuddet dækker [kort oversigt over dækninger]. Total\nårlig præmie: [beløb].\n\nMETODE: Ledsagende mail:\n- Kort intro der viser jeg har forstået deres forretning og risici\n- Oversigt over dækningerne i dagligdagssprog\n- Prisen ærligt og enkelt\n- Hvad kunden skal gøre nu\n- Maks 200 ord, kontaktoplysninger sidst"
     },
     {
       "id": "4.4",
       "categoryId": "4",
       "categoryName": "Kundekommunikation - erhvervskunder",
+      "industryId": null,
+      "industryName": null,
       "title": "Erhvervs-afslag på skadesanmeldelse",
-      "body": "ROLLE: Du er min erfarne kollega.\n\nKONTEKST: Virksomhed [navn] har anmeldt skade [beskrivelse]. Ikke dækket\nfordi [konkret grund]. Forretningsmæssige konsekvenser.\n\nMETODE: Mail der:\n- Er ærlig og direkte om afgørelsen\n- Forklarer juridisk/kontraktmæssig baggrund i enkelt sprog\n- Anerkender den forretningsmæssige konsekvens\n- Foreslår evt. alternativer til fremtiden\n- Maks 220 ord, klar men empatisk"
+      "body": "ROLLE: Du er min erfarne forsikringskollega.\n\nKONTEKST: Jeg er erhvervsassurandør. Virksomhed [navn] har anmeldt\nskade [beskrivelse]. Ikke dækket fordi [konkret grund fra police].\nPotentielt store forretningsmæssige konsekvenser for kunden.\n\nMETODE: Mail der:\n- Er ærlig og direkte om afgørelsen\n- Forklarer den juridiske/kontraktmæssige baggrund i enkelt sprog\n- Anerkender den forretningsmæssige konsekvens\n- Foreslår evt. supplerende dækning til fremtiden\n- Angiver klagemuligheder\n- Maks 220 ord, klar men empatisk"
     },
     {
       "id": "4.5",
       "categoryId": "4",
       "categoryName": "Kundekommunikation - erhvervskunder",
-      "title": "Tak for kontraktfornyelse",
-      "body": "ROLLE: Du er min assistent.\n\nKONTEKST: Erhvervskunde [virksomhed] har fornyet deres kontrakt for\nendnu [periode].\n\nMETODE: Mail:\n- Tak for fortsat tillid\n- Et konkret eksempel på hvad vi har leveret det seneste år\n- En fremad-pegende bemærkning\n- Maks 130 ord, kollegial tone"
+      "industryId": null,
+      "industryName": null,
+      "title": "Proaktiv kontakt efter branche-nyhed",
+      "body": "ROLLE: Du er min kommunikationsassistent med forsikringsforståelse.\n\nKONTEKST: Jeg er erhvervsassurandør. Der er kommet [nyhed] der påvirker\n[branche]. Min kunde [virksomhed] er potentielt berørt af det\nforsikringsmæssigt.\n\nMETODE: Mail der:\n- Nævner nyheden kort\n- Forklarer hvad det kan betyde for deres risikoprofil og nuværende\ndækning\n- Foreslår en 15 min samtale\n- Maks 150 ord\nSæt proaktivitet i fokus uden at skabe panik."
     },
     {
       "id": "4.6",
       "categoryId": "4",
       "categoryName": "Kundekommunikation - erhvervskunder",
-      "title": "Proaktiv kontakt efter branche-nyhed",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Der er kommet [nyhed] der påvirker [branche]. Min kunde\n[virksomhed] er potentielt berørt.\n\nMETODE: Mail der:\n- Nævner nyheden\n- Forklarer hvad det kan betyde for deres forsikringsmæssige situation\n- Foreslår en 15 min samtale\n- Maks 150 ord\nSæt proaktivitet i fokus uden at skabe panik."
+      "industryId": null,
+      "industryName": null,
+      "title": "Budgetopfølgningsmail til CFO",
+      "body": "ROLLE: Du er min kommunikationsassistent med fornemmelse for\nCFO-kommunikation.\n\nKONTEKST: Jeg er erhvervsassurandør. Erhvervskunde [navn] har bedt om\nen opdatering før deres budgetproces. De skal bruge præmieforudsigelser\nog evt. ændringer i forsikringsprogrammet.\n\nMETODE: Mail der:\n- Leverer klar forudsigelse (fast vs. variabel præmie)\n- Angiver eventuelle ændringer i dækning eller pris\n- Driverne kort forklaret (skadeshistorik, markedsudvikling)\n- Foreslår en kort Teams-samtale ved behov\n- Maks 180 ord, regnskabsvenlig tone"
     },
     {
       "id": "4.7",
       "categoryId": "4",
       "categoryName": "Kundekommunikation - erhvervskunder",
-      "title": "Budgetopfølgningsmail",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Erhvervskunde [navn] har bedt om en opdatering før deres\nbudgetproces. De skal bruge præmieforudsigelser og evt. ændringer.\n\nMETODE: Mail der:\n- Leverer klar forudsigelse (fast vs. variabel)\n- Angiver eventuelle ændringer i dækning eller pris\n- Foreslår en kort Teams-samtale ved behov\n- Maks 180 ord, regnskabsvenlig tone"
+      "industryId": null,
+      "industryName": null,
+      "title": "Invitation til risiko-workshop",
+      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Jeg er erhvervsassurandør og vil invitere [virksomhed] til en\nrisiko-workshop hos os. Værdien for dem: identifikation af ukendte\nforsikringsmæssige eksponeringer.\n\nMETODE: Mail:\n- Klart formål\n- Hvad de får ud af det (fx konkret risiko-kortlægning,\ndækningsanalyse)\n- Praktisk info (2 timer, hos os, inkl. frokost)\n- 2-3 foreslåede datoer\n- Maks 180 ord"
     },
     {
       "id": "4.8",
       "categoryId": "4",
       "categoryName": "Kundekommunikation - erhvervskunder",
-      "title": "Invitation til risiko-workshop",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Jeg vil invitere [virksomhed] til en risiko-workshop hos os.\nVærdi for dem: identifikation af ukendte eksponeringer.\n\nMETODE: Mail:\n- Klart formål\n- Hvad de får ud af det\n- Praktisk info (2 timer, hos os, inkl. frokost)\n- 2-3 foreslåede datoer\n- Maks 180 ord"
+      "industryId": null,
+      "industryName": null,
+      "title": "Svær besked: vi fortsætter ikke dækningen",
+      "body": "ROLLE: Du er min erfarne forsikringskollega.\n\nKONTEKST: Jeg er erhvervsassurandør. Vi kan ikke længere forsikre\n[virksomhed] pga. [konkret grund: skadesfrekvens / brancheændring /\nregulatorisk ramme / reassurance-betingelser]. De har været kunde i\n[år].\n\nMETODE: Brev der:\n- Er direkte om afgørelsen fra start\n- Forklarer grunden i et sprog de forstår\n- Angiver tidsfrist og overgang\n- Tilbyder hjælp til at finde alternativ dækning i markedet\n- Maks 220 ord, respektfuld tone"
     },
     {
       "id": "4.9",
       "categoryId": "4",
       "categoryName": "Kundekommunikation - erhvervskunder",
-      "title": "Svær besked: vi fortsætter ikke dækningen",
-      "body": "ROLLE: Du er min erfarne kollega.\n\nKONTEKST: Vi kan ikke længere forsikre [virksomhed] pga. [konkret grund:\nskadesfrekvens, brancheændring, ny regulatorisk ramme]. De har været\nkunde i [år].\n\nMETODE: Brev der:\n- Er direkte om afgørelsen fra start\n- Forklarer grunden i et sprog de forstår\n- Angiver tidsfrist og overgang\n- Foreslår hjælp til at finde alternativ dækning\n- Maks 220 ord, respektfuld tone"
+      "industryId": null,
+      "industryName": null,
+      "title": "Opfølgning efter tabt tilbud",
+      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Jeg er erhvervsassurandør. [Virksomhed] valgte ikke vores\ntilbud. De gik til [konkurrent / anden løsning]. Jeg vil lære og holde\ndøren åben for fremtiden.\n\nMETODE: Mail:\n- Ønsk dem held og lykke med den valgte løsning\n- Kort spørg til deres beslutningskriterier (for at lære)\n- Efterlad døren på klem til næste fornyelse\n- Ingen klynk, ingen \"men vi ville gerne...\"\n- Maks 120 ord"
     },
     {
       "id": "4.10",
       "categoryId": "4",
       "categoryName": "Kundekommunikation - erhvervskunder",
-      "title": "Opfølgning efter tabt tilbud",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: [Virksomhed] valgte ikke vores tilbud. De gik til [konkurrent/\nanden løsning]. Jeg vil lære og holde døren åben.\n\nMETODE: Mail:\n- Ønsk dem held og lykke\n- Kort spørg til beslutningskriterierne (for at lære)\n- Efterlad døren på klem for fremtiden\n- Ingen klynk, ingen \"men vi ville gerne...\"\n- Maks 120 ord"
+      "industryId": null,
+      "industryName": null,
+      "title": "Svar på detaljeret compliance-spørgsmål fra kunde",
+      "body": "ROLLE: Du er min erfarne forsikringskollega.\n\nKONTEKST: Jeg er erhvervsassurandør. [Virksomhed] har sendt detaljerede\nspørgsmål om vores dækning for [specifikt område - fx cyber, D&O,\nmiljø]. Jeg skal være skarp men ærlig om hvad jeg ikke ved.\n\nKUNDENS SPØRGSMÅL:\n[indsæt]\n\nMETODE: Svar:\n- Punkt for punkt som de stillede\n- Ærlig om hvad jeg skal undersøge nærmere med underwriter/jurist\n- Henvis til policetekst hvor relevant\n- Maks 300 ord\n- Professionel, præcis tone"
     },
     {
       "id": "4.11",
       "categoryId": "4",
       "categoryName": "Kundekommunikation - erhvervskunder",
-      "title": "Mail til CFO om budget-påvirkning",
-      "body": "ROLLE: Du er min kommunikationsassistent med fornemmelse for\nCFO-niveau.\n\nKONTEKST: Jeg skal skrive til [virksomheds] CFO om ændringer der\npåvirker næste års forsikringsbudget. Ændringerne: [indsæt]\n\nMETODE: Mail:\n- Tal først, kontekst bagefter\n- Konkret indvirkning på budgetlinje\n- Drivers kort forklaret\n- Handlingsforslag\n- Maks 180 ord, CFO-niveau tone (faktuel, kort, kvantitativ)"
+      "industryId": null,
+      "industryName": null,
+      "title": "Kvartals-nyhedsbrev til mine erhvervskunder",
+      "body": "ROLLE: Du er min kommunikationsassistent med forsikringsforståelse.\n\nKONTEKST: Jeg er erhvervsassurandør og sender kvartalsvis nyhedsbrev\ntil mine erhvervskunder. Aktuelle forsikringsrelevante emner:\n[indsæt 2-3 temaer - fx cyber, branchepriser, nye regulatoriske krav]\n\nMETODE: Nyhedsbrev:\n- Kort personlig indledning (ikke corporate)\n- 3 emner med én konkret takeaway pr. emne\n- Afslutning med \"hvad skal I holde øje med\"\n- Maks 400 ord\n- Kollegial tone, ikke salgsagtig"
     },
     {
       "id": "4.12",
       "categoryId": "4",
       "categoryName": "Kundekommunikation - erhvervskunder",
-      "title": "Svar på detaljeret compliance-spørgsmål",
-      "body": "ROLLE: Du er min erfarne kollega.\n\nKONTEKST: [Virksomhed] har sendt detaljerede spørgsmål om vores dækning\nfor [specifikt område]. Mine kompetencer rækker, men jeg vil være skarp.\n\nKUNDENS SPØRGSMÅL:\n[indsæt]\n\nMETODE: Svar:\n- Punkt for punkt som de stillede\n- Ærlig om hvad jeg skal undersøge nærmere\n- Henvis til police-tekst hvor relevant\n- Maks 300 ord\n- Professionel, præcis tone"
+      "industryId": null,
+      "industryName": null,
+      "title": "Svar på forhandlingsmail fra erhvervskunde",
+      "body": "ROLLE: Du er min erfarne forsikringsforhandler-kollega.\n\nKONTEKST: Jeg er erhvervsassurandør. [Virksomhed] har sendt modbud på\nmit tilbud. Deres krav: [indsæt]. Mit forhandlingsråderum: [indsæt].\n\nMETODE: Svar:\n- Start med at anerkende deres position\n- Hvad jeg kan gå med til og hvad ikke (selvrisiko, dækning, pris)\n- Foreslå mulige gensidige tilpasninger\n- Efterlad døren åben hvis ikke enighed\n- Maks 180 ord, professionel forhandlingstone"
     },
     {
       "id": "4.13",
       "categoryId": "4",
       "categoryName": "Kundekommunikation - erhvervskunder",
-      "title": "Erhvervskunde-nyhedsbrev til mine kunder",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Kvartalsvis nyhedsbrev til mine erhvervskunder. Aktuelle\nemner: [indsæt 2-3 temaer]\n\nMETODE: Nyhedsbrev:\n- Kort indledning (personlig, ikke corporate)\n- 3 emner med én konkret takeaway pr. emne\n- Afslutning med \"hvad skal I holde øje med\"\n- Maks 400 ord\n- Kollegial tone, ikke salgsagtig"
-    },
-    {
-      "id": "4.14",
-      "categoryId": "4",
-      "categoryName": "Kundekommunikation - erhvervskunder",
-      "title": "Invitation til netværksmøde",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Jeg arrangerer netværksmøde for mine erhvervskunder.\nTema: [tema]. Oplægsholder: [navn/rolle].\n\nMETODE: Invitation:\n- Stærk åbning (hvorfor det er interessant)\n- Tema og oplægsholder\n- Praktisk info (dato, sted, tid, forplejning)\n- RSVP-instruktion\n- Maks 180 ord"
-    },
-    {
-      "id": "4.15",
-      "categoryId": "4",
-      "categoryName": "Kundekommunikation - erhvervskunder",
-      "title": "Svar på forhandlingsmail",
-      "body": "ROLLE: Du er min erfarne forhandlingskollega.\n\nKONTEKST: [Virksomhed] har sendt modbud på mit tilbud. Deres krav:\n[indsæt]. Mit råderum: [indsæt].\n\nMETODE: Svar:\n- Start med at anerkende deres position\n- Hvad jeg kan gå med til og hvad ikke\n- Foreslå mulige gensidige tilpasninger\n- Efterlad døren åben hvis ikke enighed\n- Maks 180 ord, professionel tone"
+      "industryId": null,
+      "industryName": null,
+      "title": "Tak for kontraktfornyelse - erhverv",
+      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Jeg er erhvervsassurandør. Erhvervskunde [virksomhed] har\nfornyet deres forsikringsprogram for endnu [periode].\n\nMETODE: Mail:\n- Tak for fortsat tillid\n- Et konkret eksempel på værdi vi har leveret det seneste år\n(fx skadesbehandling, rådgivning ved udvidelse)\n- En fremad-pegende bemærkning (fx planlagt risiko-gennemgang)\n- Maks 130 ord, kollegial tone"
     },
     {
       "id": "5.1",
       "categoryId": "5",
       "categoryName": "Tilbudsskrivning og præsentationer",
+      "industryId": null,
+      "industryName": null,
       "title": "Fuldt tilbudsbrev",
-      "body": "ROLLE: Du er min kollega med erfaring i tilbudsskrivning.\n\nKONTEKST: Kunde: [type, størrelse, branche, særlige forhold].\nDækningsområder: [liste]. Præmie: [beløb]/år. Selvrisiko: [beløb].\nSærlige betingelser: [indsæt].\n\nMETODE: Tilbudsbrev med:\n- Intro der viser jeg har forstået kundens situation\n- Dækningsoversigt i dagligdagssprog\n- Prisen ærligt og enkelt\n- Hvad kunden skal gøre nu\n- Afrunding + mine kontaktoplysninger\n- Maks 1 A4, professionel og varm tone"
+      "body": "ROLLE: Du er min erfarne forsikringskollega med erfaring i tilbudsskrivning.\n\nKONTEKST: Jeg er assurandør. Kunde: [type, størrelse, branche, særlige\nforhold]. Dækningsområder: [liste]. Årlig præmie: [beløb].\nSelvrisiko: [beløb]. Særlige betingelser: [indsæt].\n\nMETODE: Tilbudsbrev med:\n- Intro der viser jeg har forstået kundens situation og risikoprofil\n- Dækningsoversigt i dagligdagssprog\n- Prisen ærligt og enkelt\n- Hvad kunden skal gøre nu\n- Afrunding + mine kontaktoplysninger\n- Maks 1 A4, professionel og varm tone"
     },
     {
       "id": "5.2",
       "categoryId": "5",
       "categoryName": "Tilbudsskrivning og præsentationer",
+      "industryId": null,
+      "industryName": null,
       "title": "18-siders tilbud → kundevenlig sammenfatning",
-      "body": "ROLLE: Du er min erfarne forsikringsmæglerkollega.\n\nKONTEKST: Her er et forsikringstilbud på 18 sider [upload PDF]. Kunden\ner [type virksomhed] der har svært ved at gennemskue det.\n\nMETODE:\n1. Oversigtstabel: 5 vigtigste dækninger, præmie, selvrisiko pr. område\n2. Tre forslag til grafer der letter forståelsen\n3. Ét-sides sammenfatning i ikke-forsikringsmandssprog\nJordnær tone. Ingen salgssnak."
+      "body": "ROLLE: Du er min erfarne forsikringsmæglerkollega.\n\nKONTEKST: Jeg er assurandør og har et forsikringstilbud på 18 sider\n[upload PDF]. Kunden er [type virksomhed] der har svært ved at\ngennemskue det.\n\nMETODE:\n1. Oversigtstabel: de 5 vigtigste dækninger, præmie, selvrisiko pr.\nområde\n2. Tre forslag til grafer der letter forståelsen (beskriv hvad de\nskal vise)\n3. En ét-sides sammenfatning i ikke-forsikringsmandssprog\nJordnær tone. Ingen salgssnak."
     },
     {
       "id": "5.3",
       "categoryId": "5",
       "categoryName": "Tilbudsskrivning og præsentationer",
-      "title": "Præsentation til kundemøde",
-      "body": "ROLLE: Du er min præsentationsspecialist.\n\nKONTEKST: Jeg skal præsentere [løsning] for [kunde] i 20 minutter.\nKundens primære bekymringer: [indsæt].\n\nMETODE: Lav slideoplæg til 10 slides:\n- Åbning (problem)\n- Tre indsigter om deres situation\n- Vores løsning (kerne + variant)\n- Pris og vilkår\n- Næste skridt\nFor hvert slide: overskrift + 3 bullets + talker-note."
+      "industryId": null,
+      "industryName": null,
+      "title": "Præsentation til forsikringskundemøde",
+      "body": "ROLLE: Du er min præsentations-specialist med forsikringsforståelse.\n\nKONTEKST: Jeg er assurandør og skal præsentere [forsikringsløsning]\nfor [kunde] i 20 min. Kundens primære bekymringer: [indsæt].\n\nMETODE: Oplæg til 10 slides:\n- Åbning (kundens problem/risiko)\n- Tre indsigter om deres risikobillede\n- Vores forsikringsløsning (kerne + valgmuligheder)\n- Pris og vilkår\n- Næste skridt\nFor hvert slide: overskrift + 3 bullets + talker-note."
     },
     {
       "id": "5.4",
       "categoryId": "5",
       "categoryName": "Tilbudsskrivning og præsentationer",
+      "industryId": null,
+      "industryName": null,
       "title": "Elevatortale til erhvervskunde",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Jeg møder [virksomhed] på et netværksarrangement. Jeg har\n60 sekunder til at gøre indtryk.\n\nMETODE: Skriv tre versioner af en 60-sekunders elevatortale:\n- Version A: Fokus på risikoforebyggelse\n- Version B: Fokus på forretningskontinuitet\n- Version C: Fokus på omkostningsoptimering\nHver version maks 150 ord, naturligt talesprog."
+      "body": "ROLLE: Du er min kommunikationsassistent med forsikringsforståelse.\n\nKONTEKST: Jeg er erhvervsassurandør og møder [virksomhed] på et\nnetværksarrangement. Jeg har 60 sekunder til at gøre indtryk.\n\nMETODE: Skriv tre versioner af en 60-sekunders elevatortale:\n- Version A: Fokus på risikoforebyggelse\n- Version B: Fokus på forretningskontinuitet ved skader\n- Version C: Fokus på omkostningsoptimering af deres\nforsikringsprogram\nHver version maks 150 ord, naturligt talesprog."
     },
     {
       "id": "5.5",
       "categoryId": "5",
       "categoryName": "Tilbudsskrivning og præsentationer",
-      "title": "Sammenligning af tre produktmuligheder",
-      "body": "ROLLE: Du er min rådgiver-kollega.\n\nKONTEKST: Jeg skal præsentere tre forskellige dækningsniveauer for\n[kunde]: basis, mellem, premium. Beskrivelse af hvert: [indsæt].\n\nMETODE:\n1. Sammenligningstabel med kolonner per niveau\n2. Rækker: dækning, selvrisiko, årlig præmie, primær målgruppe\n3. En \"min anbefaling\"-sætning under tabellen\n4. Format: direkte kopierbart i en mail eller slide"
+      "industryId": null,
+      "industryName": null,
+      "title": "Sammenligning af tre dækningsniveauer",
+      "body": "ROLLE: Du er min forsikringsrådgiver-kollega.\n\nKONTEKST: Jeg er assurandør og skal præsentere tre forskellige\ndækningsniveauer for [kunde]: basis, mellem, premium. Beskrivelse af\nhvert: [indsæt].\n\nMETODE:\n1. Sammenligningstabel med kolonner per niveau\n2. Rækker: dækning, selvrisiko, årlig præmie, primær målgruppe\n3. En \"min anbefaling\"-sætning under tabellen\n4. Format: direkte kopierbart i mail eller slide"
     },
     {
       "id": "5.6",
       "categoryId": "5",
       "categoryName": "Tilbudsskrivning og præsentationer",
+      "industryId": null,
+      "industryName": null,
       "title": "Executive summary af forsikringsprogram",
-      "body": "ROLLE: Du er min executive-level kommunikator.\n\nKONTEKST: [Virksomhed]s årlige forsikringsprogram er komplekst.\nCEO/CFO skal kunne skimme det. Program-detaljer: [indsæt]\n\nMETODE: Executive summary (maks 1 side):\n- Total årlig præmie (øverst)\n- Dækningens kerne i 5 bullets\n- Tre væsentlige risici der fortsat er udækket\n- Anbefaling til næste år"
+      "body": "ROLLE: Du er min executive-level kommunikator med forsikringserfaring.\n\nKONTEKST: Jeg er erhvervsassurandør. [Virksomheds] årlige\nforsikringsprogram er komplekst. CEO/CFO skal kunne skimme det på\n5 minutter. Program-detaljer: [indsæt]\n\nMETODE: Executive summary (maks 1 side):\n- Total årlig præmie (øverst)\n- Dækningens kerne i 5 bullets\n- Tre væsentlige risici der fortsat er udækket eller underdækket\n- Min anbefaling til næste år"
     },
     {
       "id": "5.7",
       "categoryId": "5",
       "categoryName": "Tilbudsskrivning og præsentationer",
+      "industryId": null,
+      "industryName": null,
       "title": "Præsentationsslides fra tekstdokument",
-      "body": "ROLLE: Du er min præsentationsbygger.\n\nKONTEKST: Jeg har et tekstdokument [upload]. Jeg skal lave det om til\net oplæg til 30 min møde.\n\nMETODE: Omdan til 8 slides:\n- Slide 1: Titel + undertekst\n- Slide 2-7: Kernepunkter med bullet-noter\n- Slide 8: Afslutning/call to action\nFor hvert slide: overskrift + 3-4 bullets. Gør teksten præsentations-\negnet (ikke fuld sætninger)."
+      "body": "ROLLE: Du er min præsentationsbygger.\n\nKONTEKST: Jeg er assurandør. Jeg har et tekstdokument om et\nforsikringsprodukt eller en kundesag [upload]. Jeg skal lave det om\ntil et oplæg til 30 min kundemøde.\n\nMETODE: Omdan til 8 slides:\n- Slide 1: Titel + undertekst\n- Slide 2-7: Kernepunkter med bullet-noter\n- Slide 8: Afslutning/call to action\nFor hvert slide: overskrift + 3-4 bullets. Gør teksten\npræsentationsegnet (ikke fulde sætninger)."
     },
     {
       "id": "5.8",
       "categoryId": "5",
       "categoryName": "Tilbudsskrivning og præsentationer",
-      "title": "Forslag til grafer fra rådata",
-      "body": "ROLLE: Du er min data-visualiseringsekspert.\n\nKONTEKST: Rådata: [indsæt tabel eller beskrivelse]\n\nMETODE: Foreslå 3 grafer der bedst fortæller historien:\n- For hver graf: type (søjle/kurve/cirkel), hvad aksen viser,\nkonklusionen den underbygger\n- Angiv hvilken graf er den vigtigste\n- Undgå overlappende grafer"
+      "industryId": null,
+      "industryName": null,
+      "title": "Forslag til grafer fra skadesdata",
+      "body": "ROLLE: Du er min data-visualiseringsekspert med forsikringsforståelse.\n\nKONTEKST: Jeg er assurandør. Rådata (fx skadeshistorik, præmieudvikling,\ndækningsfordeling): [indsæt tabel eller beskrivelse]\n\nMETODE: Foreslå 3 grafer der bedst fortæller historien til kunden:\n- For hver graf: type (søjle/kurve/cirkel), hvad aksen viser,\nkonklusionen den underbygger\n- Angiv hvilken graf der er vigtigst\n- Undgå overlappende grafer"
     },
     {
       "id": "5.9",
       "categoryId": "5",
       "categoryName": "Tilbudsskrivning og præsentationer",
-      "title": "Kundepræsentation til bestyrelse",
-      "body": "ROLLE: Du er min bestyrelseskommunikator.\n\nKONTEKST: Min kundes bestyrelse skal godkende forsikringsprogrammet.\nProgrammet: [indsæt]. Bestyrelsen forventer 15 min præsentation.\n\nMETODE: Bygger til 6 slides:\n1. Indledning (formål med beslutningen)\n2. Risikobillede\n3. Dækningens kerne\n4. Økonomi\n5. Beslutningsalternativer\n6. Min anbefaling\nTone: bestyrelsesniveau, tal-drevet, klar."
+      "industryId": null,
+      "industryName": null,
+      "title": "Forsikringsprogram til bestyrelsesgodkendelse",
+      "body": "ROLLE: Du er min bestyrelseskommunikator med forsikringsforståelse.\n\nKONTEKST: Jeg er erhvervsassurandør. Min kundes bestyrelse skal godkende\ndet årlige forsikringsprogram. Programmet: [indsæt]. Bestyrelsen\nforventer 15 min præsentation.\n\nMETODE: Byg til 6 slides:\n1. Indledning (formål med beslutningen)\n2. Risikobillede for virksomheden\n3. Dækningens kerne\n4. Økonomi (præmie vs. risikoeksponering)\n5. Beslutningsalternativer (basis/udvidet)\n6. Min anbefaling\nTone: bestyrelsesniveau, tal-drevet, klar."
     },
     {
       "id": "5.10",
       "categoryId": "5",
       "categoryName": "Tilbudsskrivning og præsentationer",
-      "title": "Årsgennemgang for kunde",
-      "body": "ROLLE: Du er min assistent til årsrapportering.\n\nKONTEKST: Jeg skal lave en årsgennemgang for [kunde]. Året: [konkrete\nbegivenheder, skader, ændringer, nye produkter].\n\nMETODE: Gennemgang:\n- Hvad der er sket i det forløbne år\n- Hvad der har virket\n- Hvad der skal justeres\n- Forslag til næste år\n- Maks 1-2 A4-sider, kundevenlig tone"
+      "industryId": null,
+      "industryName": null,
+      "title": "Årsgennemgang for forsikringskunde",
+      "body": "ROLLE: Du er min assistent til årsrapportering af forsikringsprogrammer.\n\nKONTEKST: Jeg er assurandør og skal lave en årsgennemgang for [kunde].\nÅret der gik: [konkrete begivenheder, skader, ændringer, nye dækninger].\n\nMETODE: Gennemgang:\n- Hvad der er sket i det forløbne år (skader, ændringer, nye policer)\n- Hvad der har virket godt i deres dækning\n- Hvad der skal justeres til næste år\n- Forslag til fremtiden\n- Maks 1-2 A4-sider, kundevenlig tone"
     },
     {
       "id": "6.1",
       "categoryId": "6",
       "categoryName": "Risikovurdering og analyse",
+      "industryId": null,
+      "industryName": null,
       "title": "Komplet risikovurdering af erhvervskunde",
-      "body": "ROLLE: Du er min risikoanalytiker-kollega.\n\nKONTEKST: [Virksomhed], branche [branche], [antal] ansatte, omsætning\n[beløb]. Særlige forhold: [indsæt].\n\nMETODE: Risikovurdering struktureret i:\n1. Materielle risici (bygninger, maskiner, lager)\n2. Driftstab\n3. Ansvar (produkt, miljø, profession)\n4. Personale (arbejdsskader, nøglepersoner)\n5. Cyber og data\nFor hver: sandsynlighed, konsekvens, anbefaling. Tabelformat."
+      "body": "ROLLE: Du er min risikoanalytiker-kollega med speciale i\nerhvervsforsikring.\n\nKONTEKST: Jeg er erhvervsassurandør. Kunde: [virksomhed], branche,\n[antal] ansatte, omsætning [beløb]. Særlige forhold: [indsæt].\n\nMETODE: Forsikringsmæssig risikovurdering struktureret i:\n1. Materielle risici (bygninger, maskiner, lager)\n2. Driftstab ved skade\n3. Ansvar (produkt, miljø, profession)\n4. Personale (arbejdsskader, nøglepersoner)\n5. Cyber og data\nFor hver: sandsynlighed, konsekvens, anbefalet dækning. Tabelformat."
     },
     {
       "id": "6.2",
       "categoryId": "6",
       "categoryName": "Risikovurdering og analyse",
-      "title": "Cyber-risikovurdering",
-      "body": "ROLLE: Du er min cyber-risiko-specialist.\n\nKONTEKST: [Virksomhed] i branchen [branche]. De håndterer [type data/\nsystemer].\n\nMETODE: Cyber-vurdering:\n1. Tre mest sandsynlige trusler for netop denne type virksomhed\n2. Typisk økonomisk konsekvens ved hver\n3. Tre spørgsmål jeg bør stille ledelsen\n4. Anbefaling til dækningsniveau\nKonkret og hverdagssprog."
+      "industryId": null,
+      "industryName": null,
+      "title": "Cyber-risikovurdering af kunde",
+      "body": "ROLLE: Du er min cyber-risiko-specialist med forsikringsforståelse.\n\nKONTEKST: Jeg er erhvervsassurandør og skal rådgive [virksomhed] i\nbranchen [branche] om cyberforsikring. De håndterer [type data/\nsystemer].\n\nMETODE: Cyber-vurdering:\n1. Tre mest sandsynlige cybertrusler for netop denne type virksomhed\n2. Typisk økonomisk konsekvens ved hver (udløser, nedetid, GDPR-bøde)\n3. Tre spørgsmål jeg bør stille ledelsen for at afdække behov\n4. Anbefaling til dækningsniveau i forsikringsprogrammet\nKonkret og hverdagssprog."
     },
     {
       "id": "6.3",
       "categoryId": "6",
       "categoryName": "Risikovurdering og analyse",
+      "industryId": null,
+      "industryName": null,
       "title": "Vurdering af undersikring",
-      "body": "ROLLE: Du er min underwriter-kollega.\n\nKONTEKST: Kunde [navn] har nuværende dækning: [indsæt]. Deres\nsituation: [indsæt - kan være nye investeringer, udvidelse, arv etc.]\n\nMETODE:\n1. Analysér om de er undersikret på nogen poster\n2. Kvantificér eventuelle huller\n3. Foreslå konkret justering\n4. Formulér en neutral besked til kunden om det"
+      "body": "ROLLE: Du er min underwriter-kollega.\n\nKONTEKST: Jeg er assurandør. Kunde [navn] har nuværende forsikrings-\ndækning: [indsæt]. Deres situation har ændret sig: [indsæt - nye\ninvesteringer, udvidelse, arv, renovering etc.]\n\nMETODE:\n1. Analysér om de er undersikret på nogen forsikringspolicer\n2. Kvantificér eventuelle huller i dækningen\n3. Foreslå konkret justering af forsikringsbeløb\n4. Formulér en neutral besked til kunden om det"
     },
     {
       "id": "6.4",
       "categoryId": "6",
       "categoryName": "Risikovurdering og analyse",
-      "title": "Landbrugsbesætnings-risiko",
-      "body": "ROLLE: Du er min erfarne landbrugsrisikovurderer.\n\nKONTEKST: [Gård] har [antal] [dyretype], [hektar] jord, særlige forhold:\n[indsæt].\n\nMETODE: Risikovurdering:\n1. Dyresundhed / besætningssygdomme\n2. Bygninger (stald, foderlager)\n3. Maskiner og teknologi\n4. Afgrøder og vejr\n5. Driftstab\nFor hver: konkrete tal-intervaller hvor muligt, anbefaling til dækning."
+      "industryId": "landbrug",
+      "industryName": "Landbrug",
+      "title": "Landbrugsbesætnings-risiko fra forsikringsvinkel",
+      "body": "ROLLE: Du er min erfarne landbrugsassurandør.\n\nKONTEKST: Jeg er assurandør. [Gård] har [antal] [dyretype], [hektar]\njord, særlige forhold: [indsæt].\n\nMETODE: Forsikringsmæssig risikovurdering:\n1. Dyresundhed / besætningssygdomme (dækning og grænser)\n2. Bygninger (stald, foderlager - brand, storm)\n3. Maskiner og teknologi\n4. Afgrøder og vejr\n5. Driftstab ved skader\nFor hver: konkret anbefaling til dækning og forsikringsbeløb."
     },
     {
       "id": "6.5",
       "categoryId": "6",
       "categoryName": "Risikovurdering og analyse",
+      "industryId": null,
+      "industryName": null,
       "title": "Scenarie-analyse af stor skade",
-      "body": "ROLLE: Du er min scenarie-analytiker.\n\nKONTEKST: [Virksomhed]. Forestil en stor skade - f.eks. [konkret scenarie].\n\nMETODE: Tænk igennem:\n1. Umiddelbare konsekvenser (første 72 timer)\n2. Mellemlang effekt (1-6 måneder)\n3. Langsigtet effekt (1-3 år)\n4. Nuværende dækning vs. reelt behov\n5. Huller der bør lukkes"
+      "body": "ROLLE: Du er min scenarie-analytiker med forsikringsforståelse.\n\nKONTEKST: Jeg er erhvervsassurandør. Kunde: [virksomhed]. Forestil en\nstor skade - f.eks. [konkret scenarie].\n\nMETODE: Tænk igennem:\n1. Umiddelbare økonomiske konsekvenser (første 72 timer)\n2. Mellemlang effekt (1-6 måneder)\n3. Langsigtet effekt (1-3 år)\n4. Nuværende forsikringsdækning vs. reelt behov\n5. Huller i dækningen der bør lukkes"
     },
     {
       "id": "6.6",
       "categoryId": "6",
       "categoryName": "Risikovurdering og analyse",
-      "title": "Nøgleperson-risiko",
-      "body": "ROLLE: Du er min rådgiver.\n\nKONTEKST: [Virksomhed] med [antal] ansatte. Nøglepersoner: [indsæt navne\nog roller].\n\nMETODE:\n1. Identificér hvem der er mest kritiske nøglepersoner\n2. Vurdér konsekvens ved deres pludselige fravær\n3. Anbefal dækningsniveauer for nøglepersonforsikring\n4. Formulér ledelsesbudskab om det"
+      "industryId": null,
+      "industryName": null,
+      "title": "Nøgleperson-risiko i erhvervskunde",
+      "body": "ROLLE: Du er min forsikringsrådgiver med speciale i nøgleperson-\nforsikring.\n\nKONTEKST: Jeg er erhvervsassurandør. [Virksomhed] med [antal] ansatte.\nNøglepersoner: [indsæt navne og roller].\n\nMETODE:\n1. Identificér hvem der er mest kritiske nøglepersoner forsikrings-\nmæssigt\n2. Vurdér økonomisk konsekvens ved deres pludselige fravær\n(mistet omsætning, ansættelsesomkostninger, kundetab)\n3. Anbefal dækningsniveau for nøglepersonforsikring\n4. Formulér ledelsesbudskab om behovet"
     },
     {
       "id": "6.7",
       "categoryId": "6",
       "categoryName": "Risikovurdering og analyse",
-      "title": "Sammenligning af skadesdata over 5 år",
-      "body": "ROLLE: Du er min analytiker.\n\nKONTEKST: Skadesdata for [kunde/område] over 5 år: [indsæt eller upload]\n\nMETODE:\n1. Identificér trends (stigende/faldende/stabilt)\n2. Udpeg 2-3 outliers der kræver forklaring\n3. Foreslå 3 justeringer af dækning/pris\n4. Grafik-forslag der bedst viser historien"
+      "industryId": null,
+      "industryName": null,
+      "title": "Sammenlign skadesdata over 5 år",
+      "body": "ROLLE: Du er min skadesanalytiker.\n\nKONTEKST: Jeg er assurandør. Skadesdata for [kunde/område] over 5 år:\n[indsæt eller upload]\n\nMETODE:\n1. Identificér trends (stigende/faldende/stabilt)\n2. Udpeg 2-3 outliers der kræver forklaring\n3. Foreslå 3 justeringer af dækning, pris eller selvrisiko\n4. Grafik-forslag der bedst viser historien til kunden"
     },
     {
       "id": "6.8",
       "categoryId": "6",
       "categoryName": "Risikovurdering og analyse",
-      "title": "Strukturel risiko ved ændring i branche",
-      "body": "ROLLE: Du er min strategisk rådgiver.\n\nKONTEKST: [Branche] gennemgår strukturel ændring pga. [årsag]. Min\nkunde i branchen: [navn].\n\nMETODE:\n1. Analysér hvordan ændringen påvirker min kundes risikoprofil\n2. Tre områder hvor dækningen kan blive utilstrækkelig\n3. Tre områder der kan overdækkes\n4. Konkrete samtaleemner til næste kundemøde"
+      "industryId": null,
+      "industryName": null,
+      "title": "Tjekliste før kontraktfornyelse",
+      "body": "ROLLE: Du er min tjeklisteekspert med erfaring i forsikringsfornyelser.\n\nKONTEKST: Jeg er assurandør og skal forny kontrakten med [kunde].\nNuværende forsikringsdækning: [indsæt]. Det seneste år: [store\nbegivenheder, skader, ændringer].\n\nMETODE: Tjekliste:\n1. 10 ting jeg skal verificere før fornyelse (fx ændret omsætning,\nny produktion, flyttet adresse, skadeshistorik)\n2. Hvert punkt med én sætning om hvorfor det er vigtigt\n3. Markér de 3 vigtigste\n4. Format: afkrydselig"
     },
     {
       "id": "6.9",
       "categoryId": "6",
       "categoryName": "Risikovurdering og analyse",
-      "title": "Check-liste før kontraktfornyelse",
-      "body": "ROLLE: Du er min tjeklisteekspert.\n\nKONTEKST: Jeg skal forny kontrakt med [kunde]. Nuværende dækning:\n[indsæt]. Det seneste år: [store begivenheder, skader, ændringer].\n\nMETODE: Tjekliste:\n1. 10 ting jeg skal verificere før fornyelse\n2. Hvert punkt med én sætning om hvorfor det er vigtigt\n3. Markér de 3 vigtigste punkter\n4. Format: afkrydselig"
-    },
-    {
-      "id": "6.10",
-      "categoryId": "6",
-      "categoryName": "Risikovurdering og analyse",
+      "industryId": null,
+      "industryName": null,
       "title": "Bygningsskadevurdering efter vejrskade",
-      "body": "ROLLE: Du er min erfarne skadesvurderer.\n\nKONTEKST: [Kunde] har haft vejrskade [type skade]. Fakta: [indsæt].\nJeg skal estimere omkostninger og dækningsgrundlag.\n\nMETODE:\n1. Sandsynlige reparationsomkostninger (interval)\n2. Dækningsgrundlag ud fra police\n3. Tre ting kunden skal dokumentere\n4. Mit næste skridt"
+      "body": "ROLLE: Du er min erfarne skadesvurderer i forsikring.\n\nKONTEKST: Jeg er assurandør. [Kunde] har haft vejrskade [type skade].\nFakta: [indsæt]. Jeg skal estimere dækningsgrundlag og næste skridt.\n\nMETODE:\n1. Sandsynlige reparationsomkostninger (interval)\n2. Dækningsgrundlag ud fra kundens police\n3. Tre ting kunden skal dokumentere til anmeldelsen\n4. Mit næste skridt i skadesbehandlingen"
     },
     {
       "id": "7.1",
       "categoryId": "7",
       "categoryName": "Skadesbehandling",
+      "industryId": null,
+      "industryName": null,
       "title": "Skadesrapport fra kundens beskrivelse",
-      "body": "ROLLE: Du er min skadesrapport-assistent.\n\nKONTEKST: Kundens beskrivelse af skaden: [indsæt]\n\nMETODE: Omdan til struktureret skadesrapport:\n1. Faktiske forhold (tid, sted, hvad skete)\n2. Omfang af skade\n3. Involverede parter\n4. Relevante dokumenter/billeder\n5. Første vurdering\nProfessionel tone, kopierbar til sagsbehandlingssystem."
+      "body": "ROLLE: Du er min skadesrapport-assistent med forsikringsforståelse.\n\nKONTEKST: Jeg er assurandør. En kundes beskrivelse af skaden: [indsæt]\n\nMETODE: Omdan til struktureret skadesrapport til sagsmappen:\n1. Faktiske forhold (tid, sted, hvad skete)\n2. Omfang af skade\n3. Involverede parter\n4. Relevante dokumenter/billeder\n5. Første forsikringsmæssige vurdering\nProfessionel tone, kopierbar til sagsbehandlingssystem."
     },
     {
       "id": "7.2",
       "categoryId": "7",
       "categoryName": "Skadesbehandling",
+      "industryId": null,
+      "industryName": null,
       "title": "Opfølgningsmail under skadesbehandling",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Skadessag [nummer/beskrivelse]. Status: [indsæt]. Kunden har\nikke hørt noget i [dage].\n\nMETODE: Mail til kunden der:\n- Opdaterer om hvor sagen er\n- Angiver næste skridt og tidsramme\n- Beder om evt. manglende dokumentation\n- Maks 150 ord\n- Empatisk, professionel tone"
+      "body": "ROLLE: Du er min kommunikationsassistent med erfaring i skadesbehandling.\n\nKONTEKST: Jeg er assurandør. Skadessag [nummer/beskrivelse]. Status:\n[indsæt]. Kunden har ikke hørt noget i [dage].\n\nMETODE: Mail til kunden der:\n- Opdaterer om hvor sagen er i processen\n- Angiver næste skridt og tidsramme\n- Beder om evt. manglende dokumentation\n- Maks 150 ord\n- Empatisk, professionel tone"
     },
     {
       "id": "7.3",
       "categoryId": "7",
       "categoryName": "Skadesbehandling",
-      "title": "Beregning af dækning fra police-tekst",
-      "body": "ROLLE: Du er min police-læser.\n\nKONTEKST: Relevant police-tekst: [indsæt]. Skade: [beskriv].\n\nMETODE:\n1. Er skaden dækket? Ja/nej med begrundelse\n2. Hvilket afsnit/klausul er udslagsgivende?\n3. Selvrisiko?\n4. Maksimal dækning?\n5. Undtagelser der kunne være relevante\nFormat: præcis, med henvisning til tekststeder."
+      "industryId": null,
+      "industryName": null,
+      "title": "Beregning af dækning fra policetekst",
+      "body": "ROLLE: Du er min police-læser med forsikringsforståelse.\n\nKONTEKST: Jeg er assurandør. Relevant policetekst: [indsæt].\nSkade: [beskrivelse].\n\nMETODE:\n1. Er skaden dækket? Ja/nej med begrundelse\n2. Hvilket afsnit/klausul er udslagsgivende?\n3. Selvrisiko?\n4. Maksimal dækning?\n5. Undtagelser der kan være relevante\nFormat: præcis, med henvisning til tekststeder."
     },
     {
       "id": "7.4",
       "categoryId": "7",
       "categoryName": "Skadesbehandling",
+      "industryId": null,
+      "industryName": null,
       "title": "Brev med afgørelse - skade delvist dækket",
-      "body": "ROLLE: Du er min erfarne kollega.\n\nKONTEKST: Skade [beskrivelse]. Delvist dækket: [dækket beløb] af\n[samlet beløb]. Grund til delvis dækning: [indsæt].\n\nMETODE: Brev der:\n- Er klart om hvor meget der udbetales og hvornår\n- Forklarer HVORFOR kun delvis dækning\n- Viser anerkendelse af situationen\n- Angiver klagemuligheder\n- Maks 220 ord"
+      "body": "ROLLE: Du er min erfarne forsikringskollega.\n\nKONTEKST: Jeg er assurandør. Skade [beskrivelse]. Delvist dækket:\n[dækket beløb] af [samlet beløb]. Grund til delvis dækning: [konkret\nklausul eller selvrisiko-element].\n\nMETODE: Brev der:\n- Er klart om hvor meget der udbetales og hvornår\n- Forklarer HVORFOR kun delvis dækning, med henvisning til police\n- Viser anerkendelse af situationen\n- Angiver klagemuligheder (ankenævn, genbehandling)\n- Maks 220 ord"
     },
     {
       "id": "7.5",
       "categoryId": "7",
       "categoryName": "Skadesbehandling",
+      "industryId": null,
+      "industryName": null,
       "title": "Koordineret skadesbehandling med flere parter",
-      "body": "ROLLE: Du er min koordinator.\n\nKONTEKST: Skade involverer flere parter: [indsæt]. Mit ansvar: [indsæt].\n\nMETODE: Plan:\n1. Hvem skal kontaktes først og i hvilken rækkefølge\n2. Hvilke dokumenter skal indsamles fra hver part\n3. Typiske tidsfrister for hver del\n4. Samlet tidsplan for kunden"
+      "body": "ROLLE: Du er min skadeskoordinator.\n\nKONTEKST: Jeg er assurandør. Skaden involverer flere parter\n(fx kunden, modpart, kundens forsikringsselskab, reparatør):\n[indsæt]. Mit ansvar: [indsæt].\n\nMETODE: Plan:\n1. Hvem skal kontaktes først og i hvilken rækkefølge\n2. Hvilke dokumenter skal indsamles fra hver part\n3. Typiske tidsfrister for hver del af processen\n4. Samlet tidsplan jeg kan kommunikere til kunden"
     },
     {
       "id": "7.6",
       "categoryId": "7",
       "categoryName": "Skadesbehandling",
+      "industryId": null,
+      "industryName": null,
       "title": "Svar til advokat på kundens vegne",
-      "body": "ROLLE: Du er min erfarne kollega med juridisk fornemmelse.\n\nKONTEKST: Advokat [navn] har skrevet på vegne af kunde [navn]. Deres\nbrev: [indsæt].\n\nMETODE: Professionelt svar:\n- Saglig tone, ikke defensivt\n- Punkt-for-punkt respons\n- Klar på hvor vi står juridisk\n- Henvis til policetekst og fakta\n- Maks 300 ord"
+      "body": "ROLLE: Du er min erfarne forsikringskollega med juridisk fornemmelse.\n\nKONTEKST: Jeg er assurandør. Advokat [navn] har skrevet på vegne af\nkunde [navn] i skadessag. Deres brev: [indsæt].\n\nMETODE: Professionelt svar:\n- Saglig tone, ikke defensivt\n- Punkt-for-punkt respons\n- Klar på hvor vi står juridisk og forsikringsmæssigt\n- Henvis til policetekst og fakta\n- Maks 300 ord"
     },
     {
       "id": "7.7",
       "categoryId": "7",
       "categoryName": "Skadesbehandling",
-      "title": "Dokumentationsliste til kompleks skade",
-      "body": "ROLLE: Du er min assistent.\n\nKONTEKST: Skade [beskrivelse] - kunden skal samle dokumentation. Det\ner kompleks sag der involverer [elementer].\n\nMETODE: Komplet dokumentationsliste:\n1. Hvad kunden skal indsamle (sorteret efter prioritet)\n2. Hvor de kan få hver dokument (hvis ikke oplagt)\n3. Deadline for hver\n4. Max 2 A4-sider, kopierbar liste"
-    },
-    {
-      "id": "7.8",
-      "categoryId": "7",
-      "categoryName": "Skadesbehandling",
+      "industryId": null,
+      "industryName": null,
       "title": "Oversigt over skadeshistorik",
-      "body": "ROLLE: Du er min analytiker.\n\nKONTEKST: Jeg uploader kundens skadeshistorik [indsæt/upload].\n\nMETODE:\n1. Kort opsummering af 5-års historik (tabel)\n2. Identificér mønstre\n3. Tre konklusioner jeg kan tage med til næste kundesamtale\n4. Forslag til risikoforebyggelse"
+      "body": "ROLLE: Du er min skadesanalytiker.\n\nKONTEKST: Jeg er assurandør. Jeg uploader kundens skadeshistorik\n[indsæt/upload].\n\nMETODE:\n1. Kort opsummering af 5-års historik (tabel)\n2. Identificér mønstre i skadesårsager\n3. Tre konklusioner jeg kan bruge til næste rådgivningsmøde\n4. Forslag til risikoforebyggelse kunden kan implementere"
     },
     {
       "id": "8.1",
       "categoryId": "8",
       "categoryName": "Salg og kundeindvendinger",
-      "title": "Rollespil - skeptisk kunde",
-      "body": "ROLLE: Du skal være en skeptisk kunde jeg øver mig på.\n\nKONTEKST: Profil: [alder, situation, hvad de overvejer, typiske\nbekymringer]\n\nMETODE: Du kommer med 3 indvendinger én ad gangen. Jeg svarer. Du\nreagerer realistisk med modargumenter hvis mine svar er tynde.\nEfter 3 runder: feedback. Hvad var mine stærke svar, hvad kunne være\nskarpere.\nStart med indvending 1."
+      "industryId": null,
+      "industryName": null,
+      "title": "Rollespil - skeptisk forsikringskunde",
+      "body": "ROLLE: Du skal være en skeptisk forsikringskunde jeg øver mig på.\n\nKONTEKST: Jeg er assurandør. Kundens profil: [alder, situation, hvilket\nforsikringsprodukt de overvejer, typiske bekymringer - pris,\nnødvendighed, tillid].\n\nMETODE: Du kommer med 3 indvendinger én ad gangen. Jeg svarer. Du\nreagerer realistisk med modargumenter hvis mine svar er tynde.\nEfter 3 runder: feedback. Hvad var mine stærke svar, hvad kunne være\nskarpere?\nStart med indvending 1."
     },
     {
       "id": "8.2",
       "categoryId": "8",
       "categoryName": "Salg og kundeindvendinger",
-      "title": "Mine svar til 'det er for dyrt'",
-      "body": "ROLLE: Du er min erfarne sælger-kollega.\n\nKONTEKST: Kunden siger \"det er for dyrt\". Kunde: [profil]. Dækningen er:\n[beskrivelse].\n\nMETODE: Giv mig fem forskellige svar:\n1. Værdi-vinkel (hvad de får)\n2. Risk-vinkel (hvad det koster ikke at have)\n3. Sammenligning med alternativet\n4. Splitning af pris i mindre bidder\n5. Afdækning (hvad er deres reelle bekymring)\nIngen klichéer. Konkrete formuleringer jeg kan sige."
+      "industryId": null,
+      "industryName": null,
+      "title": "Fem svar til 'det er for dyrt'",
+      "body": "ROLLE: Du er min erfarne forsikringssælger-kollega.\n\nKONTEKST: Jeg er assurandør. Kunden siger \"det er for dyrt\" om\n[forsikringsprodukt]. Kunde: [profil]. Dækningen er: [beskrivelse].\n\nMETODE: Giv mig fem forskellige svar:\n1. Værdi-vinkel (hvad dækningen giver dem)\n2. Risk-vinkel (hvad det koster IKKE at have dækningen)\n3. Sammenligning med alternativet (ringere dækning hos konkurrent)\n4. Splitning af præmien i mindre bidder (fx månedlig omkostning)\n5. Afdækning (hvad er kundens reelle bekymring?)\nIngen klichéer. Konkrete formuleringer jeg kan sige."
     },
     {
       "id": "8.3",
       "categoryId": "8",
       "categoryName": "Salg og kundeindvendinger",
-      "title": "Mine svar til 'jeg har lige fornyet'",
-      "body": "ROLLE: Du er min erfarne sælger-kollega.\n\nKONTEKST: Kunden siger \"jeg har lige fornyet min forsikring et andet\nsted\". Kunde: [profil].\n\nMETODE: Fem forskellige svar:\n- Respekter beslutningen men efterlad åbninger til fremtiden\n- Tilbyd en \"second opinion\" uden forpligtelse\n- Fokusér på hvad der kan være blevet overset\n- Foreslå at holde kontakt til næste fornyelse\n- Sæt pris på relationen ud over handlen"
+      "industryId": null,
+      "industryName": null,
+      "title": "Fem svar til 'jeg har lige fornyet min forsikring et andet sted'",
+      "body": "ROLLE: Du er min erfarne forsikringssælger-kollega.\n\nKONTEKST: Jeg er assurandør. Kunden siger \"jeg har lige fornyet min\nforsikring et andet sted\". Kunde: [profil].\n\nMETODE: Fem forskellige svar:\n1. Respekter beslutningen men efterlad åbninger til fremtiden\n2. Tilbyd en \"second opinion\" på deres nuværende dækning uden forpligtelse\n3. Fokusér på hvad der kan være blevet overset i det andet tilbud\n4. Foreslå at holde kontakt til næste fornyelse\n5. Sæt pris på relationen ud over handlen"
     },
     {
       "id": "8.4",
       "categoryId": "8",
       "categoryName": "Salg og kundeindvendinger",
-      "title": "Afdække reelle bekymringer",
-      "body": "ROLLE: Du er min sælger-coach.\n\nKONTEKST: Kunden har sagt: \"[kundens udtalelse]\". Jeg er i tvivl om\nhvad den reelle bekymring er.\n\nMETODE: Giv mig:\n1. Tre sandsynlige 'iceberg'-bekymringer under overfladen\n2. Tre åbne spørgsmål jeg kan stille\n3. Lyt-efter-signaler i svaret"
+      "industryId": null,
+      "industryName": null,
+      "title": "Afdække reelle forsikringsmæssige bekymringer",
+      "body": "ROLLE: Du er min sælger-coach med forsikringsforståelse.\n\nKONTEKST: Jeg er assurandør. Kunden har sagt: \"[kundens udtalelse]\".\nJeg er i tvivl om hvad den reelle bekymring er bag udsagnet.\n\nMETODE:\n1. Tre sandsynlige 'iceberg'-bekymringer under overfladen (fx tvivl om\ndækning, mistillid til branchen, tidligere dårlig erfaring)\n2. Tre åbne spørgsmål jeg kan stille for at afdække\n3. Lyt-efter-signaler i svaret"
     },
     {
       "id": "8.5",
       "categoryId": "8",
       "categoryName": "Salg og kundeindvendinger",
-      "title": "Overvinde 'jeg tænker over det'",
-      "body": "ROLLE: Du er min erfarne sælger-kollega.\n\nKONTEKST: Kunden siger \"jeg tænker over det\" efter mit tilbud. De har\nallerede været med i [antal] møder.\n\nMETODE: Tre forskellige afsked-strategier:\n- Respektfuld hard close (tag beslutningen til sig)\n- Soft close (foreslå konkret opfølgning om 2 uger)\n- Afdæk hvad \"tænker over det\" dækker over\nIngen desperat pres."
+      "industryId": null,
+      "industryName": null,
+      "title": "Overvinde 'jeg tænker over det' efter tilbud",
+      "body": "ROLLE: Du er min erfarne forsikringssælger-kollega.\n\nKONTEKST: Jeg er assurandør. Kunden siger \"jeg tænker over det\" efter\nmit forsikringstilbud. De har allerede været med i [antal] møder.\n\nMETODE: Tre forskellige afsked-strategier:\n- Respektfuld hard close (tag beslutningen til sig)\n- Soft close (foreslå konkret opfølgning om 2 uger)\n- Afdæk hvad \"tænker over det\" dækker over\nIngen desperat pres."
     },
     {
       "id": "8.6",
       "categoryId": "8",
       "categoryName": "Salg og kundeindvendinger",
+      "industryId": null,
+      "industryName": null,
       "title": "Mødebriefing før kundebesøg",
-      "body": "ROLLE: Du er min sælgerkollega.\n\nKONTEKST: Møde med [kunde] imorgen. Historik: [indsæt]. Mit mål: [indsæt].\n\nMETODE:\n1. Tre mål for mødet i prioriteret rækkefølge\n2. De tre mest sandsynlige indvendinger + mine svar\n3. Afslutningsspørgsmålet jeg skal stille\n4. To små-talk-åbninger jeg kan bruge"
+      "body": "ROLLE: Du er min forsikringssælger-kollega.\n\nKONTEKST: Jeg er assurandør. Møde med [kunde] i morgen om\n[forsikringsprodukt/gennemgang]. Historik: [indsæt]. Mit mål: [indsæt].\n\nMETODE:\n1. Tre mål for mødet i prioriteret rækkefølge\n2. De tre mest sandsynlige indvendinger + mine svar\n3. Afslutningsspørgsmålet jeg skal stille\n4. To små-talk-åbninger jeg kan bruge"
     },
     {
       "id": "8.7",
       "categoryId": "8",
       "categoryName": "Salg og kundeindvendinger",
-      "title": "Opfølgning efter interesseret møde",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Mødet med [kunde] gik godt. De virkede interesserede.\nNæste skridt aftalt: [indsæt].\n\nMETODE: Opfølgningsmail:\n- Takker for tiden\n- Opsummerer det vigtigste vi aftalte\n- Bekræfter næste skridt\n- Tilfører én værdi (f.eks. relevant link, artikel)\n- Maks 150 ord"
+      "industryId": null,
+      "industryName": null,
+      "title": "Opfølgning efter interesseret kundemøde",
+      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Jeg er assurandør. Mødet med [kunde] gik godt. De virkede\ninteresserede i [forsikringsprodukt]. Næste skridt aftalt: [indsæt].\n\nMETODE: Opfølgningsmail:\n- Takker for tiden\n- Opsummerer det vigtigste vi aftalte\n- Bekræfter næste skridt og frist\n- Tilfører én værdi (fx relevant link, branche-indsigt, case fra\nlignende kunde)\n- Maks 150 ord"
     },
     {
       "id": "8.8",
       "categoryId": "8",
       "categoryName": "Salg og kundeindvendinger",
-      "title": "Anbefalingsanmodning",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Tilfreds kunde [navn] har været hos os [år]. De har aldrig\nanbefalet os videre. Jeg vil spørge om anbefaling.\n\nMETODE: Mail der:\n- Starter varmt (ikke transaktionelt)\n- Spørger med respekt\n- Gør det nemt at sige nej\n- Foreslår konkret form (intro-mail, LinkedIn, samtale)\n- Maks 130 ord"
-    },
-    {
-      "id": "8.9",
-      "categoryId": "8",
-      "categoryName": "Salg og kundeindvendinger",
-      "title": "Pipelinemøde - mine top 5 deals",
-      "body": "ROLLE: Du er min sælgercoach.\n\nKONTEKST: Mine top 5 aktive deals: [for hver: kunde, situation,\nnuværende status, næste skridt]\n\nMETODE:\n1. Rangér dem efter sandsynlighed for luk\n2. For hver: hvad er blokeringen?\n3. For hver: mit næste bedste skridt\n4. Samlet: hvor skal jeg bruge flest kræfter denne uge?"
-    },
-    {
-      "id": "8.10",
-      "categoryId": "8",
-      "categoryName": "Salg og kundeindvendinger",
-      "title": "Analysér tabte deals",
-      "body": "ROLLE: Du er min analytiker.\n\nKONTEKST: Mine sidste 10 tabte deals: [kort beskrivelse af hver]\n\nMETODE:\n1. Identificér mønstre (fælles årsager til tab)\n2. Tre ting jeg bør ændre i min tilgang\n3. Tre ting i markedet der er en forklaring\n4. Én konkret ændring at prøve i næste måned"
+      "industryId": null,
+      "industryName": null,
+      "title": "Anbefalingsanmodning fra tilfreds kunde",
+      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Jeg er assurandør. Tilfreds kunde [navn] har været hos os\n[år] og har oplevet god skadesbehandling. De har aldrig anbefalet os\nvidere. Jeg vil spørge om en anbefaling.\n\nMETODE: Mail der:\n- Starter varmt (ikke transaktionelt)\n- Spørger med respekt\n- Gør det nemt at sige nej\n- Foreslår konkret form (intro til bekendt, LinkedIn-anbefaling, kort\nsamtale)\n- Maks 130 ord"
     },
     {
       "id": "9.1",
-      "categoryId": "9",
-      "categoryName": "Brancher: landbrug, byggeri, detail, restauration",
-      "title": "Landbrug - risikobillede",
-      "body": "ROLLE: Du er min erfarne landbrugsassurandør.\n\nKONTEKST: Landmand [navn] driver [beskrivelse]. Jeg møder ham om 3 dage.\n\nMETODE: Komplet risikobillede:\n1. Dyresundhed og besætning\n2. Afgrøder og vejrsensitivitet\n3. Maskinpark og teknologi\n4. Bygninger og brand\n5. Ansvar og erhvervsansvar\n6. Driftstab\nFor hver: de 2 vigtigste spørgsmål til ham, og vores typiske dækning."
+      "categoryId": "6",
+      "categoryName": "Risikovurdering og analyse",
+      "industryId": "landbrug",
+      "industryName": "Landbrug",
+      "title": "Landbrug - komplet forsikringsbillede",
+      "body": "ROLLE: Du er min erfarne landbrugsassurandør.\n\nKONTEKST: Jeg er erhvervsassurandør og skal møde landmand [navn] om\n3 dage. Han driver [beskrivelse - malkekvæg/svin/planteavl, antal dyr,\nhektar].\n\nMETODE: Komplet forsikringsmæssigt risikobillede:\n1. Dyresundhed og besætning (dækning og grænser)\n2. Afgrøder og vejrsensitivitet\n3. Maskinpark og teknologi\n4. Bygninger og brand\n5. Ansvar og erhvervsansvar (produkt, miljø)\n6. Driftstab\nFor hver: de 2 vigtigste spørgsmål til ham, og vores typiske\ndækningsniveau."
     },
     {
       "id": "9.2",
-      "categoryId": "9",
-      "categoryName": "Brancher: landbrug, byggeri, detail, restauration",
+      "categoryId": "6",
+      "categoryName": "Risikovurdering og analyse",
+      "industryId": "byggeri",
+      "industryName": "Byggeri",
       "title": "Byggefirma - forsikringsbehov",
-      "body": "ROLLE: Du er min erfarne kollega med speciale i bygge- og anlægsbranchen.\n\nKONTEKST: Byggefirma: [antal] ansatte, årlige projekter [antal/værdi],\ntype arbejde [residential/erhverv/anlæg].\n\nMETODE:\n1. Obligatoriske dækninger\n2. Stærkt anbefalede dækninger\n3. Nice-to-have\n4. De 3 typiske \"huller\" jeg ser i branchen\n5. Fem diagnostiske spørgsmål til kunden"
+      "body": "ROLLE: Du er min erfarne erhvervsassurandør med speciale i bygge- og\nanlægsbranchen.\n\nKONTEKST: Jeg er assurandør. Byggefirma med [antal] ansatte, årlige\nprojekter [antal/værdi], type arbejde [residential/erhverv/anlæg].\n\nMETODE:\n1. Obligatoriske forsikringsdækninger i branchen\n2. Stærkt anbefalede dækninger (fx all-risks, ansvarsforsikring,\nbygherreansvar, entreprisegarantistillelse)\n3. Nice-to-have dækninger\n4. De 3 typiske \"huller\" jeg ser i forsikringsprogrammer i branchen\n5. Fem diagnostiske spørgsmål til kunden"
     },
     {
       "id": "9.3",
-      "categoryId": "9",
-      "categoryName": "Brancher: landbrug, byggeri, detail, restauration",
-      "title": "Detailforretning - særlige risici",
-      "body": "ROLLE: Du er min kollega med erfaring i detailbranchen.\n\nKONTEKST: Detailbutik: [type butik], [kvm], [beliggenhed], [antal]\nansatte.\n\nMETODE:\n1. Top-5 risici for netop denne type butik\n2. Typiske skadesscenarier\n3. Anbefalede dækningsniveauer\n4. Tre ting kunden selv kan gøre forebyggende"
+      "categoryId": "6",
+      "categoryName": "Risikovurdering og analyse",
+      "industryId": "detail",
+      "industryName": "Detailhandel",
+      "title": "Detailforretning - forsikringsmæssige risici",
+      "body": "ROLLE: Du er min erfarne erhvervsassurandør med speciale i\ndetailbranchen.\n\nKONTEKST: Jeg er assurandør. Detailbutik: [type butik], [kvm],\n[beliggenhed], [antal] ansatte.\n\nMETODE:\n1. Top-5 forsikringsmæssige risici for netop denne type butik\n(fx indbrud, brand, vandskade, arbejdsskade, produktansvar)\n2. Typiske skadesscenarier\n3. Anbefalede dækningsniveauer\n4. Tre ting kunden selv kan gøre forebyggende der påvirker præmien"
     },
     {
       "id": "9.4",
-      "categoryId": "9",
-      "categoryName": "Brancher: landbrug, byggeri, detail, restauration",
-      "title": "Restaurant - fra forsikringsvinkel",
-      "body": "ROLLE: Du er min erfarne kollega med restaurantbranche-erfaring.\n\nKONTEKST: Restaurant: [type køkken], [antal] ansatte, [omsætning],\n[særlige forhold: åbningstider, udeservering etc].\n\nMETODE:\n1. Brandrisici (køkken + generelt)\n2. Fødevaresikkerhed og produktansvar\n3. Personale og arbejdsskader\n4. Forretningsafbrydelse ved køkkenbrand\n5. Tre ting mange restauranter overser"
+      "categoryId": "6",
+      "categoryName": "Risikovurdering og analyse",
+      "industryId": "restauration",
+      "industryName": "Restauration",
+      "title": "Restaurant - forsikringsvinkel",
+      "body": "ROLLE: Du er min erfarne erhvervsassurandør med restaurantbranche-erfaring.\n\nKONTEKST: Jeg er assurandør. Restaurant: [type køkken], [antal] ansatte,\n[omsætning], [særlige forhold: åbningstider, udeservering etc].\n\nMETODE:\n1. Brandrisici (køkken + generelt) og relevant dækning\n2. Fødevaresikkerhed og produktansvar\n3. Personale og arbejdsskader\n4. Driftstab ved køkkenbrand eller lukning\n5. Tre forsikringsmæssige ting mange restauranter overser"
     },
     {
       "id": "9.5",
-      "categoryId": "9",
-      "categoryName": "Brancher: landbrug, byggeri, detail, restauration",
-      "title": "Håndværker (SMV)",
-      "body": "ROLLE: Du er min erfarne kollega med speciale i håndværkssegmentet.\n\nKONTEKST: Håndværksvirksomhed: [fag: tømrer/murer/VVS/elektriker],\n[antal] ansatte, opererer i [område].\n\nMETODE:\n1. Obligatoriske dækninger (lovkrav)\n2. Stærkt anbefalede (brancheforventning)\n3. Typiske skadesscenarier for faget\n4. Hvad skelner branchens førende fra gennemsnittet\n5. Tre gode spørgsmål til mødet"
+      "categoryId": "6",
+      "categoryName": "Risikovurdering og analyse",
+      "industryId": "haandvaerk",
+      "industryName": "Håndværk",
+      "title": "Håndværker (SMV) - forsikringsprogram",
+      "body": "ROLLE: Du er min erfarne erhvervsassurandør med speciale i\nhåndværkssegmentet.\n\nKONTEKST: Jeg er assurandør. Håndværksvirksomhed: [fag: tømrer/murer/\nVVS/elektriker], [antal] ansatte, opererer i [område].\n\nMETODE:\n1. Obligatoriske forsikringer (lovkrav for branchen)\n2. Stærkt anbefalede (brancheforventning - fx erhvervsansvar,\nentreprise, løsøre på byggepladser)\n3. Typiske skadesscenarier for faget\n4. Hvad adskiller branchens førende forsikringsprogrammer fra\ngennemsnittet\n5. Fem gode spørgsmål til det første kundemøde"
     },
     {
       "id": "9.6",
-      "categoryId": "9",
-      "categoryName": "Brancher: landbrug, byggeri, detail, restauration",
-      "title": "Transport- og logistikfirma",
-      "body": "ROLLE: Du er min erfarne kollega.\n\nKONTEKST: Transportvirksomhed: [antal] lastbiler, [nationale/EU/globale]\nruter, [type gods].\n\nMETODE:\n1. Særlige risici i branchen\n2. Typiske dækninger (lastbil, gods, chauffør, ansvar)\n3. Internationale overvejelser\n4. Tre ændringer der kommer med EU-regulering\n5. Fem kritiske spørgsmål til kunden"
+      "categoryId": "6",
+      "categoryName": "Risikovurdering og analyse",
+      "industryId": "transport",
+      "industryName": "Transport og logistik",
+      "title": "Transport- og logistik - forsikringsdækning",
+      "body": "ROLLE: Du er min erfarne erhvervsassurandør med speciale i\ntransport- og logistikforsikring.\n\nKONTEKST: Jeg er assurandør. Transportvirksomhed: [antal] lastbiler,\n[nationale/EU/globale] ruter, [type gods].\n\nMETODE:\n1. Særlige forsikringsrisici i branchen\n2. Typiske dækninger jeg bør anbefale (lastbilforsikring, godstransport-\nansvar, chaufførulykke, erhvervsansvar, fragtførerens ansvar CMR)\n3. Internationale forsikringsovervejelser (green card, fragtførerens\nansvar i EU)\n4. Tre forsikringsmæssige ændringer der kommer med EU-regulering\n5. Fem kritiske spørgsmål til kunden"
     },
     {
       "id": "9.7",
-      "categoryId": "9",
-      "categoryName": "Brancher: landbrug, byggeri, detail, restauration",
-      "title": "Produktionsvirksomhed",
-      "body": "ROLLE: Du er min erfarne kollega med speciale i fremstillingsvirksomheder.\n\nKONTEKST: Virksomhed: [produkt], [antal] ansatte, [omsætning],\n[eksportandel].\n\nMETODE:\n1. Produktansvar (særligt ved eksport)\n2. Maskinpark og driftstab\n3. Bygninger og lager\n4. Cyber og IT-afhængighed\n5. Tre risici der ofte overses"
+      "categoryId": "6",
+      "categoryName": "Risikovurdering og analyse",
+      "industryId": "produktion",
+      "industryName": "Produktion",
+      "title": "Produktionsvirksomhed - forsikringsprogram",
+      "body": "ROLLE: Du er min erfarne erhvervsassurandør med speciale i forsikring\naf fremstillingsvirksomheder.\n\nKONTEKST: Jeg er assurandør. Produktionsvirksomhed: [produkt],\n[antal] ansatte, [omsætning], [eksportandel].\n\nMETODE:\n1. Produktansvar (særligt ved eksport - USA-klausul)\n2. Maskinpark og driftstabsforsikring\n3. Bygninger og lager (brand, storm, vand)\n4. Cyber og IT-afhængighed i produktionen\n5. Tre forsikringsmæssige risici der ofte overses i denne type\nvirksomhed"
     },
     {
       "id": "9.8",
-      "categoryId": "9",
-      "categoryName": "Brancher: landbrug, byggeri, detail, restauration",
-      "title": "IT- og konsulentvirksomhed",
-      "body": "ROLLE: Du er min erfarne kollega med speciale i vidensvirksomheder.\n\nKONTEKST: IT/konsulenthus: [antal] konsulenter, [kundetype],\n[omsætning].\n\nMETODE:\n1. Professionelt ansvar (fejl i leverance)\n2. Cyber og dataansvar\n3. Nøglepersonsforsikring (essentielt i vidensvirksomheder)\n4. Kontorrisici (mindre relevant men stadig)\n5. Tre spørgsmål om deres kontraktvilkår"
+      "categoryId": "6",
+      "categoryName": "Risikovurdering og analyse",
+      "industryId": "it",
+      "industryName": "IT og rådgivning",
+      "title": "IT- og konsulentvirksomhed - forsikring",
+      "body": "ROLLE: Du er min erfarne erhvervsassurandør med speciale i forsikring\naf vidensvirksomheder.\n\nKONTEKST: Jeg er assurandør. IT/konsulenthus: [antal] konsulenter,\n[kundetype], [omsætning].\n\nMETODE:\n1. Professionelt ansvar (E&O - essentielt ved fejl i leverance)\n2. Cyber og dataansvar (GDPR-konsekvenser)\n3. Nøglepersonsforsikring (essentielt i vidensvirksomheder)\n4. Kontorrisici (mindre relevant men stadig)\n5. Tre forsikringsmæssige spørgsmål jeg skal stille om deres\nkontraktvilkår med kunder"
     },
     {
       "id": "9.9",
-      "categoryId": "9",
-      "categoryName": "Brancher: landbrug, byggeri, detail, restauration",
-      "title": "Landbrug - generationsskifte",
-      "body": "ROLLE: Du er min erfarne landbrugsassurandør.\n\nKONTEKST: Landmand [navn] står over for generationsskifte. Næste gen:\n[oplysninger]. Bedrift: [beskrivelse].\n\nMETODE:\n1. Fem forsikringsmæssige konsekvenser af skiftet\n2. Nye produkter der bliver aktuelle\n3. Timing - hvad skal ændres hvornår\n4. Typiske faldgruber i landbrugsgenerationsskifter"
+      "categoryId": "6",
+      "categoryName": "Risikovurdering og analyse",
+      "industryId": "landbrug",
+      "industryName": "Landbrug",
+      "title": "Landbrug - forsikring ved generationsskifte",
+      "body": "ROLLE: Du er min erfarne landbrugsassurandør.\n\nKONTEKST: Jeg er assurandør. Landmand [navn] står over for\ngenerationsskifte. Næste generation: [oplysninger]. Bedrift:\n[beskrivelse].\n\nMETODE:\n1. Fem forsikringsmæssige konsekvenser af generationsskiftet\n2. Nye forsikringsprodukter der bliver aktuelle (fx nøgleperson,\nlivsforsikring, arveforsikringer)\n3. Timing - hvad skal ændres hvornår i forsikringsprogrammet\n4. Typiske faldgruber ved generationsskifter set fra forsikringsvinkel"
     },
     {
       "id": "9.10",
-      "categoryId": "9",
-      "categoryName": "Brancher: landbrug, byggeri, detail, restauration",
-      "title": "Byggeri - stort projekt",
-      "body": "ROLLE: Du er min erfarne kollega.\n\nKONTEKST: Byggeprojekt: [type, størrelse, varighed, kompleksitet].\n\nMETODE:\n1. Nødvendige projektforsikringer\n2. Tre \"hvem dækker hvad\"-spørgsmål jeg skal afklare\n3. Typiske disputerpunkter i lignende projekter\n4. Tidspunkter hvor dækning typisk ændres\n5. Tjekliste til bygherren"
+      "categoryId": "6",
+      "categoryName": "Risikovurdering og analyse",
+      "industryId": "byggeri",
+      "industryName": "Byggeri",
+      "title": "Byggeri - stort projekt-forsikring",
+      "body": "ROLLE: Du er min erfarne erhvervsassurandør med speciale i\nbyggeprojekt-forsikring.\n\nKONTEKST: Jeg er assurandør. Byggeprojekt: [type, størrelse, varighed,\nkompleksitet].\n\nMETODE:\n1. Nødvendige projekt-forsikringer (CAR, EAR, entreprisegarantistillelse,\nbygherreansvar)\n2. Tre \"hvem dækker hvad\"-spørgsmål jeg skal afklare mellem parterne\n3. Typiske forsikringsmæssige disputerpunkter i lignende projekter\n4. Tidspunkter hvor dækning typisk ændres (ved ibrugtagning,\ngennemførelse)\n5. Tjekliste til bygherren"
     },
     {
       "id": "9.11",
-      "categoryId": "9",
-      "categoryName": "Brancher: landbrug, byggeri, detail, restauration",
-      "title": "E-commerce-virksomhed",
-      "body": "ROLLE: Du er min erfarne kollega med e-commerce-erfaring.\n\nKONTEKST: E-commerce: [produkt], [national/international], [omsætning],\n[lageromfang].\n\nMETODE:\n1. Cyber og databehandling (GDPR-implikationer)\n2. Lager og logistik\n3. Produktansvar (særligt ved import)\n4. Returhåndtering og svig\n5. Tre risici der typisk overses i unge e-com virksomheder"
+      "categoryId": "6",
+      "categoryName": "Risikovurdering og analyse",
+      "industryId": "ecommerce",
+      "industryName": "E-commerce",
+      "title": "E-commerce - forsikringsmæssige risici",
+      "body": "ROLLE: Du er min erfarne erhvervsassurandør med e-commerce-erfaring.\n\nKONTEKST: Jeg er assurandør. E-commerce: [produkt], [national/\ninternational], [omsætning], [lageromfang].\n\nMETODE:\n1. Cyber og databehandling (GDPR-implikationer og dækning)\n2. Lager og logistik (tyveri, brand, vand)\n3. Produktansvar (særligt ved import fra 3. verdenslande)\n4. Returhåndtering og svig\n5. Tre forsikringsrisici der typisk overses i unge e-commerce\nvirksomheder"
     },
     {
       "id": "9.12",
-      "categoryId": "9",
-      "categoryName": "Brancher: landbrug, byggeri, detail, restauration",
-      "title": "Sundhedssektor - klinik eller praksis",
-      "body": "ROLLE: Du er min erfarne kollega med sundhedssektor-erfaring.\n\nKONTEKST: Klinik: [type: læge/tandlæge/fysioterapi/psykolog], [antal]\nbehandlere, [omsætning].\n\nMETODE:\n1. Professionelt ansvar (centralt i denne branche)\n2. Cyber og databehandling (sundhedsdata = særlig kategori)\n3. Klinikdrift og inventar\n4. Personale\n5. Tre typiske faldgruber"
+      "categoryId": "6",
+      "categoryName": "Risikovurdering og analyse",
+      "industryId": "sundhed",
+      "industryName": "Sundhed",
+      "title": "Sundhedsklinik - forsikringsprogram",
+      "body": "ROLLE: Du er min erfarne erhvervsassurandør med speciale i forsikring\naf klinikker og sundhedspraksis.\n\nKONTEKST: Jeg er assurandør. Klinik: [type: læge/tandlæge/fysioterapi/\npsykolog], [antal] behandlere, [omsætning].\n\nMETODE:\n1. Professionsansvar (centralt i branchen - patientskadeforsikring,\nbehandlingsansvar)\n2. Cyber og databehandling (sundhedsdata er særlig kategori under GDPR)\n3. Klinikdrift og inventar (brand, vand, tyveri)\n4. Personale-forsikringer\n5. Tre typiske forsikringsmæssige faldgruber i sundhedssektoren"
     },
     {
       "id": "10.1",
       "categoryId": "10",
       "categoryName": "Produktforståelse og forklaringer",
-      "title": "Forklar police i tre versioner",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Police-tekst: [indsæt]\n\nMETODE: Tre versioner:\n1. Elevator (30 ord): kernen\n2. Kort (100 ord): hovedpunkter\n3. Fuld (300 ord): alle detaljer\nAlle i hverdagssprog. Bevar alle vigtige undtagelser og selvrisikobetingelser."
+      "industryId": null,
+      "industryName": null,
+      "title": "Forklar police i tre længder",
+      "body": "ROLLE: Du er min kommunikationsassistent med forsikringsforståelse.\n\nKONTEKST: Jeg er assurandør. Policetekst: [indsæt]\n\nMETODE: Tre versioner af forklaringen til kunden:\n1. Elevator (30 ord): kernen i dækningen\n2. Kort (100 ord): hovedpunkter og selvrisiko\n3. Fuld (300 ord): alle detaljer inkl. undtagelser\nAlle i hverdagssprog. Bevar alle vigtige undtagelser og\nselvrisikobetingelser."
     },
     {
       "id": "10.2",
       "categoryId": "10",
       "categoryName": "Produktforståelse og forklaringer",
-      "title": "Forskellen mellem to produkter",
-      "body": "ROLLE: Du er min produktspecialist.\n\nKONTEKST: Forskellen mellem [produkt A] og [produkt B] forklaret for\nen kunde uden forsikringsbaggrund.\n\nMETODE:\n1. Én-sætnings sammenfatning af forskellen\n2. Tabel: dækning, pris, selvrisiko, målgruppe\n3. Tre konkrete eksempler (samme situation, forskellig udfald)\n4. Anbefaling: hvilken kundetype passer til hvilket?"
+      "industryId": null,
+      "industryName": null,
+      "title": "Forskellen mellem to forsikringsprodukter",
+      "body": "ROLLE: Du er min forsikringsprodukt-specialist.\n\nKONTEKST: Jeg er assurandør og skal forklare forskellen mellem\n[forsikringsprodukt A] og [forsikringsprodukt B] for en kunde uden\nforsikringsbaggrund.\n\nMETODE:\n1. Én-sætnings sammenfatning af forskellen\n2. Tabel: dækning, pris, selvrisiko, målgruppe\n3. Tre konkrete eksempler (samme hændelse, forskelligt udfald)\n4. Anbefaling: hvilken kundetype passer til hvilket produkt?"
     },
     {
       "id": "10.3",
       "categoryId": "10",
       "categoryName": "Produktforståelse og forklaringer",
-      "title": "Forklar selvrisiko",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Kunde forstår ikke hvad \"selvrisiko\" betyder i deres police.\n\nMETODE:\n1. Forklaring i 3 sætninger\n2. Konkret eksempel de kan relatere til\n3. Hvorfor det er sådan\n4. Hvordan selvrisikoen påvirker prisen\nHverdagssprog. Ingen forsikringsjargon."
+      "industryId": null,
+      "industryName": null,
+      "title": "Forklar selvrisiko til kunden",
+      "body": "ROLLE: Du er min kommunikationsassistent med forsikringsforståelse.\n\nKONTEKST: Jeg er assurandør. Kunden forstår ikke hvad \"selvrisiko\"\nbetyder i deres police.\n\nMETODE:\n1. Forklaring i 3 sætninger\n2. Konkret eksempel de kan relatere til\n3. Hvorfor selvrisikoen eksisterer\n4. Hvordan selvrisikoen påvirker præmien (lavere selvrisiko = højere\npræmie)\nHverdagssprog. Ingen forsikringsjargon."
     },
     {
       "id": "10.4",
       "categoryId": "10",
       "categoryName": "Produktforståelse og forklaringer",
-      "title": "Forklar gensidig vs. aktieselskab",
-      "body": "ROLLE: Du er min forklarings-assistent.\n\nKONTEKST: Kunde spørger om forskellen på et gensidigt forsikringsselskab\nog et aktieselskab.\n\nMETODE:\n1. Forskellen på 3 bullets\n2. Hvad det betyder for kunden i praksis\n3. Eksempler på hver type\n4. Ingen værdi-vurdering (\"vi er bedst\")"
+      "industryId": null,
+      "industryName": null,
+      "title": "Forklar undtagelsesklausul",
+      "body": "ROLLE: Du er min kommunikationsassistent med forsikringsforståelse.\n\nKONTEKST: Jeg er assurandør. Policen har undtagelsen: \"[indsæt klausul]\".\nKunden spørger hvad det betyder.\n\nMETODE:\n1. Hvad klausulen betyder i praksis\n2. Konkret eksempel hvor den ville udelukke dækning\n3. Konkret eksempel hvor dækningen stadig er intakt\n4. Hvad kunden kan gøre hvis de vil have klausulen fjernet (og hvad\ndet vil koste)\nKlar, ærlig, ikke defensiv tone."
     },
     {
       "id": "10.5",
       "categoryId": "10",
       "categoryName": "Produktforståelse og forklaringer",
-      "title": "Forklar undtagelsesklausul",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Policen har undtagelsen: \"[indsæt klausul]\". Kunde spørger om\nhvad det betyder.\n\nMETODE:\n1. Hvad klausulen betyder\n2. Konkret eksempel hvor den ville udelukke dækning\n3. Konkret eksempel hvor dækningen stadig er intakt\n4. Hvad kunden kan gøre hvis de vil have den fjernet\nKlar, ærlig, ikke defensiv tone."
+      "industryId": null,
+      "industryName": null,
+      "title": "Forklar tab af erhvervsevne",
+      "body": "ROLLE: Du er min personforsikrings-specialist.\n\nKONTEKST: Jeg er assurandør. Kunde [profil] overvejer en tab af\nerhvervsevne-forsikring. De har kun hørt om produktet én gang.\n\nMETODE: Forklaring:\n1. Hvad produktet er (3 sætninger)\n2. Hvornår forsikringen udbetaler\n3. Hvornår den IKKE udbetaler (vigtige undtagelser)\n4. Et scenarie fra hverdagen der viser værdien\n5. Typiske priser og dækningsniveauer\n6. Maks 300 ord, hverdagssprog"
     },
     {
       "id": "10.6",
       "categoryId": "10",
       "categoryName": "Produktforståelse og forklaringer",
-      "title": "Forklar tab af erhvervsevne",
-      "body": "ROLLE: Du er min personkunde-specialist.\n\nKONTEKST: Kunde [profil] overvejer tab af erhvervsevne-forsikring.\nDe har kun hørt om det én gang.\n\nMETODE: Forklaring:\n1. Hvad det er (3 sætninger)\n2. Hvornår den udbetaler\n3. Hvornår den IKKE udbetaler\n4. Et scenarie fra hverdagen der viser værdien\n5. Typiske priser og dækningsniveauer\n6. Maks 300 ord, hverdagssprog"
-    },
-    {
-      "id": "10.7",
-      "categoryId": "10",
-      "categoryName": "Produktforståelse og forklaringer",
+      "industryId": null,
+      "industryName": null,
       "title": "Forklar nyværdi vs dagsværdi",
-      "body": "ROLLE: Du er min produktassistent.\n\nKONTEKST: Kunde forvirret over \"nyværdi\" vs \"dagsværdi\" i deres indbo-\neller husforsikring.\n\nMETODE:\n1. Forskel i 2 sætninger\n2. Et helt konkret eksempel med tal\n3. Hvilken er typisk bedre og hvorfor\n4. Hvorfor det påvirker prisen"
-    },
-    {
-      "id": "10.8",
-      "categoryId": "10",
-      "categoryName": "Produktforståelse og forklaringer",
-      "title": "Forklar bonusordning",
-      "body": "ROLLE: Du er min produktassistent.\n\nKONTEKST: Kunde spørger om hvordan bonus-ordning fungerer på [bil/\nansvar-forsikring]. Nuværende bonusniveau: [%]. Skade for nylig: [ja/nej].\n\nMETODE:\n1. Hvordan bonusen optjenes og mistes\n2. Kundens nuværende position\n3. Konkret hvad en skade ville koste (ikke kun selvrisikoen, også\ntabt bonus)\n4. Anbefaling: bør små skader anmeldes?"
+      "body": "ROLLE: Du er min forsikringsprodukt-assistent.\n\nKONTEKST: Jeg er assurandør. Kunden er forvirret over \"nyværdi\" vs\n\"dagsværdi\" i deres indbo- eller husforsikring.\n\nMETODE:\n1. Forskellen i 2 sætninger\n2. Et helt konkret eksempel med tal (fx en 5 år gammel opvaskemaskine)\n3. Hvilken er typisk bedre for kunden og hvorfor\n4. Hvorfor valget påvirker præmien"
     },
     {
       "id": "11.1",
       "categoryId": "11",
       "categoryName": "Excel, data og tabeller",
-      "title": "Stikord → struktureret Excel-tabel",
-      "body": "ROLLE: Du er min data-assistent.\n\nKONTEKST: Mine noter: [indsæt]\n\nMETODE: Omdan til tabel med kolonner: [definer kolonner].\nÉn række pr. enhed. Format: direkte kopierbart til Excel (tab-separeret)."
+      "industryId": null,
+      "industryName": null,
+      "title": "Mødenoter → struktureret kundetabel",
+      "body": "ROLLE: Du er min data-assistent med forsikringsforståelse.\n\nKONTEKST: Jeg er assurandør. Mine noter fra kundemøde: [indsæt]\n\nMETODE: Omdan til tabel med kolonner: Navn, Alder, Bolig, Familie,\nTransport, Vigtigste forsikringsbehov, Konkret næste skridt.\nÉn række pr. person. Format: direkte kopierbart til Excel\n(tab-separeret)."
     },
     {
       "id": "11.2",
       "categoryId": "11",
       "categoryName": "Excel, data og tabeller",
-      "title": "Sammenlign tre tilbud i tabel",
-      "body": "ROLLE: Du er min analytiker.\n\nKONTEKST: Tre tilbud: [indsæt for hver: selskab, dækning, pris, selvrisiko,\nsærlige vilkår].\n\nMETODE: Tabel med hvert selskab som kolonne og rækker for:\n- Årlig præmie\n- Selvrisiko\n- Primære dækninger\n- Undtagelser\n- Særlige vilkår\n- Min samlede vurdering\nAfrund med 2 linjer observation."
+      "industryId": null,
+      "industryName": null,
+      "title": "Sammenlign tre forsikringstilbud i tabel",
+      "body": "ROLLE: Du er min forsikringsanalytiker.\n\nKONTEKST: Jeg er assurandør. Tre tilbud på [forsikringsprodukt]:\n[indsæt for hver: selskab, dækning, pris, selvrisiko, særlige vilkår].\n\nMETODE: Tabel med hvert selskab som kolonne og rækker for:\n- Årlig præmie\n- Selvrisiko\n- Primære dækninger\n- Væsentlige undtagelser\n- Særlige vilkår\n- Min samlede vurdering\nAfrund med 2 linjer observation."
     },
     {
       "id": "11.3",
       "categoryId": "11",
       "categoryName": "Excel, data og tabeller",
+      "industryId": null,
+      "industryName": null,
       "title": "Porteføljeoversigt af mine kunder",
-      "body": "ROLLE: Du er min CRM-assistent.\n\nKONTEKST: Mine kunder: [indsæt liste med nøgleoplysninger]\n\nMETODE: Tabel med kolonner:\n- Kundenavn\n- Type (privat/erhverv)\n- Årlig præmie\n- Næste fornyelse\n- Skader sidste 12 mdr\n- Næste action (hvad og hvornår)\nSorter efter næste fornyelse."
+      "body": "ROLLE: Du er min CRM-assistent med forsikringsforståelse.\n\nKONTEKST: Jeg er assurandør. Mine kunder: [indsæt liste med\nnøgleoplysninger]\n\nMETODE: Tabel med kolonner:\n- Kundenavn\n- Type (privat/erhverv)\n- Årlig præmie\n- Næste fornyelsesdato\n- Skader sidste 12 mdr\n- Næste aftalte handling (hvad og hvornår)\nSorter efter næste fornyelsesdato."
     },
     {
       "id": "11.4",
       "categoryId": "11",
       "categoryName": "Excel, data og tabeller",
+      "industryId": null,
+      "industryName": null,
       "title": "Skadesoversigt med statistik",
-      "body": "ROLLE: Du er min dataanalytiker.\n\nKONTEKST: Skader seneste 12 mdr: [indsæt rå data]\n\nMETODE:\n1. Tabel med oversigt\n2. Statistik: antal, total udbetalt, gennemsnit, median\n3. Top 3 skadesårsager\n4. Månedlig fordeling\n5. Format: klart kopierbart"
+      "body": "ROLLE: Du er min dataanalytiker med forsikringsforståelse.\n\nKONTEKST: Jeg er assurandør. Skader seneste 12 mdr på min portefølje:\n[indsæt rå data]\n\nMETODE:\n1. Tabel med oversigt\n2. Statistik: antal, total udbetalt, gennemsnit, median\n3. Top 3 skadesårsager\n4. Månedlig fordeling\n5. Format: klart kopierbart til Excel"
     },
     {
       "id": "11.5",
       "categoryId": "11",
       "categoryName": "Excel, data og tabeller",
-      "title": "Pipeline-oversigt",
-      "body": "ROLLE: Du er min salgs-data-assistent.\n\nKONTEKST: Mine aktive deals: [indsæt for hver: kunde, værdi,\nsandsynlighed, næste skridt, dato]\n\nMETODE: Tabel sorteret efter forventet luk-dato. Kolonner: kunde,\nværdi, sandsynlighed, næste skridt, deadline. Afslut med:\n- Vægtet pipelineværdi\n- Tre deals der kræver opmærksomhed denne uge"
+      "industryId": null,
+      "industryName": null,
+      "title": "Omkostningsfordeling pr. kunde",
+      "body": "ROLLE: Du er min regnskabs-assistent.\n\nKONTEKST: Jeg er assurandør. Min tid og mine omkostninger pr. kunde:\n[indsæt data]\n\nMETODE:\n1. Tabel: kunde, timer, direkte omkostninger, præmieindtægt,\ndækningsgrad\n2. Markér kunder hvor dækningsgraden er lav\n3. Tre observationer jeg kan bruge til portefølje-optimering"
     },
     {
       "id": "11.6",
       "categoryId": "11",
       "categoryName": "Excel, data og tabeller",
-      "title": "Omkostningsfordeling pr kunde",
-      "body": "ROLLE: Du er min regnskabs-assistent.\n\nKONTEKST: Tid og omkostninger på kunder: [indsæt data]\n\nMETODE:\n1. Tabel: kunde, timer, direkte omkostninger, præmieindtægt,\ndækningsgrad\n2. Marker kunder hvor dækningsgraden er lav\n3. Tre observationer"
+      "industryId": null,
+      "industryName": null,
+      "title": "Mit forsikringsår i tal",
+      "body": "ROLLE: Du er min forsikringsanalytiker.\n\nKONTEKST: Jeg er assurandør. Året der gik: [indsæt nøgletal og\nbegivenheder - nye kunder, tabte kunder, præmievolumen,\nskadesfrekvens, nye produkter].\n\nMETODE:\n1. Hovedtal i tabel (sammenlignet med sidste år)\n2. Tre vigtigste gevinster\n3. Tre største udfordringer\n4. Prognose for næste år\n5. Maks 2 A4-sider"
     },
     {
       "id": "11.7",
       "categoryId": "11",
       "categoryName": "Excel, data og tabeller",
-      "title": "Årsoverblik over min forretning",
-      "body": "ROLLE: Du er min analytiker.\n\nKONTEKST: Året der gik: [indsæt key numbers og begivenheder]\n\nMETODE:\n1. Hovedtal i tabel (sammenlignet med sidste år)\n2. Tre vigtigste gevinster\n3. Tre største udfordringer\n4. Prognose for næste år\n5. Maks 2 A4-sider"
-    },
-    {
-      "id": "11.8",
-      "categoryId": "11",
-      "categoryName": "Excel, data og tabeller",
+      "industryId": null,
+      "industryName": null,
       "title": "Pris-sammenligning pr. dækningstype",
-      "body": "ROLLE: Du er min produktanalytiker.\n\nKONTEKST: Priser på samme dækning hos forskellige selskaber: [indsæt]\n\nMETODE:\n1. Tabel: selskab, præmie, selvrisiko, effektiv pris pr. forsikringsår\n2. Markér billigste, dyreste, mest værdi for pengene\n3. Konklusion i én sætning"
+      "body": "ROLLE: Du er min forsikringsprodukt-analytiker.\n\nKONTEKST: Jeg er assurandør. Priser på samme dækningstype hos\nforskellige selskaber: [indsæt]\n\nMETODE:\n1. Tabel: selskab, præmie, selvrisiko, effektiv pris pr. forsikringsår\n2. Markér billigste, dyreste, mest værdi for pengene\n3. Konklusion i én sætning hvilken der er bedst til hvilken kundetype"
     },
     {
       "id": "12.1",
       "categoryId": "12",
       "categoryName": "Intern kommunikation",
+      "industryId": null,
+      "industryName": null,
       "title": "Handover-note til kollega",
-      "body": "ROLLE: Du er min assistent.\n\nKONTEKST: Jeg er syg/på ferie og en kollega skal overtage [kunde] i\n[periode]. Status: [indsæt]\n\nMETODE: Handover-note:\n- Kundens nuværende situation\n- Seneste aftaler\n- Hvad kollegaen skal huske (advarsler, præferencer)\n- Filer at læse\n- Kontaktoplysninger\n- Maks 1 A4"
+      "body": "ROLLE: Du er min forsikrings-assistent.\n\nKONTEKST: Jeg er assurandør og er syg/på ferie. En kollega skal overtage\nmin kunde [kunde] i [periode]. Status: [indsæt]\n\nMETODE: Handover-note:\n- Kundens nuværende forsikringssituation\n- Seneste aftaler og igangværende sager\n- Hvad kollegaen skal huske (kundens præferencer, sprogtone,\nskadeshistorik, advarsler)\n- Filer at læse\n- Kontaktoplysninger\n- Maks 1 A4"
     },
     {
       "id": "12.2",
       "categoryId": "12",
       "categoryName": "Intern kommunikation",
+      "industryId": null,
+      "industryName": null,
       "title": "Sagsfremstilling til chefen",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Sag [beskrivelse] - jeg skal orientere min chef. Fakta:\n[indsæt].\n\nMETODE:\n1. Sagen på 3 linjer (hvad, hvem, status)\n2. Handlinger indtil nu\n3. Udfordringer\n4. Hvad jeg foreslår\n5. Hvad jeg har brug for fra chefen\n6. Maks 200 ord"
+      "body": "ROLLE: Du er min forsikrings-kommunikationsassistent.\n\nKONTEKST: Jeg er assurandør. Sag [beskrivelse] - jeg skal orientere min\nchef. Fakta: [indsæt].\n\nMETODE:\n1. Sagen på 3 linjer (hvad, hvem, status)\n2. Handlinger indtil nu\n3. Udfordringer\n4. Hvad jeg foreslår\n5. Hvad jeg har brug for fra chefen\n6. Maks 200 ord"
     },
     {
       "id": "12.3",
       "categoryId": "12",
       "categoryName": "Intern kommunikation",
-      "title": "Eskaleringsmail",
-      "body": "ROLLE: Du er min erfarne kollega.\n\nKONTEKST: Sag er ved at gå skævt: [beskriv]. Jeg har brug for at\neskalere til [chef/specialist].\n\nMETODE: Mail:\n- Saglig, ikke panisk tone\n- Fakta først\n- Hvad jeg har prøvet\n- Hvor jeg er låst\n- Konkret hvad jeg har brug for\n- Maks 180 ord"
+      "industryId": null,
+      "industryName": null,
+      "title": "Eskaleringsmail om skadessag",
+      "body": "ROLLE: Du er min erfarne forsikringskollega.\n\nKONTEKST: Jeg er assurandør. En skadessag er ved at gå skævt: [beskriv].\nJeg har brug for at eskalere til [chef/underwriter/jurist].\n\nMETODE: Mail:\n- Saglig, ikke panisk tone\n- Fakta først\n- Hvad jeg har prøvet\n- Hvor jeg er låst\n- Konkret hvad jeg har brug for\n- Maks 180 ord"
     },
     {
       "id": "12.4",
       "categoryId": "12",
       "categoryName": "Intern kommunikation",
-      "title": "Slack/Teams-besked - deling af indsigt",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Jeg har lært noget nyt ved et kundemøde der kan gavne\nkolleger: [indsæt]\n\nMETODE: Team-besked:\n- Krog i første linje\n- Hovedpointen\n- Hvad kollegerne kan bruge det til\n- Maks 100 ord\n- Tone: kollegial, ikke belærerende"
-    },
-    {
-      "id": "12.5",
-      "categoryId": "12",
-      "categoryName": "Intern kommunikation",
+      "industryId": null,
+      "industryName": null,
       "title": "Anbefaling til produktforbedring",
-      "body": "ROLLE: Du er min analytiker.\n\nKONTEKST: Jeg har observeret et tilbagevendende problem med [produkt/\nproces]: [indsæt eksempler].\n\nMETODE: Anbefaling til produktchef:\n1. Problemet i én sætning\n2. Tre konkrete eksempler fra min hverdag\n3. Tre løsningsforslag\n4. Mit primære forslag og hvorfor\n5. Maks 300 ord"
-    },
-    {
-      "id": "12.6",
-      "categoryId": "12",
-      "categoryName": "Intern kommunikation",
-      "title": "Mødereferat til ledelsen",
-      "body": "ROLLE: Du er min assistent.\n\nKONTEKST: Strategisk møde jeg har deltaget i. Stikord: [indsæt]\n\nMETODE: Referat til ledelsesgruppen:\n- Beslutninger (ikke diskussioner)\n- Strategiske konsekvenser\n- Næste skridt og ejerskab\n- Opfølgningspunkter\n- Maks 1 A4, kopierbart format"
-    },
-    {
-      "id": "12.7",
-      "categoryId": "12",
-      "categoryName": "Intern kommunikation",
-      "title": "Feedback til kollega",
-      "body": "ROLLE: Du er min coach-kollega.\n\nKONTEKST: Jeg skal give feedback til [kollega] om [situation]. Min\nobservation: [indsæt].\n\nMETODE: Skriv feedback:\n- Situationsspecifik (ikke generisk)\n- Konkret adfærd, ikke personkarakteristik\n- Både positiv og udviklende\n- Åbner for dialog\n- Maks 150 ord\n- Respektfuld, kollegial tone"
-    },
-    {
-      "id": "12.8",
-      "categoryId": "12",
-      "categoryName": "Intern kommunikation",
-      "title": "Ugeopsummering til mit team",
-      "body": "ROLLE: Du er min kommunikationsassistent.\n\nKONTEKST: Min uge: [stikord om møder, deals, skader, udfordringer]\n\nMETODE: Kort ugeopsummering til team:\n- Tre vigtigste ting fra ugen\n- Én ting jeg har brug for hjælp til\n- Én ting jeg har lært jeg vil dele\n- Maks 150 ord, kollegial tone"
+      "body": "ROLLE: Du er min produktanalytiker med forsikringsforståelse.\n\nKONTEKST: Jeg er assurandør og har observeret et tilbagevendende problem\nmed [forsikringsprodukt/proces] i mit arbejde med kunderne:\n[indsæt eksempler].\n\nMETODE: Anbefaling til produktchef:\n1. Problemet i én sætning\n2. Tre konkrete eksempler fra min kundebase\n3. Tre løsningsforslag\n4. Mit primære forslag og hvorfor\n5. Maks 300 ord"
     },
     {
       "id": "13.1",
       "categoryId": "13",
       "categoryName": "Compliance og sikkerhed",
-      "title": "Tjek af mail før afsendelse - GDPR-tjek",
-      "body": "ROLLE: Du er min compliance-assistent.\n\nKONTEKST: Jeg skal sende denne mail: [indsæt]\n\nMETODE: Tjek for:\n1. Personfølsomme oplysninger der ikke bør sendes\n2. Kundedata der bør anonymiseres\n3. Formulations-risici (forpligtende løfter)\n4. Juridiske ord der kan misforstås\nMarkér konkret hvad der bør ændres."
+      "industryId": null,
+      "industryName": null,
+      "title": "GDPR-tjek af kundemail før afsendelse",
+      "body": "ROLLE: Du er min compliance-assistent med forsikringsforståelse.\n\nKONTEKST: Jeg er assurandør og skal sende denne mail til kunde: [indsæt]\n\nMETODE: Tjek for:\n1. Personfølsomme oplysninger der ikke bør sendes ukrypteret\n(CPR-numre, helbredsoplysninger)\n2. Kundedata der bør anonymiseres eller sløres\n3. Formulerings-risici (forpligtende løfter om dækning)\n4. Juridiske ord der kan misforstås\nMarkér konkret hvad der bør ændres."
     },
     {
       "id": "13.2",
       "categoryId": "13",
       "categoryName": "Compliance og sikkerhed",
-      "title": "Formuler et AI-politisk brev til ledelsen",
-      "body": "ROLLE: Du er min compliance-rådgiver.\n\nKONTEKST: Jeg vil foreslå en AI-brugspolitik til mit selskab. Nuværende\ntilstand: [indsæt].\n\nMETODE: Brev til ledelsen:\n- Problemet (ingen klar politik)\n- Risici ved status quo\n- Tre principper for god AI-brug hos assurandører\n- Forslag til næste skridt\n- Maks 1 A4"
+      "industryId": null,
+      "industryName": null,
+      "title": "Forslag til AI-brugspolitik i forsikringsselskab",
+      "body": "ROLLE: Du er min compliance-rådgiver med forsikringsforståelse.\n\nKONTEKST: Jeg er assurandør og vil foreslå en AI-brugspolitik til mit\nforsikringsselskab. Nuværende tilstand: [indsæt - uklar, ingen, delvis].\n\nMETODE: Brev til ledelsen:\n- Problemet (ingen klar politik for AI-brug hos assurandører)\n- Risici ved status quo (GDPR, kundedata, hallucination)\n- Tre principper for god AI-brug hos assurandører\n- Forslag til næste skridt\n- Maks 1 A4"
     },
     {
       "id": "13.3",
       "categoryId": "13",
       "categoryName": "Compliance og sikkerhed",
-      "title": "Tjek af tilbud for juridiske risici",
-      "body": "ROLLE: Du er min juridiske sparringspartner.\n\nKONTEKST: Tilbud til [kunde]: [indsæt]\n\nMETODE:\n1. Gennemgå for formuleringer der kan udgøre juridisk risiko\n2. Markér afsnit der skal gennemses af jurist\n3. Foreslå alternative formuleringer\n4. Konkret vurdering: kan jeg sende det som det er?"
+      "industryId": null,
+      "industryName": null,
+      "title": "Juridisk risiko-tjek af tilbud",
+      "body": "ROLLE: Du er min juridiske sparringspartner med forsikringsforståelse.\n\nKONTEKST: Jeg er assurandør. Mit tilbud til [kunde]: [indsæt]\n\nMETODE:\n1. Gennemgå for formuleringer der kan udgøre juridisk eller\nforsikringsmæssig risiko (fx for bredt formuleret dækning,\nuklare forbehold)\n2. Markér afsnit der skal gennemses af jurist eller underwriter\n3. Foreslå alternative formuleringer\n4. Konkret vurdering: kan jeg sende det som det er?"
     },
     {
       "id": "13.4",
       "categoryId": "13",
       "categoryName": "Compliance og sikkerhed",
-      "title": "Dokumentation af rådgivning",
-      "body": "ROLLE: Du er min compliance-assistent.\n\nKONTEKST: Mødet med [kunde] varede [tid]. Emner: [indsæt]. Hvad jeg har\nrådet: [indsæt].\n\nMETODE: Rådgivnings-dokumentation:\n- Hvilke produkter blev diskuteret\n- Hvilke anbefalinger gav jeg\n- Hvilke reservationer gjorde jeg\n- Hvad blev aftalt skriftligt\n- Format: kopierbar til rådgivningsjournal"
+      "industryId": null,
+      "industryName": null,
+      "title": "Rådgivningsdokumentation",
+      "body": "ROLLE: Du er min compliance-assistent.\n\nKONTEKST: Jeg er assurandør. Mødet med [kunde] varede [tid].\nEmner: [indsæt]. Hvad jeg har rådet: [indsæt].\n\nMETODE: Rådgivningsdokumentation til sagsmappen:\n- Hvilke forsikringsprodukter blev diskuteret\n- Hvilke anbefalinger gav jeg\n- Hvilke reservationer eller forbehold gjorde jeg\n- Hvad blev aftalt skriftligt\n- Format: kopierbar til rådgivningsjournal, jf. god skik-regler"
     },
     {
       "id": "13.5",
       "categoryId": "13",
       "categoryName": "Compliance og sikkerhed",
-      "title": "Anonymisering af kundecase",
-      "body": "ROLLE: Du er min dataassistent.\n\nKONTEKST: Jeg vil bruge denne kundecase i et AI-værktøj: [indsæt]\n\nMETODE:\n1. Identificér alle personoplysninger\n2. Foreslå anonymiseret version\n3. Bevar alle fakta jeg har brug for til rådgivning\n4. Vis før/efter"
+      "industryId": null,
+      "industryName": null,
+      "title": "Anonymisering af kundecase før AI-brug",
+      "body": "ROLLE: Du er min dataassistent.\n\nKONTEKST: Jeg er assurandør. Jeg vil bruge denne kundecase i et\nAI-værktøj som ChatGPT eller Claude: [indsæt]\n\nMETODE:\n1. Identificér alle personoplysninger (navne, CPR, adresser,\nvirksomhedsnavne, CVR)\n2. Foreslå anonymiseret version hvor jeg stadig får samme kvalitet i\nrådgivningen\n3. Bevar alle fakta jeg har brug for til forsikringsrådgivning\n4. Vis før/efter"
     },
     {
       "id": "14.1",
       "categoryId": "14",
-      "categoryName": "Personlig udvikling og refleksion",
-      "title": "Refleksion efter tabt sag",
-      "body": "ROLLE: Du er min reflekterende coach.\n\nKONTEKST: Jeg har tabt [sag/deal]. Forløbet: [indsæt]\n\nMETODE: Hjælp mig reflektere:\n1. Tre faktorer jeg kunne have gjort anderledes\n2. Tre faktorer der ikke var inden for min kontrol\n3. Én konkret læring at tage med\n4. Stil opfølgende spørgsmål før du konkluderer"
+      "categoryName": "Refleksion og svære situationer",
+      "industryId": null,
+      "industryName": null,
+      "title": "Refleksion efter tabt forsikringssag",
+      "body": "ROLLE: Du er min reflekterende coach med forsikringsforståelse.\n\nKONTEKST: Jeg er assurandør og har lige tabt [sag/deal]. Forløbet:\n[indsæt]\n\nMETODE: Hjælp mig reflektere:\n1. Tre faktorer jeg kunne have gjort anderledes i forsikringsrådgivningen\n2. Tre faktorer der ikke var inden for min kontrol (markedspris,\neksisterende relationer, selskabets betingelser)\n3. Én konkret læring at tage med\n4. Stil opfølgende spørgsmål før du konkluderer"
     },
     {
       "id": "14.2",
       "categoryId": "14",
-      "categoryName": "Personlig udvikling og refleksion",
+      "categoryName": "Refleksion og svære situationer",
+      "industryId": null,
+      "industryName": null,
       "title": "Sparring om svært kundeforhold",
-      "body": "ROLLE: Du er min kollega-coach.\n\nKONTEKST: Jeg har et vanskeligt forhold til [kunde]: [beskriv]\n\nMETODE: Hjælp mig tænke:\n1. Stil 3 åbne spørgsmål først\n2. Foreslå tre mulige årsager til situationen\n3. Tre måder at gå forfra på\n4. Én konkret handling næste uge\nCoach-tone, ikke rådgiver-tone."
-    },
-    {
-      "id": "14.3",
-      "categoryId": "14",
-      "categoryName": "Personlig udvikling og refleksion",
-      "title": "Forberedelse til MUS-samtale",
-      "body": "ROLLE: Du er min MUS-forberedelsescoach.\n\nKONTEKST: MUS-samtale med min chef om 14 dage. Året der gik: [stikord].\n\nMETODE: Forbered mig:\n1. Tre stærkeste resultater jeg kan fremhæve\n2. Tre udfordringer jeg ærligt bør nævne\n3. Tre mål for næste år\n4. Tre ting jeg gerne vil have fra chefen\n5. Tre spørgsmål jeg kan stille"
-    },
-    {
-      "id": "14.4",
-      "categoryId": "14",
-      "categoryName": "Personlig udvikling og refleksion",
-      "title": "Kompetenceplan for næste kvartal",
-      "body": "ROLLE: Du er min udviklingscoach.\n\nKONTEKST: Mit job: [beskriv]. Mine styrker: [indsæt]. Mine svagheder:\n[indsæt]. Branche-udvikling: [indsæt].\n\nMETODE: Kompetenceplan for næste 3 måneder:\n1. Den ene kompetence der vil give mest løft\n2. Tre konkrete aktiviteter\n3. Tidsplan\n4. Måde at måle fremgang på"
-    },
-    {
-      "id": "14.5",
-      "categoryId": "14",
-      "categoryName": "Personlig udvikling og refleksion",
-      "title": "Analyse af egen tidsforbrug",
-      "body": "ROLLE: Du er min produktivitets-coach.\n\nKONTEKST: Mit typiske ugeforbrug: [indsæt - eller upload kalenderdata]\n\nMETODE:\n1. Hvad bruger jeg tiden på (i kategorier)\n2. Hvor er mest værdi skabt\n3. Hvor er mindst værdi skabt\n4. Tre justeringer der kan frigive mest tid\n5. Én konkret ændring at starte med"
-    },
-    {
-      "id": "14.6",
-      "categoryId": "14",
-      "categoryName": "Personlig udvikling og refleksion",
-      "title": "Forberedelse til svær samtale",
-      "body": "ROLLE: Du er min samtale-coach.\n\nKONTEKST: Jeg skal have en svær samtale med [person] om [emne].\nBaggrund: [indsæt].\n\nMETODE: Forbered mig:\n1. Mit kernebudskab i én sætning\n2. Tre mulige reaktioner og mit svar på hver\n3. Én åbningssætning\n4. Én afslutningssætning\n5. Én ting at undgå at sige"
-    },
-    {
-      "id": "14.7",
-      "categoryId": "14",
-      "categoryName": "Personlig udvikling og refleksion",
-      "title": "Personlig debrief af ugen",
-      "body": "ROLLE: Du er min refleksions-assistent.\n\nKONTEKST: Min uge: [stikord]\n\nMETODE:\n1. Tre ting der gik godt\n2. Tre ting der kan forbedres\n3. Én indsigt at tage med\n4. Én ting at prioritere næste uge\n5. Maks 150 ord, reflekteret tone"
+      "body": "ROLLE: Du er min kollega-coach med forsikringsforståelse.\n\nKONTEKST: Jeg er assurandør og har et vanskeligt forhold til [kunde]:\n[beskriv]\n\nMETODE: Hjælp mig tænke:\n1. Stil 3 åbne spørgsmål først\n2. Foreslå tre mulige årsager til situationen (mistillid efter skade,\nkommunikationsstil, forventningsafstemning)\n3. Tre måder at gå forfra på\n4. Én konkret handling næste uge\nCoach-tone, ikke rådgiver-tone."
     }
   ]
 };
