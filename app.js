@@ -6,18 +6,16 @@
   const state = {
     prompts: (data && data.prompts) || [],
     categories: (data && data.categories) || [],
-    industries: (data && data.industries) || [],
     activeCategory: "all",
-    activeIndustry: "all",
     query: "",
     expanded: new Set(),
   };
 
+  const categoryById = new Map(state.categories.map((c) => [c.id, c]));
+
   const els = {
     grid: document.getElementById("grid"),
     filters: document.getElementById("filters"),
-    industries: document.getElementById("industries"),
-    industryGroup: document.getElementById("industry-group"),
     search: document.getElementById("search"),
     count: document.getElementById("count"),
     reset: document.getElementById("reset"),
@@ -43,16 +41,12 @@
     const params = new URLSearchParams(window.location.search);
     const q = params.get("q");
     const c = params.get("c");
-    const b = params.get("b");
     if (q) {
       state.query = q;
       els.search.value = q;
     }
     if (c && state.categories.some((x) => x.id === c)) {
       state.activeCategory = c;
-    }
-    if (b && state.industries.some((x) => x.id === b)) {
-      state.activeIndustry = b;
     }
     updateChipStates();
   }
@@ -61,7 +55,6 @@
     const params = new URLSearchParams();
     if (state.query) params.set("q", state.query);
     if (state.activeCategory !== "all") params.set("c", state.activeCategory);
-    if (state.activeIndustry !== "all") params.set("b", state.activeIndustry);
     const qs = params.toString();
     const url = qs ? `?${qs}` : window.location.pathname;
     window.history.replaceState(null, "", url);
@@ -69,13 +62,12 @@
 
   /* ---------------- Filters ---------------- */
   function buildFilters() {
-    // Category chips
     const total = state.prompts.length;
     const catChips = [
-      chip("all", "Alle", total, "cat"),
+      chip("all", "Alle", total, null),
       ...state.categories.map((c) => {
         const count = state.prompts.filter((p) => p.categoryId === c.id).length;
-        return chip(c.id, `${c.id}. ${c.name}`, count, "cat");
+        return chip(c.id, c.name, count, c);
       }),
     ];
     els.filters.innerHTML = catChips.join("");
@@ -87,34 +79,17 @@
       syncUrl();
       render();
     });
-
-    // Industry chips
-    if (state.industries.length) {
-      const indTotal = state.prompts.filter((p) => p.industryId).length;
-      const indChips = [
-        chip("all", "Alle brancher", indTotal, "ind"),
-        ...state.industries.map((i) => {
-          const count = state.prompts.filter((p) => p.industryId === i.id).length;
-          return chip(i.id, i.name, count, "ind");
-        }),
-      ];
-      els.industries.innerHTML = indChips.join("");
-      els.industries.addEventListener("click", (e) => {
-        const btn = e.target.closest(".chip");
-        if (!btn) return;
-        state.activeIndustry = btn.dataset.value;
-        updateChipStates();
-        syncUrl();
-        render();
-      });
-      els.industryGroup.hidden = false;
-    }
   }
 
-  function chip(value, label, count, kind) {
+  function chip(value, label, count, category) {
+    const style = category
+      ? ` style="--cat-color: ${category.color}"`
+      : "";
+    const iconHtml = category ? renderIcon(category.icon) : "";
     return (
-      `<button class="chip" type="button" data-value="${escapeAttr(value)}" ` +
-      `data-kind="${kind}" aria-pressed="false">` +
+      `<button class="chip${category ? " chip-cat" : ""}" type="button" ` +
+      `data-value="${escapeAttr(value)}" aria-pressed="false"${style}>` +
+      iconHtml +
       `<span>${escapeHtml(label)}</span>` +
       `<span class="chip-count">${count}</span>` +
       `</button>`
@@ -128,14 +103,6 @@
         btn.dataset.value === state.activeCategory ? "true" : "false"
       );
     });
-    if (els.industries) {
-      els.industries.querySelectorAll(".chip").forEach((btn) => {
-        btn.setAttribute(
-          "aria-pressed",
-          btn.dataset.value === state.activeIndustry ? "true" : "false"
-        );
-      });
-    }
   }
 
   /* ---------------- Events ---------------- */
@@ -181,7 +148,6 @@
   function resetFilters() {
     state.query = "";
     state.activeCategory = "all";
-    state.activeIndustry = "all";
     els.search.value = "";
     updateChipStates();
     syncUrl();
@@ -194,7 +160,6 @@
     lastFocused = document.activeElement;
     els.helpModal.hidden = false;
     document.body.classList.add("modal-open");
-    // Focus the close button so Esc / Enter works immediately.
     const closeBtn = els.helpModal.querySelector(".modal-close");
     if (closeBtn) closeBtn.focus();
   }
@@ -213,17 +178,11 @@
         p.categoryId !== state.activeCategory
       )
         return false;
-      if (
-        state.activeIndustry !== "all" &&
-        p.industryId !== state.activeIndustry
-      )
-        return false;
       if (!q) return true;
       return (
         p.title.toLowerCase().includes(q) ||
         p.body.toLowerCase().includes(q) ||
-        p.categoryName.toLowerCase().includes(q) ||
-        (p.industryName && p.industryName.toLowerCase().includes(q))
+        p.categoryName.toLowerCase().includes(q)
       );
     });
   }
@@ -239,9 +198,7 @@
     }
 
     const filtersActive =
-      state.query !== "" ||
-      state.activeCategory !== "all" ||
-      state.activeIndustry !== "all";
+      state.query !== "" || state.activeCategory !== "all";
     els.reset.hidden = !filtersActive;
 
     if (list.length === 0) {
@@ -260,15 +217,17 @@
     const title = highlight(p.title, q);
     const body = highlight(p.body, q);
     const cat = escapeHtml(p.categoryName);
-    const ind = p.industryName ? escapeHtml(p.industryName) : null;
-    const indBadge = ind
-      ? `<span class="card-ind" title="Branche: ${ind}">${ind}</span>`
-      : "";
+    const category = categoryById.get(p.categoryId);
+    const color = category ? category.color : "#475569";
+    const iconName = category ? category.icon : "sparkle";
+    const chatgptUrl = `https://chatgpt.com/?q=${encodeURIComponent(p.body)}`;
     return (
-      `<article class="card${isOpen ? " is-expanded" : ""}" data-id="${escapeAttr(p.id)}">` +
+      `<article class="card${isOpen ? " is-expanded" : ""}" data-id="${escapeAttr(p.id)}" style="--cat-color: ${color}">` +
       `<div class="card-head">` +
-      `<span class="card-cat" title="${cat}">${cat}</span>` +
-      indBadge +
+      `<span class="card-cat" title="${cat}">` +
+      renderIcon(iconName) +
+      `<span>${cat}</span>` +
+      `</span>` +
       `</div>` +
       `<h3 class="card-title">${title}</h3>` +
       `<pre class="card-body">${body}</pre>` +
@@ -277,12 +236,12 @@
       iconCopy() +
       `<span>Kopiér</span>` +
       `</button>` +
-      `<button class="btn btn-secondary" type="button" data-action="chatgpt" aria-label="Åbn prompt i ChatGPT">` +
+      `<a class="btn btn-secondary" href="${escapeAttr(chatgptUrl)}" target="_blank" rel="noopener" aria-label="Åbn prompt i ChatGPT">` +
       iconExternal() +
-      `<span>Åbn i ChatGPT</span>` +
-      `</button>` +
+      `<span>ChatGPT</span>` +
+      `</a>` +
       `<button class="btn btn-expand" type="button" data-action="toggle" aria-expanded="${isOpen}">` +
-      `${isOpen ? "Vis mindre" : "Vis hele"}` +
+      `${isOpen ? "Vis mindre" : "Vis prompt"}` +
       `</button>` +
       `</div>` +
       `</article>`
@@ -296,9 +255,6 @@
         .querySelector('[data-action="copy"]')
         .addEventListener("click", () => copyPrompt(id, card));
       card
-        .querySelector('[data-action="chatgpt"]')
-        .addEventListener("click", () => openInChatGPT(id));
-      card
         .querySelector('[data-action="toggle"]')
         .addEventListener("click", () => togglePrompt(id, card));
     });
@@ -309,7 +265,7 @@
     if (state.expanded.has(id)) {
       state.expanded.delete(id);
       card.classList.remove("is-expanded");
-      btn.textContent = "Vis hele";
+      btn.textContent = "Vis prompt";
       btn.setAttribute("aria-expanded", "false");
     } else {
       state.expanded.add(id);
@@ -345,13 +301,6 @@
         document.body.removeChild(ta);
       }
     }
-  }
-
-  function openInChatGPT(id) {
-    const prompt = state.prompts.find((p) => p.id === id);
-    if (!prompt) return;
-    const url = `https://chatgpt.com/?q=${encodeURIComponent(prompt.body)}`;
-    window.open(url, "_blank", "noopener");
   }
 
   function flashCopy(card) {
@@ -407,6 +356,75 @@
       return safe;
     }
   }
+
+  /* ---------------- Icons ---------------- */
+  function svg(paths, strokeWidth) {
+    const sw = strokeWidth || 2;
+    return (
+      `<svg class="cat-icon" width="14" height="14" viewBox="0 0 24 24" ` +
+      `fill="none" stroke="currentColor" stroke-width="${sw}" ` +
+      `stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">` +
+      paths +
+      `</svg>`
+    );
+  }
+
+  const ICONS = {
+    search:
+      `<circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>`,
+    notes:
+      `<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>` +
+      `<polyline points="14 2 14 8 20 8"/>` +
+      `<line x1="8" y1="13" x2="16" y2="13"/>` +
+      `<line x1="8" y1="17" x2="13" y2="17"/>`,
+    user:
+      `<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>` +
+      `<circle cx="12" cy="7" r="4"/>`,
+    briefcase:
+      `<rect x="2" y="7" width="20" height="14" rx="2"/>` +
+      `<path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>`,
+    document:
+      `<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>` +
+      `<polyline points="14 2 14 8 20 8"/>`,
+    shield:
+      `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>`,
+    wrench:
+      `<path d="M14.7 6.3a4 4 0 0 0 5 5L22 14l-8 8-8-8 2.7-2.3a4 4 0 0 0 6-5z"/>`,
+    chat:
+      `<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>`,
+    book:
+      `<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>` +
+      `<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>`,
+    table:
+      `<rect x="3" y="3" width="18" height="18" rx="2"/>` +
+      `<line x1="3" y1="9" x2="21" y2="9"/>` +
+      `<line x1="3" y1="15" x2="21" y2="15"/>` +
+      `<line x1="9" y1="3" x2="9" y2="21"/>` +
+      `<line x1="15" y1="3" x2="15" y2="21"/>`,
+    team:
+      `<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>` +
+      `<circle cx="9" cy="7" r="4"/>` +
+      `<path d="M23 21v-2a4 4 0 0 0-3-3.87"/>` +
+      `<path d="M16 3.13a4 4 0 0 1 0 7.75"/>`,
+    lock:
+      `<rect x="3" y="11" width="18" height="11" rx="2"/>` +
+      `<path d="M7 11V7a5 5 0 0 1 10 0v4"/>`,
+    sparkle:
+      `<path d="M12 3v4"/>` +
+      `<path d="M12 17v4"/>` +
+      `<path d="M3 12h4"/>` +
+      `<path d="M17 12h4"/>` +
+      `<path d="M5.6 5.6l2.8 2.8"/>` +
+      `<path d="M15.6 15.6l2.8 2.8"/>` +
+      `<path d="M5.6 18.4l2.8-2.8"/>` +
+      `<path d="M15.6 8.4l2.8-2.8"/>`,
+  };
+
+  function renderIcon(name) {
+    const paths = ICONS[name] || ICONS.sparkle;
+    return svg(paths);
+  }
+
   function iconCopy() {
     return (
       `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" ` +

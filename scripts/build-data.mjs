@@ -5,15 +5,13 @@
  * Run whenever the source file changes:
  *     node scripts/build-data.mjs
  *
- * The output file is loaded as a plain <script> before app.js and assigns
+ * The output is loaded as a plain <script> before app.js and assigns
  * `window.PROMPTS_DATA`. This avoids any runtime parsing or HTML artefacts
  * in the shipped site.
  *
- * This generator also:
- *   • Drops the source file's "9. Brancher" category and rehomes its
- *     prompts to category 6 (Risikovurdering og analyse) – the industry
- *     becomes a separate filter dimension.
- *   • Tags prompts with an industry when the title clearly identifies one.
+ * This generator also drops the source file's "9. Brancher" category and
+ * rehomes its prompts under category 6 (Risikovurdering og analyse) – that
+ * is where they belong semantically.
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
@@ -29,19 +27,24 @@ const DST = resolve(ROOT, "prompts.js");
 // key = source id, value = target id.
 const CATEGORY_REMAP = { 9: 6 };
 
-// Industry filter dimension. Detection order matters – first match wins.
-const INDUSTRIES = [
-  { id: "landbrug", name: "Landbrug", match: /(landbrug|landmand|landmands|landbrugs|besætning)/i },
-  { id: "byggeri", name: "Byggeri", match: /(byggeri|byggefirma|byggeprojekt|bygge- og anlæg)/i },
-  { id: "haandvaerk", name: "Håndværk", match: /håndværk/i },
-  { id: "transport", name: "Transport og logistik", match: /(transport|logistik)/i },
-  { id: "produktion", name: "Produktion", match: /(produktionsvirksomhed|fremstillingsvirksomhed)/i },
-  { id: "detail", name: "Detailhandel", match: /(detailforretning|detailbutik|detailbranche)/i },
-  { id: "ecommerce", name: "E-commerce", match: /e-?commerce/i },
-  { id: "restauration", name: "Restauration", match: /(restaurant|restauration)/i },
-  { id: "it", name: "IT og rådgivning", match: /(it- og konsulent|it-virksomhed|konsulenthus)/i },
-  { id: "sundhed", name: "Sundhed", match: /(sundhedsklinik|tandlæge|fysioterapi|klinik)/i },
-];
+// Per-category colour + icon metadata. Keys are source category IDs.
+// Colours are picked to work in both light and dark mode (the UI uses
+// `color-mix(in srgb, ...)` to derive soft backgrounds and borders).
+const CATEGORY_META = {
+  1: { color: "#2563eb", icon: "search" },
+  2: { color: "#7c3aed", icon: "notes" },
+  3: { color: "#059669", icon: "user" },
+  4: { color: "#0891b2", icon: "briefcase" },
+  5: { color: "#d97706", icon: "document" },
+  6: { color: "#dc2626", icon: "shield" },
+  7: { color: "#ea580c", icon: "wrench" },
+  8: { color: "#db2777", icon: "chat" },
+  10: { color: "#4f46e5", icon: "book" },
+  11: { color: "#65a30d", icon: "table" },
+  12: { color: "#475569", icon: "team" },
+  13: { color: "#78350f", icon: "lock" },
+  14: { color: "#e11d48", icon: "sparkle" },
+};
 
 const SECTION_MARKERS = [
   "ROLLE:",
@@ -88,7 +91,7 @@ function cleanBody(raw) {
   t = t.replace(/\n[ \t]+/g, "\n");
   t = t.replace(/[ \t]{2,}/g, " ");
 
-  // Re-introduce a blank line before the well-known section markers.
+  // Re-introduce a blank line before well-known section markers.
   const markerAlt = SECTION_MARKERS.map((m) =>
     m.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
   ).join("|");
@@ -99,15 +102,6 @@ function cleanBody(raw) {
   t = t.replace(/\n{3,}/g, "\n\n");
 
   return t.trim();
-}
-
-function detectIndustry(title) {
-  // Match on the title only – body matches cause false positives (e.g. a
-  // prompt about meeting notes that happens to mention "logistik").
-  for (const ind of INDUSTRIES) {
-    if (ind.match.test(title)) return ind;
-  }
-  return null;
 }
 
 /* -------------------- Parser -------------------- */
@@ -154,36 +148,31 @@ function parse(text) {
     }
   }
 
-  // Apply category remap + industry detection.
+  // Apply category remap.
   const categoryMap = new Map(rawCategories.map((c) => [c.id, c]));
-  const finalCategories = rawCategories.filter(
-    (c) => !Object.prototype.hasOwnProperty.call(CATEGORY_REMAP, c.id)
-  );
-  const usedIndustries = new Map();
+  const finalCategories = rawCategories
+    .filter((c) => !Object.prototype.hasOwnProperty.call(CATEGORY_REMAP, c.id))
+    .map((c) => ({
+      id: c.id,
+      name: c.name,
+      color: (CATEGORY_META[c.id] || {}).color || "#475569",
+      icon: (CATEGORY_META[c.id] || {}).icon || "sparkle",
+    }));
 
   const finalPrompts = prompts.map((p) => {
     const targetCatId = CATEGORY_REMAP[p.sourceCategoryId] || p.sourceCategoryId;
-    const cat = categoryMap.get(String(targetCatId)) || categoryMap.get(p.sourceCategoryId);
-    const industry = detectIndustry(p.title);
-    if (industry && !usedIndustries.has(industry.id)) {
-      usedIndustries.set(industry.id, { id: industry.id, name: industry.name });
-    }
+    const cat =
+      categoryMap.get(String(targetCatId)) || categoryMap.get(p.sourceCategoryId);
     return {
       id: p.id,
       categoryId: cat.id,
       categoryName: cat.name,
-      industryId: industry ? industry.id : null,
-      industryName: industry ? industry.name : null,
       title: p.title,
       body: p.body,
     };
   });
 
-  const industries = Array.from(usedIndustries.values()).sort((a, b) =>
-    a.name.localeCompare(b.name, "da")
-  );
-
-  return { categories: finalCategories, industries, prompts: finalPrompts };
+  return { categories: finalCategories, prompts: finalPrompts };
 }
 
 /* -------------------- Validate -------------------- */
@@ -217,13 +206,12 @@ function emit(data) {
  * prompts.js – generated from Prompt-bibliotek.txt.
  * Do not edit by hand. Run \`node scripts/build-data.mjs\` to regenerate.
  *
- * Prompts: ${data.prompts.length} · Categories: ${data.categories.length} · Industries: ${data.industries.length}
+ * Prompts: ${data.prompts.length} · Categories: ${data.categories.length}
  */
 `;
   const payload = JSON.stringify(
     {
       categories: data.categories,
-      industries: data.industries,
       prompts: data.prompts,
     },
     null,
@@ -242,10 +230,8 @@ function main() {
     process.exit(1);
   }
   writeFileSync(DST, emit(data), "utf8");
-  const withIndustry = data.prompts.filter((p) => p.industryId).length;
   console.log(
-    `Wrote ${data.prompts.length} prompts (${withIndustry} with industry tag) · ` +
-      `${data.categories.length} categories · ${data.industries.length} industries`
+    `Wrote ${data.prompts.length} prompts · ${data.categories.length} categories`
   );
 }
 

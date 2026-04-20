@@ -186,13 +186,17 @@ code {
 /* ---------- Hero ---------- */
 .hero {
   margin: 40px 0 28px;
-  max-width: 760px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 24px;
 }
 .hero-copy {
-  margin: 0 0 12px;
+  margin: 0;
   font-size: 17px;
   color: var(--text);
   line-height: 1.55;
+  max-width: 760px;
 }
 .hero-copy code {
   font-size: 13.5px;
@@ -207,6 +211,8 @@ code {
   padding: 8px 14px 8px 10px;
   background: var(--accent-soft);
   border-radius: 999px;
+  white-space: nowrap;
+  justify-self: end;
 }
 .hero-note .dot {
   display: inline-block;
@@ -335,10 +341,26 @@ code {
   background: var(--surface-hover);
   border-color: var(--text-muted);
 }
+.chip-cat .cat-icon {
+  color: var(--cat-color, var(--text-muted));
+  flex-shrink: 0;
+}
+.chip-cat:hover {
+  border-color: color-mix(in srgb, var(--cat-color, var(--border-strong)) 55%, var(--border-strong));
+  background: color-mix(in srgb, var(--cat-color, var(--surface)) 6%, var(--surface));
+}
 .chip[aria-pressed="true"] {
   color: var(--surface);
   background: var(--primary);
   border-color: var(--primary);
+}
+.chip-cat[aria-pressed="true"] {
+  color: var(--surface);
+  background: var(--cat-color, var(--primary));
+  border-color: var(--cat-color, var(--primary));
+}
+.chip-cat[aria-pressed="true"] .cat-icon {
+  color: var(--surface);
 }
 .chip[aria-pressed="true"] .chip-count {
   background: rgba(255, 255, 255, 0.18);
@@ -374,9 +396,11 @@ code {
   box-shadow: var(--shadow-sm);
   transition: border-color 140ms ease, box-shadow 140ms ease;
   position: relative;
+  border-top: 3px solid var(--cat-color, var(--border-strong));
 }
 .card:hover {
   border-color: var(--border-strong);
+  border-top-color: var(--cat-color, var(--border-strong));
   box-shadow: var(--shadow-md);
 }
 
@@ -388,22 +412,19 @@ code {
   margin-bottom: 10px;
 }
 .card-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 11.5px;
-  color: var(--primary);
-  background: color-mix(in srgb, var(--primary) 10%, transparent);
-  padding: 3px 10px;
+  color: var(--cat-color, var(--primary));
+  background: color-mix(in srgb, var(--cat-color, var(--primary)) 10%, transparent);
+  padding: 3px 10px 3px 8px;
   border-radius: 999px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.4;
 }
-.card-ind {
-  font-size: 11.5px;
-  color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
-  padding: 3px 10px;
-  border-radius: 999px;
-  font-weight: 500;
-  line-height: 1.4;
+.card-cat .cat-icon {
+  flex-shrink: 0;
 }
 .card-title {
   font-size: 16px;
@@ -736,9 +757,16 @@ code {
   }
   .hero {
     margin: 24px 0 20px;
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+    gap: 12px;
   }
   .hero-copy {
     font-size: 15.5px;
+  }
+  .hero-note {
+    justify-self: start;
+    white-space: normal;
   }
   .grid {
     grid-template-columns: 1fr;
