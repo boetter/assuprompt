@@ -1,11 +1,11 @@
 (() => {
   "use strict";
 
-  const SOURCE_FILE = "Prompt-bibliotek.txt";
+  const data = window.PROMPTS_DATA;
 
   const state = {
-    prompts: [],
-    categories: [],
+    prompts: (data && data.prompts) || [],
+    categories: (data && data.categories) || [],
     activeCategory: "all",
     query: "",
     expanded: new Set(),
@@ -21,100 +21,12 @@
     toast: document.getElementById("toast"),
   };
 
-  /* ---------------- Source parser ---------------- */
-  /**
-   * Parses Prompt-bibliotek.txt directly so the website stays in sync with
-   * the single source of truth in the repo – no build step required.
-   */
-  function parseSource(text) {
-    const lines = text.split(/\r?\n/);
-    const categories = [];
-    const prompts = [];
-    let currentCat = null;
-
-    const catRe = /^#\s+(\d+)\\?\.\s+(.+)$/;
-    const headerRe = /^\|\s*\*\*(.+?)\*\*\s*\|\s*$/;
-    const dividerRe = /^\|\s*-+\s*\|\s*$/;
-    const titleRe = /^(\d+\.\d+)\s+(.*)$/;
-
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i];
-
-      const catMatch = line.match(catRe);
-      if (catMatch) {
-        currentCat = { id: catMatch[1], name: catMatch[2].trim() };
-        categories.push(currentCat);
-        continue;
-      }
-
-      const headerMatch = line.match(headerRe);
-      if (headerMatch && currentCat) {
-        const rawTitle = headerMatch[1].trim();
-        const titleMatch = rawTitle.match(titleRe);
-        const promptId = titleMatch ? titleMatch[1] : null;
-        const title = titleMatch ? titleMatch[2].trim() : rawTitle;
-
-        let j = i + 1;
-        while (j < lines.length && dividerRe.test(lines[j])) j++;
-
-        let bodyRow = "";
-        if (j < lines.length && lines[j].startsWith("|")) {
-          bodyRow = lines[j]
-            .replace(/^\|\s*/, "")
-            .replace(/\s*\|\s*$/, "");
-          j++;
-        }
-
-        prompts.push({
-          id: promptId,
-          categoryId: currentCat.id,
-          categoryName: currentCat.name,
-          title,
-          body: cleanBody(bodyRow),
-        });
-
-        i = j - 1;
-      }
-    }
-
-    return { categories, prompts };
-  }
-
-  function cleanBody(raw) {
-    let t = (raw || "").trim();
-    // `<br><br>` and `<br>` are line breaks in the source
-    t = t.replace(/<br><br>/g, "\n").replace(/<br>/g, "\n");
-    // Unescape markdown-escaped special chars
-    t = t.replace(/\\([\[\]\.\-\*\(\)])/g, "$1");
-    // Trim trailing whitespace on lines
-    t = t.replace(/[ \t]+\n/g, "\n");
-    // Add a blank line before well-known section headings
-    t = t.replace(
-      /\n(ROLLE:|KONTEKST:|METODE:|LEVERANCE\s*\d+|KUNDENS SPØRGSMÅL:|FORMÅL:|BAGGRUND:|OPGAVE:)/g,
-      "\n\n$1"
-    );
-    // Collapse 3+ blank lines to 2
-    t = t.replace(/\n{3,}/g, "\n\n");
-    return t.trim();
-  }
-
-  /* ---------------- Data loading ---------------- */
-  async function load() {
-    try {
-      const res = await fetch(SOURCE_FILE, { cache: "no-cache" });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const text = await res.text();
-      const data = parseSource(text);
-      state.prompts = data.prompts;
-      state.categories = data.categories;
-    } catch (err) {
+  function init() {
+    if (!state.prompts.length) {
       els.grid.innerHTML =
-        `<p class="empty">Kunne ikke indlæse promptbiblioteket (${escapeHtml(
-          err.message
-        )}).<br />Prøv at genindlæse siden.</p>`;
+        `<p class="empty">Promptdata kunne ikke indlæses. Prøv at genindlæse siden.</p>`;
       return;
     }
-
     buildFilters();
     hydrateFromUrl();
     bindEvents();
@@ -427,5 +339,5 @@
     );
   }
 
-  load();
+  init();
 })();
