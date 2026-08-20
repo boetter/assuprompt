@@ -8,7 +8,7 @@ Alle prompts er bygget i RKM-rammen: Rolle, Kontekst, Metode. Hver rolle er skå
 
 Husk: Anonymisér altid kundedata. Brug 'Kunde A' eller dummy-navne i offentlige værktøjer som ChatGPT og Claude. Tjek jeres selskabs AI-politik hvis I er i tvivl.
 
-_Leveret som tillæg til AI-workshop for Assurandørkredsen, Comwell Middelfart, 21. april 2026._
+_Leveret som tillæg til "AI i din hverdag - en hands-on workshop for assurandører", Finansforbundet Assurandørkredsen, Applebys Plads 5, København K, 26. august 2026._
 
 # Indhold
 
