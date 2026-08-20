@@ -9,9 +9,6 @@
  * `window.PROMPTS_DATA`. This avoids any runtime parsing or HTML artefacts
  * in the shipped site.
  *
- * This generator also drops the source file's "9. Brancher" category and
- * rehomes its prompts under category 6 (Risikovurdering og analyse) – that
- * is where they belong semantically.
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
@@ -25,7 +22,7 @@ const DST = resolve(ROOT, "prompts.js");
 
 // Source-category IDs that should be merged into another category.
 // key = source id, value = target id.
-const CATEGORY_REMAP = { 9: 6 };
+const CATEGORY_REMAP = {};
 
 // Per-category colour + icon metadata. Keys are source category IDs.
 // Colours are picked to work in both light and dark mode (the UI uses
@@ -39,11 +36,13 @@ const CATEGORY_META = {
   6: { color: "#dc2626", icon: "shield" },
   7: { color: "#ea580c", icon: "wrench" },
   8: { color: "#db2777", icon: "chat" },
+  9: { color: "#0d9488", icon: "layers" },
   10: { color: "#4f46e5", icon: "book" },
   11: { color: "#65a30d", icon: "table" },
   12: { color: "#475569", icon: "team" },
   13: { color: "#78350f", icon: "lock" },
   14: { color: "#e11d48", icon: "sparkle" },
+  15: { color: "#a21caf", icon: "calendar" },
 };
 
 const SECTION_MARKERS = [
