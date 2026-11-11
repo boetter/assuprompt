@@ -2,7 +2,7 @@
  * prompts.js – generated from Prompt-bibliotek.txt.
  * Do not edit by hand. Run `node scripts/build-data.mjs` to regenerate.
  *
- * Prompts: 132 · Categories: 15
+ * Prompts: 133 · Categories: 15
  */
 window.PROMPTS_DATA = {
   "categories": [
@@ -1021,6 +1021,13 @@ window.PROMPTS_DATA = {
       "categoryName": "Planlægning og faste rutiner",
       "title": "Min faste assurandør-instruks - gem som projekt",
       "body": "Gem teksten nedenfor som fast instruks i dit AI-værktøj - som\nprojekt i ChatGPT eller Claude, eller som fast instruktion i\nCopilot. Udfyld pladsholderne én gang, og start derefter alle dine\nkundeopgaver i det projekt. Så kender AI'en din rolle, dine kunder\nog din tone i hver eneste samtale, uden at du skal forklare forfra.\nDu er min faste AI-assistent i mit arbejde som assurandør.\nHvem jeg er: [privat- eller erhvervsassurandør] hos [selskab], med\nspeciale i [fx landbrug, håndværk, boligforeninger] og primært\narbejde i [geografisk område].\nMine typiske kunder: [fx håndværksvirksomheder med 5-50 ansatte,\nbørnefamilier med hus og to biler].\nMin tone: [fx ligefrem, varm og uden fagjargon] - og altid\nnaturligt dansk.\nMine standardformater:\n- Mødereferat: [fx nuværende situation, behov, næste skridt, frist]\n- Opfølgningsmail: [fx maks 150 ord, bekræfter aftaler, venlig]\n- Tilbudsbrev: [fx kundens situation først, så dækninger og pris]\nFaste regler for alle svar:\n- Svar på dansk, medmindre jeg beder om andet\n- Sig \"det ved jeg ikke - skal slås op\" frem for at gætte på\nvilkår, regler eller priser\n- Formulér aldrig bindende tilsagn om dækning eller pris - den\nbeslutning er min\n- Stil et opklarende spørgsmål hvis opgaven er uklar, i stedet for\nat antage"
+    },
+    {
+      "id": "15.3",
+      "categoryId": "15",
+      "categoryName": "Planlægning og faste rutiner",
+      "title": "Lad AI interviewe dig - og skriv din arbejdsprofil",
+      "body": "Interview mig, så du kan skrive en fast instruks om mig til mit AI-værktøj. Stil mig fem spørgsmål om min rolle som assurandør, mine opgaver, hvem jeg skriver til, hvordan jeg arbejder, og hvordan jeg vil have svar. Stil ét spørgsmål ad gangen, og vent på mit svar. Skriv derefter en arbejdsprofil i jeg-form på højst 1.500 tegn med tre afsnit: Om mig, Sådan vil jeg have svar og Hvem jeg skriver til. Skriv ingen kundenavne eller CPR-numre i profilen."
     }
   ]
 };
