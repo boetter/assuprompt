@@ -2,7 +2,7 @@
  * prompts.js – generated from Prompt-bibliotek.txt.
  * Do not edit by hand. Run `node scripts/build-data.mjs` to regenerate.
  *
- * Prompts: 133 · Categories: 15
+ * Prompts: 134 · Categories: 15
  */
 window.PROMPTS_DATA = {
   "categories": [
@@ -195,6 +195,13 @@ window.PROMPTS_DATA = {
       "categoryName": "Kunderesearch og mødeforberedelse",
       "title": "Kundemødeforberedelse ud fra relationens historik",
       "body": "ROLLE: Du er min forsikringskollega.\n\nKONTEKST: Jeg er assurandør og skal ringe til [kunde] i morgen. Alle\nmine tidligere notater om dem: [indsæt]\n\nMETODE:\n1. Opsummér relationens forsikringsmæssige historik i 5 bullet points\n2. Identificér det vigtigste uafsluttede punkt\n3. Foreslå 3 åbningsspørgsmål\n4. Advar mig om ting jeg bør undgå baseret på historikken"
+    },
+    {
+      "id": "1.15",
+      "categoryId": "1",
+      "categoryName": "Kunderesearch og mødeforberedelse",
+      "title": "Agent til erhvervsmøder: research en ny virksomhed",
+      "body": "ROLLE: Jeg er assurandør hos Gjensidige og arbejder med erhvervskunder udelukkende. Du hjælper med at forberede mine møder med nye kunder.\n\nKONTEKST: Når jeg nævner en virksomheds navn for dig vil du researche meget grundigt online om denne virksomhed.\n\nMETODE: Når du hører mig sige et virksomheds navn, så vil du gå på nettet. Finde deres hjemmeside og læse den grundigt. Finde nyheder om dem online og læse dem. Finde deres regnskabstal på f.eks. Proff.dk eller CVR.dk for at forstå deres økonomiske situation. Dernæst vil du svare mig i et kortfattet overblik for at forberede mit møde med virksomheden. Dit overblik består af:\n1) Et hurtigt overblik over virksomheden\n2) En SWOT-analyse af virksomhedens situation\n3) En business model canvas af deres forretningsmodel og særlige risici i relation til forsikring\n4) En liste over produkter jeg kan tilbyde dem fra Gjensidige\n5) Fem gode spørgsmål til det fysiske møde"
     },
     {
       "id": "2.1",

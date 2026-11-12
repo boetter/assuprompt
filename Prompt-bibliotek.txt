@@ -12,7 +12,7 @@ _Leveret som tillæg til "AI i din hverdag - en hands-on workshop for assurandø
 
 # Indhold
 
-- 1\. Kunderesearch og mødeforberedelse (14 prompts)
+- 1\. Kunderesearch og mødeforberedelse (15 prompts)
 - 2\. Mødenoter og referater (6 prompts)
 - 3\. Kundekommunikation - privatkunder (15 prompts)
 - 4\. Kundekommunikation - erhvervskunder (13 prompts)
@@ -28,7 +28,7 @@ _Leveret som tillæg til "AI i din hverdag - en hands-on workshop for assurandø
 - 14\. Refleksion og svære situationer (2 prompts)
 - 15\. Planlægning og faste rutiner (3 prompts)
 
-_I alt 133 prompts._
+_I alt 134 prompts._
 
 # 1\. Kunderesearch og mødeforberedelse
 
@@ -87,6 +87,10 @@ _I alt 133 prompts._
 | **1.14 Kundemødeforberedelse ud fra relationens historik** |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ROLLE: Du er min forsikringskollega.<br><br>KONTEKST: Jeg er assurandør og skal ringe til \[kunde\] i morgen. Alle<br><br>mine tidligere notater om dem: \[indsæt\]<br><br>METODE:<br><br>1\. Opsummér relationens forsikringsmæssige historik i 5 bullet points<br><br>2\. Identificér det vigtigste uafsluttede punkt<br><br>3\. Foreslå 3 åbningsspørgsmål<br><br>4\. Advar mig om ting jeg bør undgå baseret på historikken |
+
+| **1.15 Agent til erhvervsmøder: research en ny virksomhed** |
+| --- |
+| ROLLE: Jeg er assurandør hos Gjensidige og arbejder med erhvervskunder udelukkende. Du hjælper med at forberede mine møder med nye kunder.<br><br>KONTEKST: Når jeg nævner en virksomheds navn for dig vil du researche meget grundigt online om denne virksomhed.<br><br>METODE: Når du hører mig sige et virksomheds navn, så vil du gå på nettet. Finde deres hjemmeside og læse den grundigt. Finde nyheder om dem online og læse dem. Finde deres regnskabstal på f.eks. Proff.dk eller CVR.dk for at forstå deres økonomiske situation. Dernæst vil du svare mig i et kortfattet overblik for at forberede mit møde med virksomheden. Dit overblik består af:<br><br>1\) Et hurtigt overblik over virksomheden<br><br>2\) En SWOT-analyse af virksomhedens situation<br><br>3\) En business model canvas af deres forretningsmodel og særlige risici i relation til forsikring<br><br>4\) En liste over produkter jeg kan tilbyde dem fra Gjensidige<br><br>5\) Fem gode spørgsmål til det fysiske møde |
 
 # 2\. Mødenoter og referater
 
